@@ -71,7 +71,7 @@ const NewsLetter = props => {
                             <p className={classes.newsletter_content_head}>
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_head"
-                                    defaultMessage="Join now and enjoy pew pewxx"
+                                    defaultMessage="Join now and enjoy"
                                 />
                                 <br />
                                 <FormattedMessage
