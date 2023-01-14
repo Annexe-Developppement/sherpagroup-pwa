@@ -56,10 +56,10 @@ const Home = props => {
             showOfferBanners = parseInt(HomepageConfig[i]['value']);
         if (HomepageConfig[i]['name'] == 'show_home_slider')
             showHomeSlider = parseInt(HomepageConfig[i]['value']);
+            
     }
 
     const { sliderData } = talonProps;
-
     const { mobileView } = useMobile();
     let sliderImgWidth = 1351;
     if (mobileView) {

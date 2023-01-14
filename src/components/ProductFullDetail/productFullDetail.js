@@ -797,11 +797,7 @@ const ProductFullDetail = (props) => {
                                     <Suspense fallback={''}>
                                         <CompareButton id={product.id} />
                                         <InStockAlert id={product.id} />
-                                        <ProductSharingIcons
-                                            classes={classes}
-                                            productDetails={productDetails}
-                                            image={image}
-                                        />
+                                        
                                     </Suspense>
                                 </div>
                             )}
