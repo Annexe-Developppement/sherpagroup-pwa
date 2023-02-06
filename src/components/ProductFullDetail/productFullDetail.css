@@ -10,8 +10,8 @@
 .product_details_right {
     padding: 0 15px 15px 15px !important;
     order: 2;
-    flex: 0 0 50%;
-    min-width: 50%;
+    flex: 0 0 60%;
+    min-width: 60%;
 }
 .produtc_right_section {
 }
@@ -322,6 +322,7 @@
 
 /* tabs */
 .tabs_wrap {
+    display: none;
     padding-top: 20px;
     margin-top: 30px;
 }
@@ -702,10 +703,14 @@
     color: var(--primary-slider-nav-color);
 }
 
+.productFullDetail h3 {
+    font-size: 12px;
+}
+
 /* image crousel */
 .imageCarousel {
-    flex: 0 0 50%;
-    min-width: 50%;
+    flex: 0 0 40%;
+    min-width: 40%;
     border-right: 1px solid var(--primary-border-color);
     position: relative;
     padding-right: 15px;
@@ -878,6 +883,7 @@ div[class='image-gallery custom_slider image-gallery-using-mouse']
     -webkit-transition: 0.3s all;
     -moz-transition: 0.3s all;
 }
+
 .noo_details_wrapper {
     composes: noo_details_wrapper from '../CedHome/home.css';
 }

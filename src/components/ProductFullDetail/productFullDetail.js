@@ -506,18 +506,11 @@ const ProductFullDetail = (props) => {
                                         customPercCheckbox
                                     }
                                 />
+                               
+                                
+                                
 
-                                {product && product.short_description && (
-                                    <div>
-                                        <RichText
-                                            content={
-                                                product.short_description.html
-                                            }
-                                        />
-                                    </div>
-                                )}
-
-                                <div
+                                {/* <div
                                     className={
                                         classes.review_section +
                                         ' ' +
@@ -569,15 +562,7 @@ const ProductFullDetail = (props) => {
                                                 }, 300);
                                             }}
                                         >
-                                            {/* <a
-                        href="#customer-reviews"
-                        data-toggle="collapse"
-                        data-target="#collapseThree"
-                        aria-expanded="false"
-                        aria-controls="collapseThree"
-                      >
-                        {reviewMessage}
-                      </a> */}
+                                            
                                             <button
                                                 type="button"
                                                 data-toggle="collapse"
@@ -592,14 +577,14 @@ const ProductFullDetail = (props) => {
                                     <div className={stockClass}>
                                         <span>{stockStatus}</span>
                                     </div>
-                                </div>
+                                </div>  */}
                                 <div
                                     className={
                                         classes.sku_details + ' ' + 'mb-4'
                                     }
                                 >
                                     <span className={classes.sku_details_label}>
-                                        SKU:
+                                        PRODUCT:
                                     </span>
                                     <span>{product && product.sku}</span>
                                 </div>
@@ -794,11 +779,9 @@ const ProductFullDetail = (props) => {
                                         )}
                                     </section>
 
-                                    <Suspense fallback={''}>
-                                        <CompareButton id={product.id} />
+                                    {/* <Suspense fallback={''}>
                                         <InStockAlert id={product.id} />
-                                        
-                                    </Suspense>
+                                    </Suspense> */}
                                 </div>
                             )}
                             {product.__typename == 'BundleProduct' && (
@@ -843,7 +826,15 @@ const ProductFullDetail = (props) => {
                                         )}
                                 </section>
                             )}
-
+                            {product && product.short_description && (
+                                    <div>
+                                        <RichText
+                                            content={
+                                                product.short_description.html
+                                            }
+                                        />
+                                    </div>
+                                        )} 
                             {/* tabs structure */}
                             <div
                                 className={
@@ -921,7 +912,7 @@ const ProductFullDetail = (props) => {
                                             >
                                                 <RichText
                                                     content={
-                                                        productDetails.description
+                                                        productDetails.short_description
                                                     }
                                                 />
                                             </div>
@@ -1025,7 +1016,7 @@ const ProductFullDetail = (props) => {
                                         </div>
                                     </div>
                                     {/* reviews tab */}
-                                    <div
+                                    {/* <div
                                         id="target-section"
                                         ref={(ref) => {
                                             targetRef = ref;
@@ -1038,7 +1029,7 @@ const ProductFullDetail = (props) => {
                                                 />
                                             </Suspense>
                                         )}
-                                    </div>
+                                    </div>  */}
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@
 .carouselContainer {
     display: grid;
     grid-area: main;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     background: var(--ced-white-color);
     order: 2;
     flex: 0 0 83%;

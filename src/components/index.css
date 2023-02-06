@@ -134,7 +134,7 @@
     --ced-max-width: 1440px;
 
     --primary-bodybg-color: #fcfcfc;
-    --primary-base-color: #dc2b2b;
+    --primary-base-color: #8dc74c;
     --primary-dark-color: #000000;
     --primary-border-color: #e4e4e4;
     --primary-error-color: #e40606;
@@ -155,8 +155,15 @@
     --primary-footer-color: #ffffff;
 }
 
+.project_dropdown {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 3px;
+    height: 35px;
+}
+
 div[class*='container'] {
-    max-width: 1280px;
+    max-width: 1480px;
 }
 
 body,
