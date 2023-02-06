@@ -22,6 +22,9 @@ import {
     ADD_SIMPLE_MUTATION,
     ADD_BUNDLE_MUTATION
 } from '../ProductFullDetail/productFullDetail.gql';
+
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
+
 const Wishlist = React.lazy(() => import('../MyWishlist/wishlist'));
 
 // The placeholder image is 4:5, so we should make sure to size our product
@@ -35,6 +38,9 @@ const IMAGE_WIDTHS = new Map()
     .set(UNCONSTRAINED_SIZE_KEY, 840);
 
 const GalleryItem = props => {
+
+    const { email } = useDashboard();
+
     const { handleLinkClick, item } = useGalleryItem(props);
     const { style } = props;
 
@@ -89,7 +95,9 @@ const GalleryItem = props => {
         return <GalleryItemShimmer classes={classes} />;
     }
 
-    const { name, price_range, small_image, url_key, id, stock_status } = item;
+    const { name, price_range, small_image, url_key, id, stock_status, product_brand, productbrand, short_description, meta_title} = item;
+
+    console.log('Item: '+JSON.stringify(item));
     const { url: smallImageURL } = small_image;
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix || ''}`);
     let colorSwatchLength = 0;
@@ -156,19 +164,37 @@ const GalleryItem = props => {
                 </p>
 
                 {/* wishlist section */}
-                <Suspense fallback={<div>Loading...</div>}>
+                {/* <Suspense fallback={<div>Loading...</div>}>
                     <Wishlist value={item} />
-                </Suspense>
+                </Suspense> */}
                 <div
                     className={classes.vendor_price_wrap + ' ' + classes.price}
                 >
-                    <Price
-                        value={price_range.maximum_price.regular_price.value}
-                        currencyCode={
-                            price_range.maximum_price.regular_price.currency
-                        }
-                    />
+                    {email ? (
+                        <div> 
+                            
+                            <p className={classes.total_available}>Total available: {item.totalavailable}</p>
+                            <b>SHERPA&nbsp;&nbsp;</b>
+                            <Price
+                                value={price_range.maximum_price.regular_price.value}
+                                currencyCode={
+                                    price_range.maximum_price.regular_price.currency
+                                }
+                            />
+                            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSRP&nbsp;&nbsp;</b>
+                            <Price
+                                value={item.msrp_sherpa2}
+                                currencyCode={
+                                    price_range.maximum_price.regular_price.currency
+                                }
+                            />
+                        </div>
+                    ) : (
+                        <p>Create your account to get your personalized price!</p>
+                    )}
+                    
                 </div>
+                
                 <div className={defaultClasses.colors_stars_wrap}>
                     <div className={defaultClasses.colors_wrap}>
                         {itemElements}
@@ -194,21 +220,26 @@ const GalleryItem = props => {
                         'position-relative'
                     }
                 >
-                    <div className={classes.add_to_cart_btn}>
+
+<div className={classes.add_to_cart_btn}>
                         {item.__typename == 'SimpleProduct' &&
                             stock_status == 'IN_STOCK' &&
                             item.options == null && (
-                                <button
-                                    onClick={() => {
-                                        setProductName(item.name),
-                                            handleAddToCart(item);
-                                    }}
-                                >
-                                    <FormattedMessage
-                                        id={'item.add_to_cart_btn'}
-                                        defaultMessage={'Add to cart'}
-                                    />
-                                </button>
+                                <div>
+                                    <button
+                                        onClick={() => {
+                                            setProductName(item.name),
+                                                handleAddToCart(item);
+                                        }}
+                                    >
+                                        <FormattedMessage
+                                            id={'item.add_to_cart_btn'}
+                                            defaultMessage={'Add to cart'}
+                                        />
+                                    </button>
+                                    
+                                </div>
+                                
                             )}
                         {item.__typename == 'SimpleProduct' &&
                             stock_status == 'IN_STOCK' &&
@@ -232,6 +263,7 @@ const GalleryItem = props => {
                                         defaultMessage={'Add to cart'}
                                     />
                                 </Link>
+ 
                             )}
                         {item.__typename != 'SimpleProduct' && (
                             <Link to={resourceUrl(productLink)}>
@@ -265,8 +297,91 @@ const GalleryItem = props => {
                             </div>
                         )}
                     </div>
-                    <CompareButton id={id} />
+
+                    <div className={classes.add_to_cart_btn}>
+                        {item.__typename == 'SimpleProduct' &&
+                            stock_status == 'IN_STOCK' &&
+                            item.options == null && (
+                                <div>
+                                    
+                                    <button
+                                        onClick={() => {
+                                            setProductName(item.name),
+                                                handleAddToCart(item);
+                                        }}
+                                    >
+                                        <FormattedMessage
+                                            id={'item.add_to_cart_btn'}
+                                            defaultMessage={'Add to project'}
+                                        />
+                                    </button>
+                                    
+                                </div>
+                                
+                            )}
+                        {item.__typename == 'SimpleProduct' &&
+                            stock_status == 'IN_STOCK' &&
+                            item.options !== null && (
+                                <Link to={resourceUrl(productLink)}>
+                                    <FormattedMessage
+                                        id={
+                                            'item.add_to_cart_btn_SimpleProduct'
+                                        }
+                                        defaultMessage={'Add to cart'}
+                                    />
+                                </Link>
+                            )}
+                        {item.__typename == 'SimpleProduct' &&
+                            stock_status != 'IN_STOCK' && (
+                                <Link to={resourceUrl(productLink)}>
+                                    <FormattedMessage
+                                        id={
+                                            'item.add_to_cart_btn_SimpleProduct'
+                                        }
+                                        defaultMessage={'Add to cart'}
+                                    />
+                                </Link>
+ 
+                            )}
+                        {item.__typename != 'SimpleProduct' && (
+                            <Link to={resourceUrl(productLink)}>
+                                <FormattedMessage
+                                    id={
+                                        'item.add_to_cart_btn_ConfigurableProduct'
+                                    }
+                                    defaultMessage={'Add to cart'}
+                                />
+                            </Link>
+                        )}
+                        {isAddingItem && item.name == productName && (
+                            <div
+                                className={
+                                    proClasses.modal +
+                                    ' ' +
+                                    proClasses.modal_active +
+                                    ' ' +
+                                    defaultClasses.modal_active +
+                                    ' ' +
+                                    proClasses.galler_modal_active
+                                }
+                            >
+                                <div className={proClasses.loader_div}>
+                                    <div className={proClasses.ball_pulse}>
+                                        <div />
+                                        <div />
+                                        <div />
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                    
+                    {/* <CompareButton id={id} /> */}
                 </div>
+                <select className={classes.project_dropdown}>
+                    <option value="14851" selected="selected">Hello</option>
+                    <option value="newproject">Create a new project</option>
+                </select>
             </div>
         </div>
     );

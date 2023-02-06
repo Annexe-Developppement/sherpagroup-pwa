@@ -287,7 +287,7 @@ div[class='mid-banner_image_Wrap'] img {
     padding: 10px;
     background: var(--primary-light-color);
     position: relative;
-    bottom: -51px;
+    bottom: -91px;
     transition: 0.3s all;
 }
 .vendor_price_wrap {
@@ -320,7 +320,7 @@ div[class='mid-banner_image_Wrap'] img {
     color: var(--primary-dark-color);
     display: block;
     text-overflow: ellipsis;
-    white-space: nowrap;
+    white-space: initial;
     overflow: hidden;
     line-height: 23px;
     width: calc(100% - 30px);

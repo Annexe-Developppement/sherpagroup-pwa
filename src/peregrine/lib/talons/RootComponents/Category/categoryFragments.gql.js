@@ -29,6 +29,9 @@ export const ProductsFragment = gql`
             }
             stock_status
             type_id
+            totalavailable
+            msrp_sherpa2
+            msrp_sherpa
             url_key
             ... on ConfigurableProduct {
                 configurable_options {

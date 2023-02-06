@@ -6,8 +6,10 @@
  * @returns {boolean}
  */
 export const isHomeRoute = url => {
-    if (url.pathname === '/') {
+    if (url.pathname === '/new-home') {
+        console.log('home redirect');
         return true;
+        
     }
 
     // If store code is in the url, the home route will be url.com/view_code.

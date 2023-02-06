@@ -3,7 +3,7 @@ import { useIntl } from 'react-intl';
 import PropTypes from 'prop-types';
 import { mergeClasses } from '../../classify';
 import Image from '../Image';
-import logo from './CeniaLogo.png';
+import logo from './SherpaTech-Horz-644x_web.png';
 
 /**
  * A component that renders a logo in the header.

@@ -19,6 +19,7 @@ import { useUserContext } from '@magento/peregrine/lib/context/user';
 import { useSlider } from '../../peregrine/lib/talons/Slider/useSlider';
 import GET_SLIDER_DATA from '../../queries/getSliderDetails.graphql';
 import { useMobile } from '../../peregrine/lib/talons/Mobile/useMobile';
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
 import { Heart as HeartIcon } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
@@ -107,14 +108,20 @@ const Header = props => {
                                     <VisitorId />
                                 </Suspense>
                             </div>
-                            <p className={classes.offer_message_text}>
-                                <FormattedMessage
+                            
+                                {currentUser.firstname ? (
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname}</p>
+                                ) : (
+                                    <p className={classes.offer_message_text}>Create your account to get your personalized price!</p>
+                                )}
+                               
+                                {/* <FormattedMessage
                                     id={'header.offer_message_text'}
                                     defaultMessage={
-                                        ' Limited time only: up to 50% off must-have styles. Shop Women | Shop Men | Shop Aerie'
+                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
                                     }
-                                />
-                            </p>
+                                /> */}
+                            
                         </div>
                     </div>
                 </div>

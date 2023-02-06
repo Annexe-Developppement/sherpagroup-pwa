@@ -59,7 +59,7 @@
     color: var(--primary-dark-colo);
     font-size: 14px;
     display: block;
-    white-space: nowrap;
+    white-space: initial;
     overflow: hidden;
     text-overflow: ellipsis;
     width: 40%;

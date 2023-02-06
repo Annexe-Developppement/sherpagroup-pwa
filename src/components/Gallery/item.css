@@ -12,7 +12,20 @@
     display: grid;
     grid-template-areas: 'main';
 }
-
+.project_dropdown {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 3px;
+    height: 35px;
+}
+.total_available {
+    background: #8cc650;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    max-width: 125px;
+}
 .imageContainer {
     grid-area: main;
 }
@@ -71,9 +84,9 @@
 .add_to_cart_btn:hover {
     background: var(--primary-base-color);
     color: var(--primary-light-color);
-    text-align: center;
+    text-align: left;
     font-size: 14px;
-    width: 80%;
+    width: 100%;
     display: block;
     border-radius: 3px;
     transition: 0.3s all;
@@ -96,6 +109,12 @@
 .root:hover .add_to_cart_Wrap {
     opacity: 1;
     visibility: visible;
+}
+.project_dropdown {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 3px;
+    height: 35px;
 }
 .noo_details_wrapper {
     composes: noo_details_wrapper from '../CedHome/home.css';

@@ -13,10 +13,15 @@ export const GET_PRODUCT_DETAIL_QUERY = gql`
                         category_id
                     }
                 }
+                short_description {
+                    html
+                }
                 description {
                     html
                 }
                 id
+                product_brand
+                productbrand
                 media_gallery_entries {
                     id
                     label

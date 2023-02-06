@@ -136,7 +136,7 @@ const MyWishList = props => {
                                                 <FormattedMessage
                                                     id={'myWishlist.page_title'}
                                                     defaultMessage={
-                                                        'My Wish List'
+                                                        'My projects'
                                                     }
                                                 />
                                             </span>
@@ -493,7 +493,7 @@ const MyWishList = props => {
                                                 <FormattedMessage
                                                     id={'myWishlist.page_title'}
                                                     defaultMessage={
-                                                        'My Wish List'
+                                                        'My projects'
                                                     }
                                                 />
                                             </span>

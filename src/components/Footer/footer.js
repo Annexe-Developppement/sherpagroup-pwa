@@ -32,11 +32,12 @@ const Footer = props => {
     });
 
     const { HomeConfigData } = homepageData;
-    let footerIdentifier = 'ced-pwa-footer';
+    let footerIdentifier = 'ced-pwa-footer-x';
     if (typeof HomeConfigData != 'undefined') {
         for (var i = 0; i < HomeConfigData.length; i++) {
             if (HomeConfigData[i]['name'] == 'ced_pwa_footer')
                 footerIdentifier = HomeConfigData[i]['value'];
+                console.log('Footer ID : '+HomeConfigData[i]['value']);
         }
     }
 
