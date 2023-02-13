@@ -64,7 +64,7 @@ const Footer = props => {
                         <div className={'row'}>
                             <div className={'col-12'}>
                                 <p className={classes.copyright}>
-                                    {copyrightText}
+                                Copyright © {new Date().getFullYear()} SherpaGroup. All rights reserved.
                                 </p>
                             </div>
                         </div>
@@ -82,7 +82,7 @@ const Footer = props => {
                 <div className={'container'}>
                     <div className={'row'}>
                         <div className={'col-12'}>
-                            <p className={classes.copyright}>{copyrightText}</p>
+                            <p className={classes.copyright}>Copyright © {new Date().getFullYear()} SherpaGroup. All rights reserved.</p>
                         </div>
                     </div>
                 </div>

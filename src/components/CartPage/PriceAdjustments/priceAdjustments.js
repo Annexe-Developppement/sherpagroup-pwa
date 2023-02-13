@@ -33,7 +33,7 @@ const PriceAdjustments = props => {
     return (
         <div className={classes.root}>
             <Accordion canOpenMultiple={true}>
-                <Section
+                {/*<Section
                     id={'shipping_method'}
                     title={formatMessage({
                         id: 'priceAdjustment.estimateShipping',
@@ -45,7 +45,7 @@ const PriceAdjustments = props => {
                             setIsCartUpdating={setIsCartUpdating}
                         />
                     </Suspense>
-                </Section>
+                </Section> */}
                 <Section
                     id={'coupon_code'}
                     title={formatMessage({

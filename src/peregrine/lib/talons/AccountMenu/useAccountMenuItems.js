@@ -26,8 +26,8 @@ export const useAccountMenuItems = props => {
             url: '/orders'
         },
         {
-            name: 'My Wishlist',
-            id: 'My Wishlist',
+            name: 'My Projects',
+            id: 'My Projects',
             url: '/wishlist'
         },
         {
@@ -39,16 +39,6 @@ export const useAccountMenuItems = props => {
             name: 'Account Information',
             id: 'Account Information',
             url: '/profile'
-        },
-        {
-            name: 'My Reviews & Ratings',
-            id: 'My Reviews',
-            url: '/reviews'
-        },
-        {
-            name: 'Newsletter Subscriptions',
-            id: 'Newsletter Subscriptions',
-            url: '/newsletter'
         }
     ];
 

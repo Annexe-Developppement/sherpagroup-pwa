@@ -26,6 +26,9 @@
     font-weight: 600;
     max-width: 125px;
 }
+.total_available_b {
+    font-size: 10px;
+}
 .imageContainer {
     grid-area: main;
 }
@@ -93,6 +96,7 @@
     -webkit-transition: 0.3s all;
     -moz-transition: 0.3s all;
     position: relative;
+    margin-bottom: 5px;
 }
 .add_to_cart_btn:hover {
     background: var(--primary-dark-color);

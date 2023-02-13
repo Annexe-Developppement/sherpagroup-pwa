@@ -35,7 +35,7 @@ const SuggestedCategories = props => {
 export default SuggestedCategories;
 
 SuggestedCategories.defaultProps = {
-    limit: 4
+    limit: 6
 };
 
 SuggestedCategories.propTypes = {

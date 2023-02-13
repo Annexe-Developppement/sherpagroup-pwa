@@ -73,7 +73,7 @@ const Sidebar = props => {
                     {' '}
                     <span className={defaultClasses.dashboard_links_images}>
                         <img
-                            src="/cenia-static/images/wishlist-1.png"
+                            src="/cenia-static/images/sent.png"
                             alt="wishlist"
                             width="20"
                             height="20"
@@ -82,7 +82,7 @@ const Sidebar = props => {
                     <Link to="/wishlist" onClick={onClose}>
                         <FormattedMessage
                             id={'sidebar.MyWishlist'}
-                            defaultMessage={'My Orders'}
+                            defaultMessage={'My projects'}
                         />
                     </Link>
                 </li>
@@ -132,7 +132,7 @@ const Sidebar = props => {
                         />
                     </Link>
                 </li>
-                <li
+                {/*<li
                     className={
                         path == '/reviews'
                             ? defaultClasses.item + ' ' + defaultClasses.active
@@ -154,7 +154,7 @@ const Sidebar = props => {
                             defaultMessage={'My Reviews & Ratings'}
                         />
                     </Link>
-                </li>
+                </li> 
                 <li
                     className={
                         path == '/newsletter'
@@ -176,7 +176,7 @@ const Sidebar = props => {
                             defaultMessage={'Newsletter Subscriptions'}
                         />
                     </Link>
-                </li>
+                </li> */}
             </ul>
         </div>
     );

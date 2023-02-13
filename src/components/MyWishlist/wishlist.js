@@ -126,6 +126,7 @@ export default function Wishlist(props) {
                             </div>
                         )}
                         {!addedToWishlist || removeWishlistMsg ? (
+                            
                             <span
                                 role="button"
                                 className={classes.wishlist_icon_wrap}

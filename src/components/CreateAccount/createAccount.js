@@ -97,7 +97,7 @@ const CreateAccount = props => {
             <h2 className={signClasses.title}>
                 <FormattedMessage
                     id={'createAccount.title'}
-                    defaultMessage={`Create a Account`}
+                    defaultMessage={`Create New Customer Account`}
                 />
             </h2>
             <Form
@@ -165,7 +165,7 @@ const CreateAccount = props => {
                     ])}
                     validateOnBlur
                 />
-                <div className={classes.subscribe}>
+                {/* <div className={classes.subscribe}>
                     <Checkbox
                         field="subscribe"
                         label={formatMessage({
@@ -173,7 +173,7 @@ const CreateAccount = props => {
                             defaultMessage: 'Subscribe to news and updates'
                         })}
                     />
-                </div>
+                    </div> 
                 <div className={classes.subscribe} validate={isRequired}>
                     <Checkbox
                         id="assistance_allowed"
@@ -186,7 +186,7 @@ const CreateAccount = props => {
                             defaultMessage: 'Allow remote shopping assistance'
                         })}
                     />
-                </div>
+                </div>*/}
                 <div className={classes.actions}>{submitButton}</div>
             </Form>
             <div className={signClasses.create_account_div}>

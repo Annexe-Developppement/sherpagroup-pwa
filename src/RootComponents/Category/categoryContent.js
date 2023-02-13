@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useMemo } from 'react';
+import React, { Fragment, Suspense, useMemo, useState, useEffect } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { array, number, shape, string } from 'prop-types';
 import { useCategoryContent } from '../../peregrine/lib/talons/RootComponents/Category';
@@ -19,6 +19,96 @@ import defaultClasses from './category.css';
 import NoProductsFound from './NoProductsFound';
 import { useFeaturedProducts } from '../../peregrine/lib/talons/FeaturedProduct/useFeaturedProduct';
 import FeaturedQuery from '../../queries/featuredProducts.graphql';
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
+import axios from "axios";
+
+/*axios.get(`https://gatsby-wp-demo.pixel-united.com/en/wp-json/wp/v2/pages/30`)
+    .then(response => {
+        
+        console.log(response.data);
+    }) */
+/*
+    constructor () {
+        super()
+        this.state = {
+            pageData: {}
+        }
+        this.openModal = this.openModal.bind(this)
+    }
+
+    componentDidMount() { 
+
+        axios.get(`https://gatsby-wp-demo.pixel-united.com/en/wp-json/wp/v2/pages/30`)
+            .then(response => {
+                const pageData = response.data;
+                console.log(response.data);
+                this.setState({ pageData });
+            })
+
+
+        }   */
+
+/*        
+const url = 'https://sherpagroupav.com/rest/default/V1/categories/42'
+const [result, setResult] = useState(null)
+
+const config = {
+    headers:{
+        'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'
+    }
+  };
+
+useEffect(() => {
+    axios.get(url,config)
+    .then((response)=>{
+    setResult(response.data)
+    // axios returns API response body in .data
+    })
+}, []) */
+
+/*const pageData = [];
+const url = 'https://sherpagroupav.com/rest/default/V1/categories/42'
+const [results, setResults] = useState(null)
+
+const config = {
+    headers:{
+        'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'
+    }
+  };*/
+
+/*const getAPIresults = async () => {
+    await axios.get(url,config)
+        .then((response)=>{
+            console.log(response);
+            setResults(response);
+          })
+          .catch((error)=>{
+            console.log(error)
+          })    
+}*/
+/*
+axios({
+    method: 'get',
+    url: 'https://sherpagroupav.com/rest/default/V1/categories/42',
+    responseType: 'text/json',
+    timeout: 1000,
+    headers: {'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'}
+    })
+    .then(function (response) {
+       
+        console.log('Result: '+(response.data));
+        
+    })
+    .catch(function(err) {
+        console.log('Erreur: '+err.message);
+    })
+    .finally(
+        function() {
+            console.log('finally');
+        }
+    ) */
+
+//const pageData = data && data.category && data.category.id ? data.category.id : 0;
 
 const FilterModal = React.lazy(() => import('../../components/FilterModal'));
 const FilterSidebar = React.lazy(() =>
@@ -164,7 +254,13 @@ const CategoryContent = props => {
         ) : (
             ''
         );
+
+    //const catId = data && data.category && data.category.id ? data.category.id : 0;
+
+    const catId = 42;
+
     return (
+        
         <Fragment>
             <div className={'container'}>
                 <Breadcrumbs categoryId={categoryId} />
@@ -183,6 +279,8 @@ const CategoryContent = props => {
                         </h1>
                         {categoryDescriptionElement}
                     </div>
+                    
+                    
                     <div className={classes.contentWrapper}>
                         {!mobileView && (
                             <div className={classes.sidebar}>
@@ -222,6 +320,7 @@ const CategoryContent = props => {
                             <Suspense fallback={null}>{filtersModal}</Suspense>
                         </div>
                     </div>
+                   
                 </article>
             </div>
         </Fragment>

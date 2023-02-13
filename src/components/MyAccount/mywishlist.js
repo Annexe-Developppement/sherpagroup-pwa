@@ -332,7 +332,7 @@ const MyWishList = props => {
                                                                                             'myWishlist.moveToCartBtn'
                                                                                         }
                                                                                         defaultMessage={
-                                                                                            'Move to cart'
+                                                                                            'Move to cart 1'
                                                                                         }
                                                                                     />
                                                                                 </span>
@@ -359,7 +359,7 @@ const MyWishList = props => {
                                                                                         'myWishlist.moveToCartBtn'
                                                                                     }
                                                                                     defaultMessage={
-                                                                                        'Move to cart'
+                                                                                        'Move to cart 2'
                                                                                     }
                                                                                 />
                                                                             </Link>
@@ -399,7 +399,7 @@ const MyWishList = props => {
                                                                     'myWishlist.noResult_text'
                                                                 }
                                                                 defaultMessage={
-                                                                    'You have no items saved in wishlist.'
+                                                                    'You have no items saved in your projects.'
                                                                 }
                                                             />
                                                         </span>
@@ -436,7 +436,7 @@ const MyWishList = props => {
                                                             'myWishlist.noResult_text'
                                                         }
                                                         defaultMessage={
-                                                            'You have no items saved in wishlist.'
+                                                            'You have no items saved in your projects.'
                                                         }
                                                     />
                                                 </span>

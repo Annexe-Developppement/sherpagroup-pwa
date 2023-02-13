@@ -20,6 +20,9 @@ const CMSPage = props => {
             onServer: true
         }
     });
+
+    console.log('Data: '+data);
+
     const homepageData = useHome({
         query: GET_HOMEPAGECONFIG_DATA
     });
@@ -28,6 +31,8 @@ const CMSPage = props => {
     let licenseValidate = '';
     let homePage = 'home';
     const c_url = window.location.href;
+
+  
 
     if (typeof HomeConfigData != 'undefined') {
         for (var i = 0; i < HomeConfigData.length; i++) {
@@ -45,7 +50,7 @@ const CMSPage = props => {
         if (process.env.NODE_ENV !== 'production') {
             console.error(error);
         }
-        return <div>Page Fetch Error</div>;
+        return <div>Page Fetch Error.</div>;
     }
 
     if (loading) {

@@ -101,10 +101,10 @@ const AuthBar = props => {
                             >
                                 <FormattedMessage
                                     id={'authBar.signin_text'}
-                                    defaultMessage={'Sign in'}
+                                    defaultMessage={'Sign in or Register'}
                                 />
                             </span>
-                            <span className={navdefaultClasses.divider} />
+                            {/*<span className={navdefaultClasses.divider} />
                             <span
                                 role="button"
                                 className={navdefaultClasses.signin_text}
@@ -116,7 +116,7 @@ const AuthBar = props => {
                                     id={'authBar.register_text'}
                                     defaultMessage={'Register'}
                                 />
-                            </span>
+                            </span> */}
                         </div>
                         <div className={navdefaultClasses.arrow_right}>
                             <img

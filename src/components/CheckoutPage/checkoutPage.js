@@ -442,6 +442,9 @@ const CheckoutPage = props => {
                                     toggleActiveContent={toggleActiveContent}
                                 />
                             </div>
+                            <div className={stepOneClass}>
+                                <h5 className={classes.heading}>PO Number</h5>
+                            </div>
                             <div className={stepTwoClass}>
                                 {shippingMethodSection}
                             </div>

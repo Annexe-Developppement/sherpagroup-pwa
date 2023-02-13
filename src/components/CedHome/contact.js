@@ -141,7 +141,7 @@ const Contact = props => {
                                     <FontAwesomeIcon icon={faPhoneAlt} />
                                 </span>
                                 <span className={classes.phone_number}>
-                                    +1(888)478-5268
+                                T: 866-767-6584 / F: 514 366 4265
                                 </span>
                             </p>
                             <a href="/">
@@ -149,7 +149,7 @@ const Contact = props => {
                                     <FontAwesomeIcon icon={faEnvelope} />
                                 </span>
                                 <span className={classes.email}>
-                                    support@cedcommerce.com
+                                    info@sherpa-group.net
                                 </span>
                             </a>
                         </div>
