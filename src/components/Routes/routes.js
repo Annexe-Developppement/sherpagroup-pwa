@@ -9,7 +9,6 @@ import { useScrollTopOnChange } from '@magento/peregrine/lib/hooks/useScrollTopO
 const Routes = () => {
     const { pathname } = useLocation();
     useScrollTopOnChange(pathname);
-
     return (
         <Suspense fallback={fullPageLoadingIndicator}>
             <Switch>

@@ -49,7 +49,7 @@ const AccountMenuItems = props => {
 
     return (
         <div className={classes.root}>
-            <span className={classes.customer_mail}>{email}</span>
+            {/*<span className={classes.customer_mail}>{email}</span>*/}
             {menu}
             <button
                 className={classes.signOut}

@@ -69,28 +69,48 @@ const NewsLetter = props => {
                     <div className={'col-lg-6 col-md-6 col-12'}>
                         <div className={classes.newsletter_content}>
                             <p className={classes.newsletter_content_head}>
+                                <img className={classes.newsletter_img} src="https://sherpagroupav.com/media/wysiwyg/Tech-Horz-White.png"/><br/>
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_head"
-                                    defaultMessage="Join now and enjoyx"
+                                    defaultMessage="Great Brands, Great People,One Awesome Partnership"
                                 />
-                                <br />
+                                {/*<br />
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_head2"
                                     defaultMessage="15% off on your first order."
-                                />
+                                /> */}
                             </p>
-                            <p className={classes.newsletter_content_text}>
+                            {/*<p className={classes.newsletter_content_text}>
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_text"
                                     defaultMessage="Lorem Ipsum is simply dummy text of the printing."
                                 />
-                            </p>
+                            </p>*/}
                         </div>
                     </div>
                     <div className={'col-lg-6 col-md-6 col-12'}>
                         <div className={classes.newsletter_form}>
                             <Form onSubmit={submitForm}>
                                 <div className={classes.newsletter_Wrap_inner}>
+                                    <p className={classes.newsletter_content_head}>
+                                        <a className={classes.newsletter_social} href="https://www.linkedin.com/company/sherpatechgroup/" target="_blank" rel="noopener">
+                                            <img src="https://sherpagroupav.com/media/wysiwyg/LinkedIn_Icon-50px.png" />
+                                        </a>
+                                        <a className={classes.newsletter_social} href="https://www.facebook.com/SherpaTechGroup" target="_blank" rel="noopener">
+                                            <img src="https://sherpagroupav.com/media/wysiwyg/Facebook_icon-50px.png" />
+                                        </a>
+                                        <a className={classes.newsletter_social} href="https://www.instagram.com/sherpatechgroup/" target="_blank" rel="noopener">
+                                            <img src="https://sherpagroupav.com/media/wysiwyg/instagram-logo_50px.png" />
+                                        </a>
+                                        <br/>
+                                        <FormattedMessage
+                                            id="newsLetter.newsletter_content_head"
+                                            defaultMessage="Stay Connected"
+                                        />
+                                       
+                                    </p>
+                                    
+                                    {/*}
                                     <div className={classes.newsletter_input}>
                                         <Field
                                             label="Email"
@@ -131,7 +151,7 @@ const NewsLetter = props => {
                                                 icon={faArrowRight}
                                             />
                                         </Button>
-                                    </div>
+                                    </div> */}
                                 </div>
                             </Form>
                         </div>

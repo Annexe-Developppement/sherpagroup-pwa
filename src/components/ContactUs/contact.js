@@ -153,13 +153,7 @@ const Contact = props => {
                     >
                         <div className={classes.conatct_page}>
                             <p className={classes.heading_content}>
-                                Lorem ipsum dolor sit amet, consectetuer
-                                adipiscing elit. Aenean commodo ligula eget
-                                dolor. Aenean massa. Cum sociis natoque
-                                penatibus et magnis dis parturient montes,
-                                nascetur ridiculus mus. Donec quam felis,
-                                ultricies nec, pellentesque eu, pretium quis,
-                                sem. Nulla consequat massa quis enim.
+                            By choosing Sherpa Technology Group, you are making the sound business decision of equipping your company with a complete array of quality and reliable solutions backed up by our promise of best in-class knowledge & support.
                             </p>
                         </div>
                         <div className={classes.phone_mail_wrapp}>
@@ -170,7 +164,7 @@ const Contact = props => {
                                 <span className={classes.phone_number}>
                                     <FormattedMessage
                                         id={'contact.phone_number'}
-                                        defaultMessage={' +1(888)478-5268'}
+                                        defaultMessage={' T: 866-767-6584 / F: 514 366 4265'}
                                     />
                                 </span>
                             </p>
@@ -182,12 +176,63 @@ const Contact = props => {
                                     <FormattedMessage
                                         id={'contact.email'}
                                         defaultMessage={
-                                            ' support@cedcommerce.com'
+                                            ' info@sherpa-group.net'
                                         }
                                     />
                                 </span>
                             </a>
                         </div>
+                    </div>
+                    <div
+                        className={
+                            'col-lg-6' +
+                            ' ' +
+                            'col-md-6' +
+                            ' ' +
+                            'col-sm-6' +
+                            ' ' +
+                            'col-xs-12'
+                        }
+                    >
+
+                        <h3 className={classes.content_page_heading}><br/><br/>
+                            <FormattedMessage
+                                id={'contact.content_page_heading'}
+                                defaultMessage={'Montreal Head Office'}
+                            />
+                        </h3>
+                        <p className={classes.heading_content}>
+                            80 Avenue Lindsay,<br/>Dorval, QC H9P 2T8<br/>T: 514-366-9822 / 1-866-767-6584<br/>F: 514-366-4265
+                        </p>
+                        <p className={classes.heading_content}>
+                            8:00am - 4:30pm M-F
+                        </p>
+                        <iframe width="100%" height="450" src="https://www.openstreetmap.org/export/embed.html?bbox=-74.18106079101564%2C45.25072145953108%2C-73.26919555664064%2C45.659167483312785&amp;layer=mapnik&amp;marker=45.4553258%2C-73.7250693"></iframe>
+                    </div>
+                    <div
+                        className={
+                            'col-lg-6' +
+                            ' ' +
+                            'col-md-6' +
+                            ' ' +
+                            'col-sm-6' +
+                            ' ' +
+                            'col-xs-12'
+                        }
+                    >
+                        <h3 className={classes.content_page_heading}><br/><br/>
+                            <FormattedMessage
+                                id={'contact.content_page_heading'}
+                                defaultMessage={'Mississauga Office'}
+                            />
+                        </h3>
+                        <p className={classes.heading_content}>
+                            335 Admiral Blvd, #13<br/>Mississauga, ON L5T 2N2<br/>T: 905-565-9028 / 1-866-767-6584<br/>F: 866-670-5052
+                        </p>
+                        <p className={classes.heading_content}>
+                            8:00am - 4:30pm M-F
+                        </p>
+                        <iframe width="100%" height="450" src="https://www.openstreetmap.org/export/embed.html?bbox=-80.60531616210938%2C43.22819449883485%2C-78.78158569335938%2C44.07081379264681&amp;layer=mapnik&amp;marker=43.650981839898684%2C-79.69413757324219"></iframe>
                     </div>
                 </div>
             </div>

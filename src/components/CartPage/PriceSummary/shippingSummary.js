@@ -26,15 +26,15 @@ const ShippingSummary = props => {
     const price = shipping.value ? (
         <Price value={shipping.value} currencyCode={shipping.currency} />
     ) : (
-        <span>{'FREE'}</span>
+        <span>{'-'}</span>
     );
 
     return (
         <>
-            <span className={classes.lineItemLabel}>
+            {/*<span className={classes.lineItemLabel}>
                 {isCheckout ? 'Shipping' : 'Estimated Shipping'}
             </span>
-            <span className={classes.price}>{price}</span>
+            <span className={classes.price}>{price}</span> */}
         </>
     );
 };

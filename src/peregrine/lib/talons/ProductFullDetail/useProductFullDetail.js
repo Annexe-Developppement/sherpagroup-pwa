@@ -673,9 +673,9 @@ export const useCategoryAddToCart = props => {
                 fetchCartDetails,
                 fetchCartId
             });
-            setShowAlertMsg(true);
+            // setShowAlertMsg(true);
 
-            // toggleDrawer("cart");
+            //toggleDrawer("cart");
         },
         [
             addItemToCart,

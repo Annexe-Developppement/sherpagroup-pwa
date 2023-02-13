@@ -25,8 +25,8 @@ const Category = props => {
         loading,
         categoryData,
         pageControl,
-        sortProps
-        // pageSize
+        sortProps,
+        pageSize
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
@@ -51,7 +51,7 @@ const Category = props => {
                 isLoading={loading}
                 pageControl={pageControl}
                 sortProps={sortProps}
-                pageSize={6}
+                pageSize={pageSize}
             />
         </Fragment>
     );

@@ -79,7 +79,7 @@ const ProductImageCarousel = props => {
             });
             imagesCed[index]['thumbnail'] = resourceUrl(element.file, {
                 type: 'image-product',
-                width: 88,
+                width: 110,
                 height: 110
             });
         } else if (element['media_type'] == 'external-video') {
@@ -89,7 +89,7 @@ const ProductImageCarousel = props => {
             });
             imagesCed[index]['thumbnail'] = resourceUrl(element.file, {
                 type: 'image-product',
-                width: 88,
+                width: 110,
                 height: 110
             });
             imagesCed[index]['renderItem'] = _renderVideo.bind(this);

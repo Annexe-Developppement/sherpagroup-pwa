@@ -44,9 +44,22 @@
     -o-transition: 0.5s all;
     background: #fff;
     z-index: 9;
-    width: 225px;
+    width: 1400px;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
+    columns: 6;
+    -webkit-columns: 6;
+    -moz-columns: 6;
 }
+
+.sub_menu.lavel_2 {
+    columns: unset !important;
+    -webkit-columns: unset !important;
+    -moz-columns: unset !important;
+    width: 225px !important;
+    background: #e1e1e1 !important;
+    border: 2px solid #8dc74c;
+}
+
 .item.haschild:hover > .sub_menu {
     opacity: 1;
     visibility: visible;

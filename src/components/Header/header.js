@@ -110,7 +110,7 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname}</p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.email} {currentUser.lastname}</p>
                                 ) : (
                                     <p className={classes.offer_message_text}>Create your account to get your personalized price!</p>
                                 )}

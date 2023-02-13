@@ -6,7 +6,10 @@
  * @returns {boolean}
  */
 export const isHomeRoute = url => {
-    if (url.pathname === '/new-home') {
+
+    
+
+    if (url.pathname === '/home') {
         console.log('home redirect');
         return true;
         
@@ -21,7 +24,7 @@ export const isHomeRoute = url => {
         );
     }
 };
-
+console.log('URL : '+url);
 /**
  * Checks if the given URL object belongs to the home route `/`
  * or has a `.html` extension.

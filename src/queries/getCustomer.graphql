@@ -8,6 +8,7 @@ query getCustomer {
         is_subscribed
         default_billing
         default_shipping
+        group_id
         addresses {
             id
             firstname

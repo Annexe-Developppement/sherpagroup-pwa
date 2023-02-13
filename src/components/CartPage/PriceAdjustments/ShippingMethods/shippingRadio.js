@@ -9,7 +9,7 @@ const ShippingRadio = props => {
     const priceElement = props.price ? (
         <Price value={props.price} currencyCode={props.currency} />
     ) : (
-        <span>FREE</span>
+        <span>-</span>
     );
 
     const classes = mergeClasses(defaultClasses, props.classes);

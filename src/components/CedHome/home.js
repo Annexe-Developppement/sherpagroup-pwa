@@ -70,93 +70,17 @@ const Home = props => {
     return (
         <React.Fragment>
             <div>
-                {showHomeSlider != 0 && typeof sliderData != 'undefined' && (
-                    <div className={classes.section_banner}>
-                        <div
-                            id="scroll"
-                            className="carousel slide"
-                            data-ride="carousel"
-                        >
-                            <div className="carousel-inner">
-                                {sliderData.allSlides.map(
-                                    (value, index, ClassDetails) => {
-                                        var imgName = value.image
-                                            .split('/')
-                                            .pop();
-                                        var image = resourceUrl(value.image, {
-                                            type: 'image-custom',
-                                            width: sliderImgWidth,
-                                            quality: '85'
-                                        });
-
-                                        if (index == 0) {
-                                            ClassDetails =
-                                                'carousel-item active';
-                                        } else {
-                                            ClassDetails = 'carousel-item';
-                                        }
-                                        let url = '/';
-                                        if (value.url) {
-                                            url = value.url;
-                                        }
-                                        return (
-                                            <div
-                                                key={index}
-                                                className={ClassDetails}
-                                            >
-                                                <Link
-                                                    className={'d-block'}
-                                                    to={resourceUrl(url)}
-                                                >
-                                                    <Image
-                                                        alt={imgName}
-                                                        title="banner image"
-                                                        classes={{
-                                                            image:
-                                                                classes.image,
-                                                            root:
-                                                                classes.imageContainer
-                                                        }}
-                                                        width={sliderImgWidth}
-                                                        height="525"
-                                                        src={image}
-                                                        loading="eager"
-                                                    />
-                                                </Link>
-                                            </div>
-                                        );
-                                    }
-                                )}
-                            </div>
-                            <a
-                                className="carousel-control-prev"
-                                href="#scroll"
-                                role="button"
-                                data-slide="prev"
-                                aria-label="previous"
-                            >
-                                <span aria-label="slider Previous btn">‹</span>
-                            </a>
-                            <a
-                                className="carousel-control-next"
-                                href="#scroll"
-                                role="button"
-                                data-slide="next"
-                                aria-label="next"
-                            >
-                                <span aria-label="slider next btn">›</span>
-                            </a>
-                        </div>
-                    </div>
-                )}
-
+                
+                <div className={defaultClasses.homepage_single_image}><img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg"/></div>
                 {/* top category section */}
                 {showCategoryIcons != 0 && (
                     <div
                         className={
                             defaultClasses.homepage_sections +
                             ' ' +
-                            defaultClasses.our_cat_section
+                            defaultClasses.our_cat_section +
+                            ' ' +
+                            defaultClasses.homepage_widget_container
                         }
                     >
                         <Suspense fallback={bannerSkelton}>
@@ -165,6 +89,12 @@ const Home = props => {
                                 showBanner={showCategoryIcons}
                             />
                         </Suspense>
+                        <div className={defaultClasses.button_new}>
+                            <div>
+                                <a href="/brands">SEE ALL</a>
+                            </div>
+                        </div>
+                        
                     </div>
                 )}
                 {/* top category section end */}
@@ -177,7 +107,7 @@ const Home = props => {
                             type="Latest Product"
                             name={formatMessage({
                                 id: 'home.latest',
-                                defaultMessage: 'Latest Product'
+                                defaultMessage: 'INSTALLER ESSENTIALS'
                             })}
                             classes={classes}
                         />
@@ -194,7 +124,9 @@ const Home = props => {
                             ' ' +
                             defaultClasses.static_blocks +
                             ' ' +
-                            defaultClasses.mid_banner_sec_wrap
+                            defaultClasses.mid_banner_sec_wrap +
+                            ' ' +
+                            defaultClasses.homepage_widget_container
                         }
                     >
                         <Suspense fallback={''}>

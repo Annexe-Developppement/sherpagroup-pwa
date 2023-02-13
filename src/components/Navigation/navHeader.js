@@ -22,7 +22,7 @@ const NavHeader = props => {
         }),
         MENU: formatMessage({
             id: 'navHeader.mainMenu',
-            defaultMessage: 'Main Menu'
+            defaultMessage: 'Sherpa Technology Group'
         })
     };
     const { isTopLevel, onBack, view } = props;

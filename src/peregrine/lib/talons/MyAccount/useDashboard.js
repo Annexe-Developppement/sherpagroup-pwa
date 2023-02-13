@@ -13,6 +13,7 @@ export const useDashboard = () => {
     const [{ currentUser, isSignedIn }] = useUserContext();
     const {
         email,
+        group_id,
         firstname,
         lastname,
         addresses,
@@ -46,7 +47,8 @@ export const useDashboard = () => {
         shippingAddress,
         default_billing,
         isSignedIn,
-        is_subscribed
+        is_subscribed,
+        group_id
     };
 };
 

@@ -45,7 +45,7 @@ const ShippingMethods = props => {
                 <h3 className={classes.prompt}>
                     {formatMessage({
                         id: 'shippingMethod.shippingMethod',
-                        defaultMessage: 'Shipping Methods'
+                        defaultMessage: 'Shipping Method'
                     })}
                 </h3>
                 <Form>

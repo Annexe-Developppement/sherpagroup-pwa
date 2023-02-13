@@ -116,14 +116,14 @@ const MobileLinks = props => {
                             ' ' +
                             classes.header_Actions_image
                         }
-                        title="Country switcher"
+                        title="Contact Us"
                     >
                         {mappinIcon}
                     </span>
                     <p className={defaultClasses.images_label}>
                         <FormattedMessage
                             id={'main.Country'}
-                            defaultMessage={'Country'}
+                            defaultMessage={'Contact Us'}
                         />
                     </p>
                 </button>
@@ -145,7 +145,7 @@ const MobileLinks = props => {
                             ' ' +
                             classes.header_Actions_image
                         }
-                        title="Wishlist"
+                        title="My projects"
                     >
                         {heartIcon}
                         <span className={headerClasses.wishlist_counter}>
@@ -155,7 +155,7 @@ const MobileLinks = props => {
                     <p className={defaultClasses.images_label}>
                         <FormattedMessage
                             id={'main.Wishlist'}
-                            defaultMessage={'Wishlist'}
+                            defaultMessage={'My projects'}
                         />
                     </p>
                 </button>

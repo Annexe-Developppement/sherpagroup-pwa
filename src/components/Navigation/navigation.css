@@ -77,11 +77,7 @@
 /* login wrap */
 .mob_nav_cust_details {
     padding: 15px 20px 20px 20px;
-    background: linear-gradient(
-        to right,
-        var(--primary-base-color),
-        var(--primary-border-color)
-    );
+    background: var(--primary-base-color);
     margin-bottom: 10px;
     display: flex;
     align-items: center;
@@ -134,7 +130,7 @@
     color: var(--primary-light-color);
     font-family: 'Karla-Medium';
     font-size: 16px;
-    text-decoration: underline;
+    text-decoration: none;
 }
 .divider {
     display: inline-flex;

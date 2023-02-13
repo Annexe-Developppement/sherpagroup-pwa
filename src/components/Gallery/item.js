@@ -25,6 +25,8 @@ import {
 
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
+
+
 const Wishlist = React.lazy(() => import('../MyWishlist/wishlist'));
 
 // The placeholder image is 4:5, so we should make sure to size our product
@@ -38,6 +40,10 @@ const IMAGE_WIDTHS = new Map()
     .set(UNCONSTRAINED_SIZE_KEY, 840);
 
 const GalleryItem = props => {
+
+    function openRegister() {
+        document.getElementById('user_account').click();
+    }
 
     const { email } = useDashboard();
 
@@ -164,9 +170,9 @@ const GalleryItem = props => {
                 </p>
 
                 {/* wishlist section */}
-                {/* <Suspense fallback={<div>Loading...</div>}>
+                <Suspense fallback={<div>Loading...</div>}>
                     <Wishlist value={item} />
-                </Suspense> */}
+                </Suspense> 
                 <div
                     className={classes.vendor_price_wrap + ' ' + classes.price}
                 >
@@ -174,14 +180,14 @@ const GalleryItem = props => {
                         <div> 
                             
                             <p className={classes.total_available}>Total available: {item.totalavailable}</p>
-                            <b>SHERPA&nbsp;&nbsp;</b>
+                            <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
                             <Price
                                 value={price_range.maximum_price.regular_price.value}
                                 currencyCode={
                                     price_range.maximum_price.regular_price.currency
                                 }
                             />
-                            <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSRP&nbsp;&nbsp;</b>
+                            <b className={classes.total_available_b}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSRP&nbsp;&nbsp;</b>
                             <Price
                                 value={item.msrp_sherpa2}
                                 currencyCode={
@@ -190,7 +196,10 @@ const GalleryItem = props => {
                             />
                         </div>
                     ) : (
-                        <p>Create your account to get your personalized price!</p>
+                        <div>
+                           
+                        </div>
+                        
                     )}
                     
                 </div>
@@ -220,12 +229,13 @@ const GalleryItem = props => {
                         'position-relative'
                     }
                 >
-
-<div className={classes.add_to_cart_btn}>
+                    {email ? (
+                        <div>
+                    <div className={classes.add_to_cart_btn}>
                         {item.__typename == 'SimpleProduct' &&
                             stock_status == 'IN_STOCK' &&
                             item.options == null && (
-                                <div>
+                                
                                     <button
                                         onClick={() => {
                                             setProductName(item.name),
@@ -237,8 +247,6 @@ const GalleryItem = props => {
                                             defaultMessage={'Add to cart'}
                                         />
                                     </button>
-                                    
-                                </div>
                                 
                             )}
                         {item.__typename == 'SimpleProduct' &&
@@ -375,16 +383,32 @@ const GalleryItem = props => {
                             </div>
                         )}
                     </div>
-                    
+                    </div>
+                    ) : (
+                        <p>&nbsp;</p>
+                    )}
+                    {/* End custom add to cart */}
+
                     {/* <CompareButton id={id} /> */}
                 </div>
-                <select className={classes.project_dropdown}>
-                    <option value="14851" selected="selected">Hello</option>
-                    <option value="newproject">Create a new project</option>
-                </select>
+
+                {email ? (
+                        <div> 
+                            
+                            <select className={classes.project_dropdown}>
+                                <option value="14851" selected="selected">Hello</option>
+                                <option value="newproject">Create a new project</option>
+                            </select>
+                        </div>
+                    ) : (
+                        <p><a>Register or create an account</a></p>
+                    )}
+
+               
             </div>
         </div>
     );
+    
 };
 
 GalleryItem.propTypes = {
