@@ -26,7 +26,7 @@ const SuggestedProducts = props => {
 export default SuggestedProducts;
 
 SuggestedProducts.defaultProps = {
-    limit: 3
+    limit: 12
 };
 
 SuggestedProducts.propTypes = {

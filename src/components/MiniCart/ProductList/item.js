@@ -93,7 +93,13 @@ const Item = props => {
                     }}
                 />
             )}
-
+            <span>
+                {formatMessage({
+                    id: 'item.sku',
+                    defaultMessage: 'PART #'
+                })}
+                : {product.sku}
+            </span>
             <span className={classes.quantity}>
                 {formatMessage({
                     id: 'item.qty',

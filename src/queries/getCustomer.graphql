@@ -6,9 +6,9 @@ query getCustomer {
         firstname
         lastname
         is_subscribed
+        group_id
         default_billing
         default_shipping
-        group_id
         addresses {
             id
             firstname

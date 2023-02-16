@@ -19,6 +19,7 @@ const Dashboard = props => {
     const {
         name,
         email,
+        group_id,
         billingAddress,
         shippingAddress,
         isSignedIn,
@@ -72,6 +73,7 @@ const Dashboard = props => {
                                                 id={'dashboard.title'}
                                                 defaultMessage={'My Account'}
                                             />
+                                            
                                         </span>
                                     </h1>
                                 </div>

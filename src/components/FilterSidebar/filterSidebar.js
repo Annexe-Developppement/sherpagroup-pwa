@@ -27,7 +27,7 @@ const FilterSidebar = props => {
         handleApply,
         handleReset
     } = talonProps;
-
+    
     const filterRef = useRef();
     const classes = useStyle(defaultClasses, props.classes);
 
@@ -48,13 +48,12 @@ const FilterSidebar = props => {
         },
         [handleApply, filterRef]
     );
-    console.log(filterItems, 'filterItems123');
     const filtersList = useMemo(
         () =>
             Array.from(filterItems, ([group, items], iteration) => {
                 const blockState = filterState.get(group);
                 const groupName = filterNames.get(group);
-
+                
                 return (
                     <FilterBlock
                         key={group}

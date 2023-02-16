@@ -21,7 +21,7 @@ const AuthBar = props => {
         isUserSignedIn,
         handleShowCreateAccount
     } = useAuthBar(props);
-    const { name } = useDashboard();
+    const { name, group_id } = useDashboard();
     const [accountMenuIsOpen, setAccountMenuIsOpen] = useState(false);
     const { handleSignOut } = useAccountMenu({
         mutations: { signOut: SIGN_OUT_MUTATION },

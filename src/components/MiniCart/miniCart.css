@@ -35,7 +35,7 @@
     transition-duration: 192ms;
     transition-property: transform;
     transition-timing-function: var(--venia-global-anim-out);
-    width: 26rem;
+    width: 30rem;
     bottom: 0;
     transition: all 0.9s ease;
 }

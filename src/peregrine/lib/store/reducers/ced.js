@@ -8,7 +8,8 @@ const initialState = {
     currentUser: {
         email: '',
         firstname: '',
-        lastname: ''
+        lastname: '',
+        group_id: ''
     },
     getDetailsError: null,
     isGettingDetails: false,

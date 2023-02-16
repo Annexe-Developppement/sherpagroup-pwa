@@ -9,7 +9,7 @@ const UNAUTHED_SUBTITLE = 'Please wait...';
 export const useMyAccount = props => {
     const { onSignOut } = props;
     const [{ currentUser }] = useUserContext();
-    const { email, firstname, lastname } = currentUser;
+    const { email, firstname, lastname, group_id } = currentUser;
     const name = `${firstname} ${lastname}`.trim() || DEFAULT_TITLE;
     const title = email ? name : UNAUTHED_TITLE;
     const subtitle = email ? email : UNAUTHED_SUBTITLE;

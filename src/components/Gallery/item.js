@@ -102,8 +102,6 @@ const GalleryItem = props => {
     }
 
     const { name, price_range, small_image, url_key, id, stock_status, product_brand, productbrand, short_description, meta_title} = item;
-
-    console.log('Item: '+JSON.stringify(item));
     const { url: smallImageURL } = small_image;
     const productLink = resourceUrl(`/${url_key}${productUrlSuffix || ''}`);
     let colorSwatchLength = 0;

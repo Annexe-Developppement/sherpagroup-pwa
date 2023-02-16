@@ -16,7 +16,7 @@ import { Title } from '@magento/venia-ui/lib/components/Head';
 
 const MyAccount = props => {
     const { formatMessage } = useIntl();
-    const talonProps = useDashboard();
+    const talonProps = useDashboard(); 
     const {
         name,
         email,
@@ -145,7 +145,6 @@ const MyAccount = props => {
                                                     <img
                                                         src="/cenia-static/images/icons8-edit-48.png"
                                                         alt="edit"
-                                                        height="20"
                                                         height="20"
                                                     />
                                                 </Link>
