@@ -36,6 +36,7 @@ export const GET_CUSTOMER = gql`
             firstname
             lastname
             is_subscribed
+            group_id
         }
     }
 `;

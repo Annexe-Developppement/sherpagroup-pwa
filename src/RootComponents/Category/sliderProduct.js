@@ -76,7 +76,7 @@ export default function FeaturedProduct(props) {
                                                 dots={false}
                                                 autoplay={false}
                                                 autoplayTimeout={2000}
-                                                items={4}
+                                                items={5}
                                                 responsive={responsive1}
                                             >
                                                 {featuredData

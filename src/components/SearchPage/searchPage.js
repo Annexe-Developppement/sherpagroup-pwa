@@ -68,6 +68,7 @@ const SearchPage = props => {
     if (error) {
         return (
             <div className={classes.noResult}>
+                {error}
                 <FormattedMessage
                     id="SearchPage.noResult"
                     defaultMessage="No results found. The search term may be missing or invalid."

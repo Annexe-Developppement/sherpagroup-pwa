@@ -42,6 +42,7 @@ export const GET_CUSTOMER_QUERY = gql`
             email
             firstname
             lastname
+            group_id
         }
     }
 `;

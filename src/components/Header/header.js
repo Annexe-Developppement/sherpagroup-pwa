@@ -24,6 +24,7 @@ import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard'
 import { Heart as HeartIcon } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 
+
 const heartIcon = <Icon src={HeartIcon} size={18} />;
 const SearchBar = React.lazy(() => import('../SearchBar'));
 const MegaMenu = React.lazy(() => import('../MegaMenu'));
@@ -89,6 +90,10 @@ const Header = props => {
         document.getElementById('user_account').click();
     };
 
+    const { group_id } = useDashboard();
+
+    console.log('Tha '+JSON.stringify(currentUser));
+
     return (
         <Fragment>
             <header className={rootClass}>
@@ -110,7 +115,7 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.email} {currentUser.lastname}</p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.group_id} {group_id} {currentUser.lastname}</p>
                                 ) : (
                                     <p className={classes.offer_message_text}>Create your account to get your personalized price!</p>
                                 )}

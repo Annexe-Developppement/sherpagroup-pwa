@@ -21,7 +21,6 @@ query productSearch(
             url_key
             sku
             stock_status
-            quantity_and_stock_status_qty
             url_suffix
             ... on CustomizableProductInterface {
                 options {

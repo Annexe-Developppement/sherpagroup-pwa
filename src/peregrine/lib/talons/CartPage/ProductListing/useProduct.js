@@ -164,6 +164,7 @@ const flattenProduct = item => {
 
     const {
         name,
+        sku,
         small_image,
         stock_status: stockStatus,
         url_key: urlKey,
@@ -179,6 +180,7 @@ const flattenProduct = item => {
         quantity,
         stockStatus,
         unitPrice,
+        sku,
         urlKey,
         urlSuffix
     };
