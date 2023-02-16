@@ -10,7 +10,7 @@ import {
     getFiltersFromSearch,
     getFilterInput
 } from '@magento/peregrine/lib/talons/FilterModal/helpers';
-const PAGE_SIZE = 24;
+const PAGE_SIZE = 28;
 
 /**
  * Return props necessary to render a SearchPage component.

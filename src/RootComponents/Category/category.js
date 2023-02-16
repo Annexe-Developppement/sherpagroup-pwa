@@ -26,7 +26,7 @@ const Category = props => {
         categoryData,
         pageControl,
         sortProps,
-        pageSize
+        pageSize = 12
     } = talonProps;
 
     const classes = useStyle(defaultClasses, props.classes);
