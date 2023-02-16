@@ -11,7 +11,7 @@ import { fullPageLoadingIndicator } from '@magento/venia-ui/lib/components/Loadi
 import RichText from '@magento/venia-ui/lib/components/RichText';
 import { Modal } from '../Modal';
 import { useCedContext } from 'src/peregrine/lib/context/ced';
-
+import Price from '@magento/venia-ui/lib/components/Price';
 import {
     ADD_CONFIGURABLE_MUTATION,
     ADD_SIMPLE_MUTATION,
@@ -507,8 +507,7 @@ const ProductFullDetail = (props) => {
                                     }
                                 />
                                
-                                
-                                
+                               
 
                                 {/* <div
                                     className={
@@ -584,7 +583,7 @@ const ProductFullDetail = (props) => {
                                     }
                                 >
                                     <span className={classes.sku_details_label}>
-                                        PRODUCT:
+                                        PART # 
                                     </span>
                                     <span>{product && product.sku}</span>
                                 </div>
