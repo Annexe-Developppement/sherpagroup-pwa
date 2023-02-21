@@ -83,132 +83,257 @@ const CreateAccount = props => {
 
     return (
         <div className={signClasses.root}>
-            <div className={'text-right'}>
-                <span
-                    role="button"
-                    onClick={handleTriggerClick}
-                    onKeyDown={handleTriggerClick}
-                    tabIndex={0}
-                    className={signClasses.close}
-                >
-                    {clearIcon}
-                </span>
-            </div>
-            <h2 className={signClasses.title}>
-                <FormattedMessage
-                    id={'createAccount.title'}
-                    defaultMessage={`Create New Customer Account`}
-                />
-            </h2>
-            <Form
-                className={classes.root}
-                initialValues={initialValues}
-                onSubmit={handleSubmit}
-            >
-                {confirmation_required && (
-                    <div className={defaultClasses.success_msg}>
-                        Please check your email and confirm your account.
-                    </div>
-                )}
-                <FormError errors={Array.from(errors.values())} />
-                <Field
-                    label={formatMessage({
-                        id: 'createAccount.firstName',
-                        defaultMessage: 'First Name'
-                    })}
-                >
-                    <TextInput
-                        field="customer.firstname"
-                        autoComplete="given-name"
-                        validate={isRequired}
-                        validateOnBlur
-                    />
-                </Field>
-                <Field
-                    label={formatMessage({
-                        id: 'createAccount.lastName',
-                        defaultMessage: 'Last Name'
-                    })}
-                >
-                    <TextInput
-                        field="customer.lastname"
-                        autoComplete="family-name"
-                        validate={isRequired}
-                        validateOnBlur
-                    />
-                </Field>
-                <Field
-                    label={formatMessage({
-                        id: 'createAccount.email',
-                        defaultMessage: 'Email'
-                    })}
-                >
-                    <TextInput
-                        field="customer.email"
-                        autoComplete="email"
-                        validate={isRequired}
-                        validateOnBlur
-                    />
-                </Field>
-                <Password
-                    autoComplete="new-password"
-                    fieldName="password"
-                    isToggleButtonHidden={false}
-                    label={formatMessage({
-                        id: 'createAccount.password',
-                        defaultMessage: 'Password'
-                    })}
-                    validate={combine([
-                        isRequired,
-                        [hasLengthAtLeast, 8],
-                        validatePassword
-                    ])}
-                    validateOnBlur
-                />
-                {/* <div className={classes.subscribe}>
-                    <Checkbox
-                        field="subscribe"
-                        label={formatMessage({
-                            id: 'createAccount.newsletter',
-                            defaultMessage: 'Subscribe to news and updates'
-                        })}
-                    />
-                    </div> 
-                <div className={classes.subscribe} validate={isRequired}>
-                    <Checkbox
-                        id="assistance_allowed"
-                        onClick={() => {
-                            setIsChecked(!isChecked);
-                        }}
-                        field="assistance_allowed"
-                        label={formatMessage({
-                            id: 'createAccount.assistance',
-                            defaultMessage: 'Allow remote shopping assistance'
-                        })}
-                    />
-                </div>*/}
-                <div className={classes.actions}>{submitButton}</div>
-            </Form>
-            <div className={signClasses.create_account_div}>
+            <div className='row'>
+            <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+              
                 <h2 className={signClasses.title}>
                     <FormattedMessage
-                        id={'createAccount.checkSignIn'}
-                        defaultMessage={`Already a Member?`}
+                        id={'createAccount.title'}
+                        defaultMessage={`Create New Customer Account`}
                     />
                 </h2>
-                <div className={signClasses.buttonsContainer + ' ' + 'mt-3'}>
-                    <Button
-                        className={signClasses.signup_button}
-                        priority="normal"
-                        type="button"
-                        onClick={onCancel}
+                <Form
+                    className={classes.root}
+                    initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                >
+                    {confirmation_required && (
+                        <div className={defaultClasses.success_msg}>
+                            Please check your email and confirm your account.
+                        </div>
+                    )}
+                    <FormError errors={Array.from(errors.values())} />
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.firstName',
+                            defaultMessage: 'First Name'
+                        })}
                     >
-                        <FormattedMessage
-                            id={'createAccount.signup_button'}
-                            defaultMessage={'Sign In'}
+                        <TextInput
+                            field="customer.firstname"
+                            autoComplete="given-name"
+                            validate={isRequired}
+                            validateOnBlur
                         />
-                    </Button>
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.lastName',
+                            defaultMessage: 'Last Name'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.lastname"
+                            autoComplete="family-name"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.lastName',
+                            defaultMessage: 'Last Name'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.lastname"
+                            autoComplete="family-name"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.email',
+                            defaultMessage: 'Email'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.email"
+                            autoComplete="email"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Password
+                        autoComplete="new-password"
+                        fieldName="password"
+                        isToggleButtonHidden={false}
+                        label={formatMessage({
+                            id: 'createAccount.password',
+                            defaultMessage: 'Password'
+                        })}
+                        validate={combine([
+                            isRequired,
+                            [hasLengthAtLeast, 8],
+                            validatePassword
+                        ])}
+                        validateOnBlur
+                    />
+                    {/* <div className={classes.subscribe}>
+                        <Checkbox
+                            field="subscribe"
+                            label={formatMessage({
+                                id: 'createAccount.newsletter',
+                                defaultMessage: 'Subscribe to news and updates'
+                            })}
+                        />
+                        </div> 
+                    <div className={classes.subscribe} validate={isRequired}>
+                        <Checkbox
+                            id="assistance_allowed"
+                            onClick={() => {
+                                setIsChecked(!isChecked);
+                            }}
+                            field="assistance_allowed"
+                            label={formatMessage({
+                                id: 'createAccount.assistance',
+                                defaultMessage: 'Allow remote shopping assistance'
+                            })}
+                        />
+                    </div>*/}
+                    
+                </Form>
+                
+            </div>
+            <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                <div className={'text-right'}>
+                    <span
+                        role="button"
+                        onClick={handleTriggerClick}
+                        onKeyDown={handleTriggerClick}
+                        tabIndex={0}
+                        className={signClasses.close}
+                    >
+                        {clearIcon}
+                    </span>
                 </div>
+                
+                <Form
+                    className={classes.root}
+                    initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                >
+                    {confirmation_required && (
+                        <div className={defaultClasses.success_msg}>
+                            Please check your email and confirm your account.
+                        </div>
+                    )}
+                    <FormError errors={Array.from(errors.values())} />
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.firstName',
+                            defaultMessage: 'First Name'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.firstname"
+                            autoComplete="given-name"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.lastName',
+                            defaultMessage: 'Last Name'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.lastname"
+                            autoComplete="family-name"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.lastName',
+                            defaultMessage: 'Last Name'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.lastname"
+                            autoComplete="family-name"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Field
+                        label={formatMessage({
+                            id: 'createAccount.email',
+                            defaultMessage: 'Email'
+                        })}
+                    >
+                        <TextInput
+                            field="customer.email"
+                            autoComplete="email"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
+                    <Password
+                        autoComplete="new-password"
+                        fieldName="password"
+                        isToggleButtonHidden={false}
+                        label={formatMessage({
+                            id: 'createAccount.password',
+                            defaultMessage: 'Password'
+                        })}
+                        validate={combine([
+                            isRequired,
+                            [hasLengthAtLeast, 8],
+                            validatePassword
+                        ])}
+                        validateOnBlur
+                    />
+                    {/* <div className={classes.subscribe}>
+                        <Checkbox
+                            field="subscribe"
+                            label={formatMessage({
+                                id: 'createAccount.newsletter',
+                                defaultMessage: 'Subscribe to news and updates'
+                            })}
+                        />
+                        </div> 
+                    <div className={classes.subscribe} validate={isRequired}>
+                        <Checkbox
+                            id="assistance_allowed"
+                            onClick={() => {
+                                setIsChecked(!isChecked);
+                            }}
+                            field="assistance_allowed"
+                            label={formatMessage({
+                                id: 'createAccount.assistance',
+                                defaultMessage: 'Allow remote shopping assistance'
+                            })}
+                        />
+                    </div>*/}
+                    <div className={classes.actions}>{submitButton}</div>
+                </Form>
+                <div className={signClasses.create_account_div}>
+                    <h2 className={signClasses.title}>
+                        <FormattedMessage
+                            id={'createAccount.checkSignIn'}
+                            defaultMessage={`Already a Member?`}
+                        />
+                    </h2>
+                    <div className={signClasses.buttonsContainer + ' ' + 'mt-3'}>
+                        <Button
+                            className={signClasses.signup_button}
+                            priority="normal"
+                            type="button"
+                            onClick={onCancel}
+                        >
+                            <FormattedMessage
+                                id={'createAccount.signup_button'}
+                                defaultMessage={'Sign In'}
+                            />
+                        </Button>
+                    </div>
+                </div>
+                
+            </div>
             </div>
         </div>
     );

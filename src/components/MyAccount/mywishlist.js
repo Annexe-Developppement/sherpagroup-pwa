@@ -74,6 +74,9 @@ const MyWishList = props => {
         setRemoveMsg(true);
     };
 
+    const queryParameters = new URLSearchParams(window.location.search)
+    const wId = queryParameters.get("id")
+
     useEffect(() => {
         if (
             removeMsg &&
@@ -141,6 +144,93 @@ const MyWishList = props => {
                                                 />
                                             </span>
                                         </h1>
+                                        <div className={
+                                            defaultClasses.block_dashboard_orders +
+                                            ' ' +
+                                            wishlistClasses.block_dahsboard_wishlist
+                                        }>
+                                            <p>Please choose a project below or create a new one</p> 
+                                            {/* <select className={classes.project_dropdown}>
+                                                <option value="14851" selected="selected">Hello</option>
+                                                <option value="newproject">Create a new project</option>
+                                            </select> */}
+                                            <div className='row'>
+                                                <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                                                    <a href="/wishlist?id=x1">
+                                                        <span
+                                                            className={
+                                                                classes.add_btn
+                                                            }
+                                                        >
+                                                            <FormattedMessage
+                                                                id={
+                                                                    'myWishlist.moveToCartBtn'
+                                                                }
+                                                                defaultMessage={
+                                                                    'Project X1'
+                                                                }
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                                                    <a href="/wishlist?id=x2">
+                                                        <span
+                                                            className={
+                                                                classes.add_btn
+                                                            }
+                                                        >
+                                                            <FormattedMessage
+                                                                id={
+                                                                    'myWishlist.moveToCartBtn'
+                                                                }
+                                                                defaultMessage={
+                                                                    'Project X2'
+                                                                }
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                                                    <a href="/wishlist?id=x1">
+                                                        <span
+                                                            className={
+                                                                classes.add_btn
+                                                            }
+                                                        >
+                                                            <FormattedMessage
+                                                                id={
+                                                                    'myWishlist.moveToCartBtn'
+                                                                }
+                                                                defaultMessage={
+                                                                    'Project X1'
+                                                                }
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                                                    <a href="/wishlist?id=x1">
+                                                        <span
+                                                            className={
+                                                                classes.add_btn
+                                                            }
+                                                        >
+                                                            <FormattedMessage
+                                                                id={
+                                                                    'myWishlist.moveToCartBtn'
+                                                                }
+                                                                defaultMessage={
+                                                                    'Project X1'
+                                                                }
+                                                            />
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            
+                                            
+                                        </div>
                                     </div>
                                     <div
                                         className={
@@ -156,23 +246,18 @@ const MyWishList = props => {
                                                 }
                                             >
                                                 {data.map((val, index) => {
+                                                    if(val.description==wId) {
                                                     return (
-                                                        <div
-                                                            key={index}
-                                                            className={
-                                                                classes.product_tiles
-                                                            }
-                                                        >
-                                                            <div
-                                                                className={
-                                                                    classes.inner
-                                                                }
-                                                            >
+
+                                                        <div>
+                                                            <div className='row'>
+
+                                                            <div className='col-lg-2 col-md-6 col-sm-6 col-xs-12 about-us'>
                                                                 <div
-                                                                    className={
-                                                                        classes.product_img
-                                                                    }
-                                                                >
+                                                                        className={
+                                                                            classes.product_img
+                                                                        }
+                                                                    >
                                                                     <Link
                                                                         to={resourceUrl(
                                                                             val
@@ -195,9 +280,11 @@ const MyWishList = props => {
                                                                             }
                                                                         />
                                                                     </Link>
+                                                                    {val.description}
                                                                 </div>
-
-                                                                <div
+                                                            </div>
+                                                            <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                                                            <div
                                                                     className={
                                                                         classes.product_details
                                                                     }
@@ -296,10 +383,10 @@ const MyWishList = props => {
                                                                         </button>
                                                                     </span>
                                                                 </div>
-                                                                <div
-                                                                    className={
-                                                                        classes.actions_wrapper
-                                                                    }
+                                                            </div>
+                                                            <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12 about-us'>
+                                                            <div
+                                                                    
                                                                 >
                                                                     <div
                                                                         className={
@@ -332,7 +419,7 @@ const MyWishList = props => {
                                                                                             'myWishlist.moveToCartBtn'
                                                                                         }
                                                                                         defaultMessage={
-                                                                                            'Move to cart 1'
+                                                                                            'Move to cart'
                                                                                         }
                                                                                     />
                                                                                 </span>
@@ -367,8 +454,12 @@ const MyWishList = props => {
                                                                     </div>
                                                                 </div>
                                                             </div>
+
+                                                            </div>
+                                                        
                                                         </div>
                                                     );
+                                                    }
                                                 })}
                                                 {data.length == 0 && (
                                                     <div
@@ -453,7 +544,7 @@ const MyWishList = props => {
     } else {
         return (
             <div className={defaultClasses.columns}>
-                <Title>{`My WishList - ${STORE_NAME}`}</Title>
+                <Title>{`My projects - ${STORE_NAME}`}</Title>
                 {removing && (
                     <div className={accountClasses.indicator_loader}>
                         <LoadingIndicator />

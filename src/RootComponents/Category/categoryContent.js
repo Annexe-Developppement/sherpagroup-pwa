@@ -21,94 +21,9 @@ import { useFeaturedProducts } from '../../peregrine/lib/talons/FeaturedProduct/
 import FeaturedQuery from '../../queries/featuredProducts.graphql';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 import axios from "axios";
-
-/*axios.get(`https://gatsby-wp-demo.pixel-united.com/en/wp-json/wp/v2/pages/30`)
-    .then(response => {
-        
-        console.log(response.data);
-    }) */
-/*
-    constructor () {
-        super()
-        this.state = {
-            pageData: {}
-        }
-        this.openModal = this.openModal.bind(this)
-    }
-
-    componentDidMount() { 
-
-        axios.get(`https://gatsby-wp-demo.pixel-united.com/en/wp-json/wp/v2/pages/30`)
-            .then(response => {
-                const pageData = response.data;
-                console.log(response.data);
-                this.setState({ pageData });
-            })
-
-
-        }   */
-
-/*        
-const url = 'https://sherpagroupav.com/rest/default/V1/categories/42'
-const [result, setResult] = useState(null)
-
-const config = {
-    headers:{
-        'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'
-    }
-  };
-
-useEffect(() => {
-    axios.get(url,config)
-    .then((response)=>{
-    setResult(response.data)
-    // axios returns API response body in .data
-    })
-}, []) */
-
-/*const pageData = [];
-const url = 'https://sherpagroupav.com/rest/default/V1/categories/42'
-const [results, setResults] = useState(null)
-
-const config = {
-    headers:{
-        'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'
-    }
-  };*/
-
-/*const getAPIresults = async () => {
-    await axios.get(url,config)
-        .then((response)=>{
-            console.log(response);
-            setResults(response);
-          })
-          .catch((error)=>{
-            console.log(error)
-          })    
-}*/
-/*
-axios({
-    method: 'get',
-    url: 'https://sherpagroupav.com/rest/default/V1/categories/42',
-    responseType: 'text/json',
-    timeout: 1000,
-    headers: {'authorization': 'Bearer 6afmh44jvrkc1pg19j4x0s2pb6ejmhpe'}
-    })
-    .then(function (response) {
-       
-        console.log('Result: '+(response.data));
-        
-    })
-    .catch(function(err) {
-        console.log('Erreur: '+err.message);
-    })
-    .finally(
-        function() {
-            console.log('finally');
-        }
-    ) */
-
-//const pageData = data && data.category && data.category.id ? data.category.id : 0;
+import { useUserContext } from '@magento/peregrine/lib/context/user';
+import { gql } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 
 const FilterModal = React.lazy(() => import('../../components/FilterModal'));
 const FilterSidebar = React.lazy(() =>
@@ -138,6 +53,7 @@ const CategoryContent = props => {
         categoryDescription,
         filters,
         items,
+        children,
         totalCount,
         totalPagesFromData
     } = talonProps;
@@ -213,7 +129,7 @@ const CategoryContent = props => {
         ) : (
             <GalleryShimmer items={items} />
         );
-        console.log(totalPagesFromData);
+        
         const pagination = totalPagesFromData ? (
             <Pagination pageControl={pageControl} />
         ) : null;
@@ -255,10 +171,110 @@ const CategoryContent = props => {
             ''
         );
 
-    //const catId = data && data.category && data.category.id ? data.category.id : 0;
+    const catId = data && data.category && data.category.id ? data.category.id : 0;
 
-    const catId = 42;
+    console.log('minou'+catId);
 
+    const [{ isSignedIn }] = useUserContext();
+
+    // categoryList(filters: {ids: {in: ["56"]}}) {
+
+    const GET_PAGE_SIZE = gql`
+    query ($filter: CategoryFilterInput) {
+        categoryList(filters: $filter) {
+                children_count
+                children {
+                    id
+                    level
+                    name
+                    path
+                    url_path
+                    url_key
+                    image
+                    description
+                    manufacturer_link
+                }
+                }
+          }
+        `;
+        
+    
+        
+    const LinkList = () => {
+
+        let categoryId = catId.toString();
+
+        console.log('categoryId: '+categoryId);
+
+        const { data, loading } = useQuery(GET_PAGE_SIZE, {
+            variables: {
+                filter: {
+                ids: {
+                  in: categoryId,
+                },
+            },
+            }});
+
+        if (loading) {
+            return <p>Loading tree</p>
+        }
+
+        return (
+            <div className="App">
+              {data.categoryList && data.categoryList.map((e) => {
+                return (
+                    <div className='row'>
+                    {e.children.map((s) => {
+                      return (
+                        
+                          <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                            <div className={classes.boxcategory}>
+                                <p>{s.name}</p>
+                                {categoryId==42 ? (
+                                    <div className={classes.containerImgBox}><a href={"/"+s.url_path}><img className={classes.imgBox} src={s.image}/></a></div>
+                                ) : (
+                                    <></>
+                                )}
+                                <div className={classes.boxlink}><a href={"/"+s.url_path}>View products list</a></div>
+                                {categoryId==42 && s.manufacturer_link && isSignedIn ? (
+                                   <div className={classes.boxlink}><a target="_blank" href={s.manufacturer_link}>Brand website</a></div>
+                                ) : (
+                                    <></>
+                                )}
+                                {categoryId==42 && s.description && isSignedIn ? (
+                                   <div className={classes.boxlink}><a target="_blank" href={"https://assets.sherpagroupav.com/pdf/"+s.description}>Download specs sheet</a></div>
+                                ) : (
+                                    <></>
+                                )}
+                            </div>
+                          </div>
+                         
+                        
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          );
+
+        return (
+          <div>
+            El 
+            {/* {dataArray && (
+              <>
+                 <p>DDD</p>
+                {dataArray.children.map((link) => (
+                  <p>{link.id}</p>
+
+                  
+                ))}
+              </>
+                )} */}
+          </div>
+        );
+      };
+    
     return (
         
         <Fragment>
@@ -266,20 +282,34 @@ const CategoryContent = props => {
                 <Breadcrumbs categoryId={categoryId} />
                 <StoreTitle>{categoryName}</StoreTitle>
                 <article className={classes.root}>
-                    {banner}
 
-                    <div className={classes.categoryHeader}>
-                        <h1 className={classes.title}>
-                            <div className={classes.categoryTitle}>
-                                {categoryTitle}
-                            </div>
-                            <div className={classes.categoryInfo}>
-                                ({categoryResultsHeading})
-                            </div>
-                        </h1>
-                        {categoryDescriptionElement}
+                    <div className='row'>
+                        <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12'>
+                            <h1 className={classes.title}>
+                                <div className={classes.categoryTitle}>
+                                    {categoryTitle}
+                                </div>
+                                <div className={classes.categoryInfo}>
+                                    ({categoryResultsHeading})
+                                </div>
+                            </h1>
+                            {isSignedIn && categoryDescription != null ?
+                                <p>
+                                    <a
+                                        className={classes.specsheet}
+                                        href={`https://assets.sherpagroupav.com/pdf/${categoryDescription}`}
+                                        target="_blank"
+                                    >Download specs sheet</a>
+                                </p>
+                            : ''}
+                            
+                            
+                        </div>
+                        <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'>
+                            {banner}
+                        </div>
                     </div>
-                    
+                    <LinkList />
                     
                     <div className={classes.contentWrapper}>
                         {!mobileView && (
@@ -316,7 +346,9 @@ const CategoryContent = props => {
                                     </div>
                                 </div>
                             )}
+                            
                             {content}
+                            
                             <Suspense fallback={null}>{filtersModal}</Suspense>
                         </div>
                     </div>

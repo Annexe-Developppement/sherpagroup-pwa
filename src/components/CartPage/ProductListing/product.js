@@ -144,7 +144,7 @@ const Product = props => {
                     </div>
                 </div>
                 <Kebab classes={{ root: classes.kebab }} disabled={true}>
-                    {!isSignedIn && (
+                    {/* {!isSignedIn && (
                         <Section
                             text={
                                 isFavorite
@@ -185,7 +185,7 @@ const Product = props => {
                             isFilled={isFavorite}
                             classes={{ text: classes.sectionText }}
                         />
-                    )}
+                        )} */}
 
                     {editItemSection}
                     <Section

@@ -21,7 +21,9 @@
 .price {
     justify-self: end;
 }
-
+.checkoutNotice {
+    margin-top: 10px;
+}
 .totalLabel {
     composes: lineItemLabel;
     font-family: 'Karla-medium' !important;

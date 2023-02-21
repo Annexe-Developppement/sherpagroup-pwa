@@ -49,13 +49,12 @@ const NoProductsFound = props => {
             />
             <h2 className={classes.title}>{headerText}</h2>
             <div className={classes.categories}>
-                <p>
+                {/* <p>
                     <FormattedMessage
                         id={'noProductsFound.tryOneOfTheseCategories'}
                         defaultMessage={'Try one of these categories'}
                     />
-                </p>
-                <ul className={classes.list}>{categoryItems}</ul>
+                </p> */}
             </div>
         </div>
     );

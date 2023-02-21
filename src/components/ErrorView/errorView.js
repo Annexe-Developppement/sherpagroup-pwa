@@ -22,11 +22,11 @@ const ErrorView = () => {
                     <div className={'col-12 col-lg-6 col-md-6 col-sm-6'}>
                         <div className={defaultClasses.not_found_text}>
                             <h1>404</h1>
-                            <h3>OOPS! PAGE NOT BE FOUND</h3>
+                            <h3>OOPS! PAGE NOT FOUND</h3>
                             <p>
                                 Sorry but the page you are looking for does not
-                                exist, have been removed. name changed or it
-                                temporarily unavailable
+                                exist, have been removed, name changed or is
+                                temporarily unavailable.
                             </p>
                             <Link to="/">Back to HomePage</Link>
                         </div>

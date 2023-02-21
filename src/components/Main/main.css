@@ -13,6 +13,7 @@
     min-height: 100vh;
     background: var(--primary-bodybg-color);
     padding-top: 174px;
+    max-width: 1400px;
 }
 
 .page_masked {
