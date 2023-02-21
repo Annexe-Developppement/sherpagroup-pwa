@@ -67,7 +67,7 @@ const defaultProps = {
         { sortDirection: '', sortAttribute: '', sortText: '' },
         jest.fn()
     ],
-    pageSize: 6
+    pageSize: 12
 };
 
 const talonProps = {

@@ -6,16 +6,44 @@ import defaultClasses from './megaMenu.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import $ from 'jquery';
+import { useUserContext } from '@magento/peregrine/lib/context/user';
+    
 
 const MegaMenu = () => {
     const talonsProps = useNavigation();
     const { mobileView } = useMobile();
     const navItems = [];
-
+    const [{ isSignedIn }] = useUserContext();
     const { navdetails } = talonsProps;
     if (typeof navdetails != 'undefined' && navdetails && !mobileView) {
         const elements = JSON.parse(navdetails).categories;
         if (elements) {
+
+            navItems.push(
+               <>
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/about">About us</a>
+                </li>
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/team">Our team</a>
+                </li>
+                </>
+            );
+
             $.each(elements, function(i, v) {
                 if (v['main_category_id']) {
                     let haschild = '';
@@ -131,6 +159,79 @@ const MegaMenu = () => {
                     );
                 }
             });
+
+            if(isSignedIn) {
+
+            navItems.push(
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/promotions">Promotions</a>
+                </li>
+            );
+
+            navItems.push(
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/brands">Price lists</a>
+                </li>
+            );
+
+            navItems.push(
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/brands/clearance">Clearance</a>
+                </li>
+            );
+
+            navItems.push(
+                <li
+                    
+                    className={
+                        defaultClasses.item +
+                        ' ' +
+                        defaultClasses.haschild
+                    }
+                >
+                    <a href="/education">Education</a>
+                </li>
+            );
+
+            } else {
+
+                navItems.push(
+                    <li
+                        
+                        className={
+                            defaultClasses.item +
+                            ' ' +
+                            defaultClasses.haschild
+                        }
+                    >
+                        <a href="/promotions-register">Promotions</a>
+                    </li>
+                );
+
+            }
+
+
         }
     }
     return (

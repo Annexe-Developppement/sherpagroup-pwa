@@ -134,9 +134,38 @@ const GalleryItem = props => {
             }
         });
     }
+
+    const customPrice = 0;
+    const customPricePercent = 0;
+
+    const final_minimum_price =
+    price_range.minimum_price.final_price.value +
+        customPrice +
+        customPricePercent * price_range.minimum_price.final_price.value;
+
+    const final_regular_price =
+    price_range.minimum_price.regular_price.value +
+        customPrice +
+        customPricePercent * price_range.minimum_price.regular_price.value;
+
+    const final_maximum_price =
+    price_range.maximum_price.final_price.value +
+        customPrice +
+        customPricePercent * price_range.maximum_price.final_price.value;
+
+    const final_regular_price_max =
+    price_range.maximum_price.regular_price.value +
+        customPrice +
+        customPricePercent * price_range.maximum_price.regular_price.value; 
+
+    const discount_percent = ((1 - (final_minimum_price/final_regular_price)).toFixed(2)) * 100;
+
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
+                {discount_percent != 0 && email && (
+                    <div className={classes.priceTag}><b>{discount_percent}% discount</b></div>
+                )}
                 <Link
                     onClick={handleLinkClick}
                     to={productLink}
@@ -178,20 +207,65 @@ const GalleryItem = props => {
                         <div> 
                             
                             <p className={classes.total_available}>Total available: {item.totalavailable}</p>
-                            <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
-                            <Price
-                                value={price_range.maximum_price.regular_price.value}
-                                currencyCode={
-                                    price_range.maximum_price.regular_price.currency
-                                }
-                            />
-                            <b className={classes.total_available_b}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MSRP&nbsp;&nbsp;</b>
-                            <Price
-                                value={item.msrp_sherpa2}
-                                currencyCode={
-                                    price_range.maximum_price.regular_price.currency
-                                }
-                            />
+                            
+                            
+                            {final_minimum_price != final_regular_price && (
+                                <>
+                                    <p><b>Special price</b></p>
+                                    {item.special_from_date && (
+                                        <p>From: {item.special_from_date.slice(0, -8)}</p>
+                                    )}
+                                    {item.special_to_date && (
+                                        <p>To: {item.special_to_date}</p>
+                                    )}
+                                    <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
+                                    <span className={classes.productPrice}>
+                                        <Price
+                                            value={price_range.maximum_price.final_price.value}
+                                            currencyCode={
+                                                price_range.maximum_price.regular_price.currency
+                                            }
+                                        />
+                                    </span>
+                                    <span
+                                        className={
+                                            classes.regularprice
+                                        }
+                                    >
+                                        
+                                        <Price
+                                            currencyCode={
+                                                price_range.minimum_price.regular_price.currency
+                                            }
+                                            value={final_regular_price}
+                                        />
+                                        
+                                    </span>
+                                </>
+                            )}
+                            {final_minimum_price == final_regular_price && (
+                                <>
+                                    
+                                    <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
+                                    
+                                        <Price
+                                            value={price_range.maximum_price.final_price.value}
+                                            currencyCode={
+                                                price_range.maximum_price.regular_price.currency
+                                            }
+                                        />
+                                    
+                                </>
+                            )}
+                            <p>
+                                <b className={classes.total_available_b}>MSRP&nbsp;&nbsp;</b>
+                                <Price
+                                    value={item.msrp_sherpa2}
+                                    currencyCode={
+                                        price_range.maximum_price.regular_price.currency
+                                    }
+                                />
+                            </p>
                         </div>
                     ) : (
                         <div>

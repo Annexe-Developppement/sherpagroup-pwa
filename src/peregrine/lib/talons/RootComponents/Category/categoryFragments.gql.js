@@ -15,11 +15,35 @@ export const ProductsFragment = gql`
         items {
             id
             name
+            special_from_date
+            special_to_date
             price_range {
+                minimum_price {
+                    regular_price {
+                        value
+                        currency
+                    }
+                    final_price {
+                        value
+                        currency
+                    }
+                    discount {
+                        amount_off
+                        percent_off
+                    }
+                }
                 maximum_price {
                     regular_price {
-                        currency
                         value
+                        currency
+                    }
+                    final_price {
+                        value
+                        currency
+                    }
+                    discount {
+                        amount_off
+                        percent_off
                     }
                 }
             }

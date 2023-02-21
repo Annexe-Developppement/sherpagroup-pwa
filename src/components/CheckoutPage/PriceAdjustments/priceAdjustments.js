@@ -31,21 +31,12 @@ const PriceAdjustments = props => {
                 >
                     <CouponCode setIsCartUpdating={setPageIsUpdating} />
                 </Section>
-                {/* <GiftCardSection setIsCartUpdating={setPageIsUpdating} />
-        <Section
-          id={'gift_options'}
-          title={formatMessage({
-            id: 'checkoutPage.giftOptions',
-            defaultMessage: 'See Gift Options'
-          })}
-        >
-          <GiftOptions />
-        </Section> */}
+                
                 <Section
                     id={'cardMessage'}
                     title={formatMessage({
                         id: 'checkoutPage.cardMessage',
-                        defaultMessage: 'Enter Comment for your order'
+                        defaultMessage: 'Comment/Purchase Order'
                     })}
                 >
                     <TextArea

@@ -17,10 +17,10 @@
     flex-wrap: wrap;
 }
 .product_tiles {
-    flex: 0 0 33%;
+    flex: 0 0 20%;
     padding: 0px 10px 10px 0px;
     border-radius: 3px;
-    min-width: 33%;
+    min-width: 20%;
 }
 .inner {
     background: #fff;
@@ -30,7 +30,7 @@
     box-shadow: 0px 0px 12px -1px rgba(0, 0, 0, 0.1);
 }
 .product_img {
-    min-height: 295px;
+    min-height: 175px;
 }
 .product_details {
 }

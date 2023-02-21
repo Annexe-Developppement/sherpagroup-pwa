@@ -18,7 +18,7 @@ import DEFAULT_OPERATIONS from './categoryContent.gql';
  * @returns {number} result.totalPagesFromData - The total amount of pages for the query.
  */
 export const useCategoryContent = props => {
-    const { categoryId, data, pageSize = 6 } = props;
+    const { categoryId, data, pageSize = 12, children } = props;
 
     const operations = mergeOperations(DEFAULT_OPERATIONS, props.operations);
 
@@ -75,6 +75,7 @@ export const useCategoryContent = props => {
         filters,
         items,
         totalCount,
-        totalPagesFromData
+        totalPagesFromData,
+        children
     };
 };

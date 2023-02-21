@@ -75,6 +75,8 @@ const ProductSort = props => {
         setExpanded(!expanded);
     };
 
+    
+
     return (
         <div
             ref={elementRef}

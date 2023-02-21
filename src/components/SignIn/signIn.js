@@ -68,101 +68,113 @@ const SignIn = props => {
     };
 
     return (
-        <div className={classes.root}>
-            <div className={'text-right'}>
-                <span
-                    role="button"
-                    onClick={handleTriggerClick}
-                    onKeyDown={handleTriggerClick}
-                    tabIndex={0}
-                    className={classes.close}
-                >
-                    {clearIcon}
-                </span>
-            </div>
-            <h2 className={classes.title}>
-                <FormattedMessage
-                    id="signIn.titleMessage"
-                    defaultMessage={`Sign-in to Your Account`}
-                />
-            </h2>
+        <div>
             <FormError errors={Array.from(errors.values())} rich={true} />
-            <Form
-                getApi={setFormApi}
-                className={classes.form}
-                onSubmit={handleSubmit}
-            >
-                <Field
-                    label={formatMessage({
-                        id: 'signIn.EmailAddress',
-                        defaultMessage: 'Email address'
-                    })}
+                <Form
+                    getApi={setFormApi}
+                    className={classes.form}
+                    onSubmit={handleSubmit}
                 >
-                    <TextInput
-                        autoComplete="email"
-                        field="email"
-                        validate={validateEmail}
-                    />
-                </Field>
-                <Password
-                    fieldName="password"
-                    label={formatMessage({
-                        id: 'signIn.Password',
-                        defaultMessage: 'Password'
-                    })}
-                    validate={validatePassword}
-                    autoComplete="current-password"
-                    isToggleButtonHidden={false}
-                />
-                <div className={'mt-3' + ' ' + classes.button_wrap}>
-                    <Button priority="high" type="submit">
-                        <FormattedMessage
-                            id="signIn.Submit"
-                            defaultMessage={'Submit'}
-                        />
-                    </Button>
-                </div>
-                <div className={classes.forgotPasswordButtonContainer}>
-                    <LinkButton
-                        classes={forgotPasswordClasses}
-                        type="button"
-                        onClick={handleForgotPassword}
-                    >
-                        <FormattedMessage
-                            id="signIn.forgotPasswordButton"
-                            defaultMessage={'Forgot Password?'}
-                        />
-                    </LinkButton>
-                </div>
-                <div className={classes.create_account_div}>
-                    <h2 className={classes.title}>
-                        <FormattedMessage
-                            id="signIn.title"
-                            defaultMessage={`Sign Up`}
-                        />
-                    </h2>
-                    <p className={classes.title_subtext}>
-                        <FormattedMessage
-                            id="signIn.title_subtext"
-                            defaultMessage="Welcome! It's quick and easy to set up an account"
-                        />
-                    </p>
-                    <div className={classes.buttonsContainer}>
-                        <Button
-                            className={classes.signup_button}
-                            priority="normal"
-                            type="button"
-                            onClick={handleCreateAccount}
-                        >
-                            <FormattedMessage
-                                id="signIn.signup_button"
-                                defaultMessage={'Create an Account'}
+                    <div className={classes.root}>
+                <div className='row'>
+                
+                    <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                            
+                            <h2 className={classes.title}>
+                                <FormattedMessage
+                                    id="signIn.titleMessage"
+                                    defaultMessage={`Sign-in to Your Account`}
+                                />
+                            </h2>
+                    
+                            <Field
+                                label={formatMessage({
+                                    id: 'signIn.EmailAddress',
+                                    defaultMessage: 'Email address'
+                                })}
+                            >
+                                <TextInput
+                                    autoComplete="email"
+                                    field="email"
+                                    validate={validateEmail}
+                                />
+                            </Field>
+                            <Password
+                                fieldName="password"
+                                label={formatMessage({
+                                    id: 'signIn.Password',
+                                    defaultMessage: 'Password'
+                                })}
+                                validate={validatePassword}
+                                autoComplete="current-password"
+                                isToggleButtonHidden={false}
                             />
-                        </Button>
-                    </div>
+                            <div className={'mt-3' + ' ' + classes.button_wrap}>
+                                <Button priority="high" type="submit">
+                                    <FormattedMessage
+                                        id="signIn.Submit"
+                                        defaultMessage={'Submit'}
+                                    />
+                                </Button>
+                            </div>
+                            <div className={classes.forgotPasswordButtonContainer}>
+                                <LinkButton
+                                    classes={forgotPasswordClasses}
+                                    type="button"
+                                    onClick={handleForgotPassword}
+                                >
+                                    <FormattedMessage
+                                        id="signIn.forgotPasswordButton"
+                                        defaultMessage={'Forgot Password?'}
+                                    />
+                                </LinkButton>
+                            </div>
+                        </div>
+                        <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                            <div>
+                            <div className={'text-right'}>
+                                <span
+                                    role="button"
+                                    onClick={handleTriggerClick}
+                                    onKeyDown={handleTriggerClick}
+                                    tabIndex={0}
+                                    className={classes.close}
+                                >
+                                    {clearIcon}
+                                </span>
+                            </div>
+                                <h2 className={classes.title}>
+                                    <FormattedMessage
+                                        id="signIn.title"
+                                        defaultMessage={`Sign Up`}
+                                    />
+                                </h2>
+                                <p className={classes.title_subtext}>
+                                    <FormattedMessage
+                                        id="signIn.title_subtext"
+                                        defaultMessage="Welcome! It's quick and easy to set up an account"
+                                    />
+                                </p>
+                                <div className={classes.buttonsContainer}>
+                                    <Button
+                                        className={classes.signup_button}
+                                        priority="normal"
+                                        type="button"
+                                        onClick={handleCreateAccount}
+                                    >
+                                        <FormattedMessage
+                                            id="signIn.signup_button"
+                                            defaultMessage={'Create an Account'}
+                                        />
+                                    </Button>
+                                </div>
+                            </div>
+                        </div>
+                    
+                </div>
                 </div>
             </Form>
-        </div>
+            </div>
     );
 };
 
