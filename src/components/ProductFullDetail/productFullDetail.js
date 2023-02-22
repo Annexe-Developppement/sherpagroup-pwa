@@ -1035,8 +1035,10 @@ const ProductFullDetail = (props) => {
                     </section>
                 </Form>
             </div>
+            
             {scrollFlag && (
                 <>
+                    
                     <div className={classes.h_products_wrap}>
                         <Suspense fallback={''}>
                             <LinkedProducts

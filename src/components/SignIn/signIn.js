@@ -75,7 +75,23 @@ const SignIn = props => {
                     className={classes.form}
                     onSubmit={handleSubmit}
                 >
-                    <div className={classes.root}>
+                <div className={classes.root}>
+                <div className='row'>
+
+                    <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                        <div className={'text-right'}>
+                            <span
+                                role="button"
+                                onClick={handleTriggerClick}
+                                onKeyDown={handleTriggerClick}
+                                tabIndex={0}
+                                className={classes.close}
+                            >
+                                {clearIcon}
+                            </span>
+                        </div>
+                    </div>
+                </div>
                 <div className='row'>
                 
                     <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
@@ -132,17 +148,7 @@ const SignIn = props => {
                         </div>
                         <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
                             <div>
-                            <div className={'text-right'}>
-                                <span
-                                    role="button"
-                                    onClick={handleTriggerClick}
-                                    onKeyDown={handleTriggerClick}
-                                    tabIndex={0}
-                                    className={classes.close}
-                                >
-                                    {clearIcon}
-                                </span>
-                            </div>
+                            
                                 <h2 className={classes.title}>
                                     <FormattedMessage
                                         id="signIn.title"

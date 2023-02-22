@@ -115,7 +115,7 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.group_id} {group_id} {currentUser.lastname}</p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname}</p>
                                 ) : (
                                     <p className={classes.offer_message_text}>Create your account to get your personalized price!</p>
                                 )}

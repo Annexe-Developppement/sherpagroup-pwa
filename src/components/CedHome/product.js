@@ -213,7 +213,7 @@ const Product = props => {
                                     </Link>
                                 )}
 
-                                <CompareButton id={value.id} />
+                                {/* <CompareButton id={value.id} /> */}
                                 {isAddingItem && value.name == loaderName && (
                                     <div
                                         className={

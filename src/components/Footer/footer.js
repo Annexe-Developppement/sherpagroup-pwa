@@ -37,7 +37,6 @@ const Footer = props => {
         for (var i = 0; i < HomeConfigData.length; i++) {
             if (HomeConfigData[i]['name'] == 'ced_pwa_footer')
                 footerIdentifier = HomeConfigData[i]['value'];
-                console.log('Footer ID : '+HomeConfigData[i]['value']);
         }
     }
 

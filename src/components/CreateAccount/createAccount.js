@@ -132,7 +132,7 @@ const CreateAccount = props => {
                     <Field
                         label={formatMessage({
                             id: 'createAccount.lastName',
-                            defaultMessage: 'Last Name'
+                            defaultMessage: 'Phone Number'
                         })}
                     >
                         <TextInput
@@ -223,7 +223,7 @@ const CreateAccount = props => {
                     <Field
                         label={formatMessage({
                             id: 'createAccount.firstName',
-                            defaultMessage: 'First Name'
+                            defaultMessage: 'Company'
                         })}
                     >
                         <TextInput
@@ -236,7 +236,7 @@ const CreateAccount = props => {
                     <Field
                         label={formatMessage({
                             id: 'createAccount.lastName',
-                            defaultMessage: 'Last Name'
+                            defaultMessage: 'Street Address'
                         })}
                     >
                         <TextInput
@@ -249,7 +249,7 @@ const CreateAccount = props => {
                     <Field
                         label={formatMessage({
                             id: 'createAccount.lastName',
-                            defaultMessage: 'Last Name'
+                            defaultMessage: 'City'
                         })}
                     >
                         <TextInput
@@ -262,7 +262,7 @@ const CreateAccount = props => {
                     <Field
                         label={formatMessage({
                             id: 'createAccount.email',
-                            defaultMessage: 'Email'
+                            defaultMessage: 'State/Province'
                         })}
                     >
                         <TextInput
@@ -272,21 +272,19 @@ const CreateAccount = props => {
                             validateOnBlur
                         />
                     </Field>
-                    <Password
-                        autoComplete="new-password"
-                        fieldName="password"
-                        isToggleButtonHidden={false}
+                    <Field
                         label={formatMessage({
-                            id: 'createAccount.password',
-                            defaultMessage: 'Password'
+                            id: 'createAccount.email',
+                            defaultMessage: 'Zip/Postal Code'
                         })}
-                        validate={combine([
-                            isRequired,
-                            [hasLengthAtLeast, 8],
-                            validatePassword
-                        ])}
-                        validateOnBlur
-                    />
+                    >
+                        <TextInput
+                            field="customer.email"
+                            autoComplete="email"
+                            validate={isRequired}
+                            validateOnBlur
+                        />
+                    </Field>
                     {/* <div className={classes.subscribe}>
                         <Checkbox
                             field="subscribe"
@@ -311,29 +309,34 @@ const CreateAccount = props => {
                     </div>*/}
                     <div className={classes.actions}>{submitButton}</div>
                 </Form>
-                <div className={signClasses.create_account_div}>
-                    <h2 className={signClasses.title}>
-                        <FormattedMessage
-                            id={'createAccount.checkSignIn'}
-                            defaultMessage={`Already a Member?`}
-                        />
-                    </h2>
-                    <div className={signClasses.buttonsContainer + ' ' + 'mt-3'}>
-                        <Button
-                            className={signClasses.signup_button}
-                            priority="normal"
-                            type="button"
-                            onClick={onCancel}
-                        >
-                            <FormattedMessage
-                                id={'createAccount.signup_button'}
-                                defaultMessage={'Sign In'}
-                            />
-                        </Button>
-                    </div>
-                </div>
+                
                 
             </div>
+            </div>
+            <div className='row'>
+                <div className='col-lg-6 col-md-6 col-sm-12 col-xs-12 about-us'>
+                    <div className={signClasses.create_account_div}>
+                        <h2 className={signClasses.title}>
+                            <FormattedMessage
+                                id={'createAccount.checkSignIn'}
+                                defaultMessage={`Already a Member?`}
+                            />
+                        </h2>
+                        <div className={signClasses.buttonsContainer + ' ' + 'mt-3'}>
+                            <Button
+                                className={signClasses.signup_button}
+                                priority="normal"
+                                type="button"
+                                onClick={onCancel}
+                            >
+                                <FormattedMessage
+                                    id={'createAccount.signup_button'}
+                                    defaultMessage={'Sign In'}
+                                />
+                            </Button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

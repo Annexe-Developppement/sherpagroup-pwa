@@ -21,10 +21,10 @@ export default function SliderProduct(props) {
             items: 2
         },
         600: {
-            items: 3
+            items: 4
         },
         1000: {
-            items: 4
+            items: 5
         }
     };
 
@@ -96,7 +96,7 @@ export default function SliderProduct(props) {
                                                 margin={10}
                                                 nav={true}
                                                 dots={false}
-                                                autoplay={false}
+                                                autoplay={true}
                                                 autoplayTimeout={2000}
                                                 items={5}
                                                 responsive={responsive1}

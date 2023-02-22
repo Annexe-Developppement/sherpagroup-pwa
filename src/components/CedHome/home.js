@@ -67,11 +67,38 @@ const Home = props => {
     }
     const { formatMessage } = useIntl();
     const bannerSkelton = <BannerSkelton mobileView={mobileView} />;
+
+    const categoryBannerIdentifierHome = 'home_banners';
+
     return (
         <React.Fragment>
             <div>
                 
                 <div className={defaultClasses.homepage_single_image}><img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg"/></div>
+                
+                {/* mid banner section start */}
+                {showCategoryBanners != 0 && scrollFlag && (
+                    <section
+                        className={
+                            defaultClasses.homepage_sections +
+                            ' ' +
+                            defaultClasses.static_blocks +
+                            ' ' +
+                            defaultClasses.mid_banner_sec_wrap +
+                            ' ' +
+                            defaultClasses.homepage_widget_container
+                        }
+                    >
+                        <Suspense fallback={''}>
+                            <Banner
+                                identifier={categoryBannerIdentifierHome}
+                                showBanner={showCategoryBanners}
+                            />
+                        </Suspense>
+                    </section>
+                )}
+                {/* mid banner section END */}
+                
                 {/* top category section */}
                 {showCategoryIcons != 0 && (
                     <div
