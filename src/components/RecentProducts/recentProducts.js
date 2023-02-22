@@ -29,10 +29,10 @@ const RecentProduct = props => {
             items: 2
         },
         600: {
-            items: 3
+            items: 4
         },
         1000: {
-            items: 4
+            items: 5
         }
     };
 

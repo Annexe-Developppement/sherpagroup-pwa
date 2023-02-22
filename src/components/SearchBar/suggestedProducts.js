@@ -20,7 +20,7 @@ const SuggestedProducts = props => {
         </li>
     ));
 
-    return <ul className={classes.root}>{items}</ul>;
+    return <ul className={classes.suggestedProductsRender}>{items}</ul>;
 };
 
 export default SuggestedProducts;

@@ -60,8 +60,9 @@
 .title {
     font-family: 'Karla-Bold';
     font-size: 18px;
-    text-align: center;
+    text-align: left;
     margin: 0;
+    margin-bottom: 15px;
 }
 .title_subtext {
     font-size: 14px;
