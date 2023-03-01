@@ -81,8 +81,12 @@ import { QuantityFields } from '../CartPage/ProductListing/quantity';
 import { FormattedMessage, useIntl } from 'react-intl';
 import PriceRange from '../PriceRange';
 import InStockAlert from '../InStockAlert/inStockAlert';
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
 const ProductFullDetail = (props) => {
+
+    const { email } = useDashboard();
+
     const [scrollFlag, setScrollFlag] = useState(false);
     const handleClick = () => {
         if (!scrollFlag) setScrollFlag(true);
@@ -405,6 +409,12 @@ const ProductFullDetail = (props) => {
     ) {
         image = mediaGalleryEntries[0]['file'];
     }
+
+    function openLoginBox() {
+        //alert('Henlo');
+        document.getElementById('user_account').click();
+    }
+
     return (
         <Fragment>
             <div className={'container' + ' ' + classes.product_page_container}>
@@ -488,7 +498,8 @@ const ProductFullDetail = (props) => {
                   <Price currencyCode={productDetails.price.currency} value={productDetails.price.value} />
                 </p> */}
 
-                                <PriceRange
+                                {email ? (
+                                    <PriceRange
                                     price={productDetails.price}
                                     optionFlag={productDetails.optionFlag}
                                     product={product}
@@ -506,6 +517,11 @@ const ProductFullDetail = (props) => {
                                         customPercCheckbox
                                     }
                                 />
+                                ) : (
+                                    <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></p>
+                                )}
+
+                                
                                
                                
 
@@ -668,7 +684,7 @@ const ProductFullDetail = (props) => {
                                     </section>
                                 )}
                             </div>
-                            {product.__typename != 'BundleProduct' && (
+                            {product.__typename != 'BundleProduct' && email && (
                                 <div
                                     className={
                                         classes.qty_cart_wrap +

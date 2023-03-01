@@ -17,6 +17,14 @@ const MegaMenu = () => {
     const { navdetails } = talonsProps;
     if (typeof navdetails != 'undefined' && navdetails && !mobileView) {
         const elements = JSON.parse(navdetails).categories;
+
+        /*elements.sort((a,b) => {
+            return a.main_category_name > b.main_category_name;
+        });
+        this.setState({
+            contacts: itemsArray
+        })*/
+
         if (elements) {
 
             navItems.push(
@@ -86,7 +94,7 @@ const MegaMenu = () => {
                                         let hasSubchild =
                                             defaultClasses.has_child;
                                         if (v1['sub_cats'].length) {
-                                            showsubchild = true;
+                                            showsubchild = false;
                                             hasSubchild =
                                                 defaultClasses.has_child;
                                         } else {
@@ -226,6 +234,19 @@ const MegaMenu = () => {
                         }
                     >
                         <a href="/promotions-register">Promotions</a>
+                    </li>
+                );
+
+                navItems.push(
+                    <li
+                        
+                        className={
+                            defaultClasses.item +
+                            ' ' +
+                            defaultClasses.haschild
+                        }
+                    >
+                        <a href="/education">Education</a>
                     </li>
                 );
 

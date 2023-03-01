@@ -208,9 +208,9 @@ const Header = props => {
                                 </span>
                                 {/* <span className={classes.marketplace + " " + classes.header_Actions_image} title="Marketplace">
                   <img src="/cenia-static/images/market (1).png" alt="marketplace" title="marketplace" width="20" height="20" />
-                </span> */}
-                                {!isSignedIn && (
-                                    <button
+                </span> 
+                
+                <button
                                         onClick={handleWishlistTrigger}
                                         className={
                                             classes.wishlist_image +
@@ -226,6 +226,10 @@ const Header = props => {
                                             {wishlistCount}
                                         </span>
                                     </button>
+                
+                */}
+                                {!isSignedIn && (
+                                    <></>
                                 )}
                                 {isSignedIn && (
                                     <Link
@@ -254,6 +258,7 @@ const Header = props => {
                                         </span>
                                     </Link>
                                 )}
+                                 {isSignedIn && (
                                 <span
                                     className={
                                         classes.cart_image +
@@ -266,6 +271,7 @@ const Header = props => {
                                         <CartTrigger />
                                     </Suspense>
                                 </span>
+                                )}
                             </div>
                         </div>
                     </div>

@@ -264,7 +264,7 @@ const Dashboard = props => {
                                                 defaultMessage={'Address Book'}
                                             />
                                         </strong>
-                                        <Link
+                                        {/*<Link
                                             className={
                                                 defaultClasses.manage_address
                                             }
@@ -280,7 +280,7 @@ const Dashboard = props => {
                                                     }
                                                 />
                                             </span>
-                                        </Link>
+                                                </Link> */}
                                     </div>
                                     <div
                                         className={defaultClasses.block_content}

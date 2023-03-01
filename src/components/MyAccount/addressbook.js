@@ -219,8 +219,7 @@ const AddressBook = props => {
                                                                 to={
                                                                     billingAddress &&
                                                                     billingAddress.id
-                                                                        ? '/address/edit/' +
-                                                                          billingAddress.id
+                                                                        ? '#'
                                                                         : ''
                                                                 }
                                                             >
@@ -229,7 +228,7 @@ const AddressBook = props => {
                                                                         'addressBook.changeBillingAddress'
                                                                     }
                                                                     defaultMessage={
-                                                                        'Change Billing Address'
+                                                                        'Please contact your account manager to update your billing address'
                                                                     }
                                                                 />
                                                             </Link>
@@ -361,8 +360,7 @@ const AddressBook = props => {
                                                                 to={
                                                                     shippingAddress &&
                                                                     shippingAddress.id
-                                                                        ? '/address/edit/' +
-                                                                          shippingAddress.id
+                                                                        ? '#'
                                                                         : ''
                                                                 }
                                                             >
@@ -371,7 +369,7 @@ const AddressBook = props => {
                                                                         'addressBook.changeShippingAddress'
                                                                     }
                                                                     defaultMessage={
-                                                                        'Change Shipping Address'
+                                                                        'Please contact your account manager to update your shipping address'
                                                                     }
                                                                 />
                                                             </Link>
@@ -420,7 +418,7 @@ const AddressBook = props => {
                                         </div>
                                     </div>
                                 </div>
-
+                                {/*}
                                 <div
                                     className={
                                         defaultClasses.block +
@@ -860,7 +858,7 @@ const AddressBook = props => {
                                             </span>
                                         </Link>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

@@ -64,6 +64,11 @@ const AddressBook = props => {
         activeContent === 'addressBook' ? classes.root_active : classes.root;
 
     const addAddressButton = (
+        <></>
+    );
+
+    /*
+
         <LinkButton
             className={classes.addButton}
             key="addAddressButton"
@@ -82,8 +87,9 @@ const AddressBook = props => {
                     defaultMessage={'Add New Address'}
                 />
             </span>
-        </LinkButton>
-    );
+            </LinkButton> 
+
+    */
 
     const addressElements = useMemo(() => {
         let defaultIndex;

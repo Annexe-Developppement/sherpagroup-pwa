@@ -126,32 +126,23 @@ export default function Wishlist(props) {
                             </div>
                         )}
                         {!addedToWishlist || removeWishlistMsg ? (
-                            
-                            <span
-                                role="button"
-                                className={classes.wishlist_icon_wrap}
-                                onClick={() => addtowishlist(value.id)}
-                                onKeyDown={() => addtowishlist(value.id)}
-                                tabIndex={0}
-                            >
-                                <FontAwesomeIcon
-                                    fill={addedToWishlist ? 'red' : ''}
-                                    icon={faHeart}
-                                />
-                            </span>
+                            <></>
                         ) : (
-                            <span
-                                role="button"
-                                className={classes.wishlist_icon_wrap}
-                                onClick={() => removeFromWishlist(value.id)}
-                                onKeyDown={() => removeFromWishlist(value.id)}
-                                tabIndex={0}
-                            >
-                                <FontAwesomeIcon
-                                    fill={addedToWishlist ? 'red' : ''}
-                                    icon={faHeart}
-                                />
-                            </span>
+                            <>
+                                <p>Included in one of your project</p>
+                                {/*<span
+                                    role="button"
+                                    className={classes.wishlist_icon_wrap}
+                                    onClick={() => removeFromWishlist(value.id)}
+                                    onKeyDown={() => removeFromWishlist(value.id)}
+                                    tabIndex={0}
+                                >
+                                    <FontAwesomeIcon
+                                        fill={addedToWishlist ? 'red' : ''}
+                                        icon={faHeart}
+                                    />
+                                </span> */}
+                            </>
                         )}
                     </section>
                 </div>
