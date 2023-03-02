@@ -15,6 +15,7 @@ query productSearch(
         items {
             id
             name
+            sku
             small_image {
                 url
             }

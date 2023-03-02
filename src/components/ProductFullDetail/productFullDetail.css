@@ -168,6 +168,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    margin-bottom: 20px;
 }
 .quantity {
     margin-right: 25px;

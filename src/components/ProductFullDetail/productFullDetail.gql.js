@@ -34,6 +34,8 @@ export const ADD_CONFIGURABLE_MUTATION = gql`
     ${MiniCartFragment}
 `;
 
+// ld "price" is not defined by type CartItemInput.
+
 export const ADD_SIMPLE_MUTATION = gql`
     mutation addSimpleProductToCart(
         $cartId: String!

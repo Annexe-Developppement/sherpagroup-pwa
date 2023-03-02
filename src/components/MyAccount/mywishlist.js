@@ -402,11 +402,12 @@ const MyWishList = props => {
                                                                                     handleAddToCart(
                                                                                         val.product
                                                                                     );
-                                                                                    remove(
+                                                                                    alert('Product moved to cart');
+                                                                                    /*remove(
                                                                                         val
                                                                                             .product
                                                                                             .id
-                                                                                    );
+                                                                                    );*/
                                                                                 }}
                                                                             >
                                                                                 <span
@@ -419,7 +420,7 @@ const MyWishList = props => {
                                                                                             'myWishlist.moveToCartBtn'
                                                                                         }
                                                                                         defaultMessage={
-                                                                                            'Move to cart'
+                                                                                            'Move to carts'
                                                                                         }
                                                                                     />
                                                                                 </span>

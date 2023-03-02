@@ -139,14 +139,14 @@ const GalleryItem = props => {
     const customPricePercent = 0;
 
     const final_minimum_price =
-    price_range.minimum_price.final_price.value +
+    (price_range.minimum_price.final_price.value +
         customPrice +
-        customPricePercent * price_range.minimum_price.final_price.value;
+        customPricePercent * price_range.minimum_price.final_price.value)*1;
 
     const final_regular_price =
-    price_range.minimum_price.regular_price.value +
+    (price_range.minimum_price.regular_price.value +
         customPrice +
-        customPricePercent * price_range.minimum_price.regular_price.value;
+        customPricePercent * price_range.minimum_price.regular_price.value)*1;
 
     const final_maximum_price =
     price_range.maximum_price.final_price.value +
@@ -159,6 +159,11 @@ const GalleryItem = props => {
         customPricePercent * price_range.maximum_price.regular_price.value; 
 
     const discount_percent = ((1 - (final_minimum_price/final_regular_price)).toFixed(2)) * 100;
+
+    function openLoginBox() {
+        //alert('Henlo');
+        document.getElementById('user_account').click();
+    }
 
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
@@ -216,12 +221,12 @@ const GalleryItem = props => {
                                         <p>From: {item.special_from_date.slice(0, -8)}</p>
                                     )}
                                     {item.special_to_date && (
-                                        <p>To: {item.special_to_date}</p>
+                                        <p>To: {item.special_to_date.slice(0, -8)}</p>
                                     )}
                                     <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
                                     <span className={classes.productPrice}>
                                         <Price
-                                            value={price_range.maximum_price.final_price.value}
+                                            value={(price_range.maximum_price.final_price.value)*1}
                                             currencyCode={
                                                 price_range.maximum_price.regular_price.currency
                                             }
@@ -464,7 +469,7 @@ const GalleryItem = props => {
                     {/* <CompareButton id={id} /> */}
                 </div>
 
-                {email ? (
+                    {email ? (
                         <div> 
                             
                             <select className={classes.project_dropdown}>
@@ -473,7 +478,7 @@ const GalleryItem = props => {
                             </select>
                         </div>
                     ) : (
-                        <p><a>Register or create an account</a></p>
+                        <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></p>
                     )}
 
                

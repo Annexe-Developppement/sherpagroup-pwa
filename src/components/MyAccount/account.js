@@ -249,7 +249,7 @@ const MyAccount = props => {
                                                 defaultMessage={' Address Book'}
                                             />
                                         </strong>
-                                        <Link
+                                        {/* <Link
                                             className={
                                                 defaultClasses.manage_address
                                             }
@@ -265,7 +265,7 @@ const MyAccount = props => {
                                                     }
                                                 />
                                             </span>
-                                        </Link>
+                                                </Link> */}
                                     </div>
                                     <div
                                         className={defaultClasses.block_content}
@@ -358,6 +358,7 @@ const MyAccount = props => {
                                                         >
                                                             {billingAddress &&
                                                                 billingAddress.id && (
+                                                                    
                                                                     <Link
                                                                         className={
                                                                             defaultClasses.action +
@@ -365,8 +366,7 @@ const MyAccount = props => {
                                                                             defaultClasses.change_password
                                                                         }
                                                                         to={
-                                                                            '/address/edit/' +
-                                                                            billingAddress.id
+                                                                            '#'
                                                                         }
                                                                         data-ui-id="default-billing-edit-link"
                                                                     >
@@ -375,10 +375,10 @@ const MyAccount = props => {
                                                                                 'account.EditAddress'
                                                                             }
                                                                             defaultMessage={
-                                                                                'Edit Address'
+                                                                                'Please contact your account manager to update your billing address'
                                                                             }
                                                                         />
-                                                                    </Link>
+                                                                        </Link> 
                                                                 )}
                                                         </div>
                                                     </div>
@@ -516,8 +516,7 @@ const MyAccount = props => {
                                                                             defaultClasses.change_password
                                                                         }
                                                                         to={
-                                                                            '/address/edit/' +
-                                                                            shippingAddress.id
+                                                                            '#'
                                                                         }
                                                                         data-ui-id="default-shipping-edit-link"
                                                                     >
@@ -526,7 +525,7 @@ const MyAccount = props => {
                                                                                 'account.EditAddress'
                                                                             }
                                                                             defaultMessage={
-                                                                                'Edit Address'
+                                                                                'Please contact your account manager to update your shipping address'
                                                                             }
                                                                         />
                                                                     </Link>
