@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[152],{247:function(c,e,n){"use strict";n.d(e,"a",(function(){return t}));var i=n(17),o=n(0),t=function(c){var e=Object(i.useApolloClient)();Object(o.useEffect)((function(){e.cache.policies.addTypePolicies(c)}),[e,c])}}}]);
