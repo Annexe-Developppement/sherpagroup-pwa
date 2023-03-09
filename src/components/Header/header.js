@@ -113,10 +113,11 @@ const Header = props => {
         
     getUser();
 
-    /*fetch( 'https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com' )
-    .then( response => response.json() )
-    .then( response => {
-    } ); */
+    let is_approved = 1;
+
+    if(is_approved==1) {
+
+    } 
 
 
     return (
