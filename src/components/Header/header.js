@@ -94,6 +94,31 @@ const Header = props => {
 
     console.log('Tha '+JSON.stringify(currentUser));
 
+    
+    
+    async function getUser() {
+        try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
+        
+        headers: { accept: 'application/json' }, });
+        
+        if (!response.ok) {
+        
+        throw new Error(`Error! status: ${response.status}`);}
+        
+        const result = await response.json();
+        
+        return result;} catch (err) {
+        
+        console.log(err);}}
+        
+    getUser();
+
+    /*fetch( 'https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com' )
+    .then( response => response.json() )
+    .then( response => {
+    } ); */
+
+
     return (
         <Fragment>
             <header className={rootClass}>
@@ -230,7 +255,7 @@ const Header = props => {
                 */}
                                 {!isSignedIn && (
                                     <></>
-                                )}
+                                )} 
                                 {isSignedIn && (
                                     <Link
                                         className={
