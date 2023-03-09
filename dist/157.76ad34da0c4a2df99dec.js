@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[157],{1047:function(n,e,a){"use strict";a.r(e);var r=a(0),t=a.n(r),i=a(176),c=a(975),o=a(738),s=a.n(o);e.default=function(n){var e=n.identifier,a=n.showBanner,r=Object(i.a)({query:s.a,identifier:e,showBanner:a}).cmsBlock,o="";return r&&(o=r),t.a.createElement(c.a,{html:o})}}}]);
