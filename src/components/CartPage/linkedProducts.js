@@ -95,8 +95,8 @@ const LinkedProducts = props => {
                                     rewind={true}
                                     margin={10}
                                     nav={true}
-                                    dots={false}
-                                    autoplay={false}
+                                    dots={true}
+                                    autoplay={true}
                                     autoplayTimeout={2000}
                                     items={5}
                                     responsive={responsive1}

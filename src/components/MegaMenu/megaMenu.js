@@ -183,7 +183,7 @@ const MegaMenu = () => {
                 </li>
             );
 
-            navItems.push(
+            {/*navItems.push(
                 <li
                     
                     className={
@@ -194,7 +194,7 @@ const MegaMenu = () => {
                 >
                     <a href="/brands">Price lists</a>
                 </li>
-            );
+            ); */}
 
             navItems.push(
                 <li

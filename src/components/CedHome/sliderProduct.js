@@ -95,7 +95,7 @@ export default function SliderProduct(props) {
                                                 rewind={true}
                                                 margin={10}
                                                 nav={true}
-                                                dots={false}
+                                                dots={true}
                                                 autoplay={true}
                                                 autoplayTimeout={2000}
                                                 items={5}
