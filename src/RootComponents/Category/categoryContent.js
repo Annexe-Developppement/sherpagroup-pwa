@@ -311,7 +311,11 @@ const CategoryContent = props => {
                     </div>
                     <LinkList />
                     
-                    <div className={classes.contentWrapper}>
+                    {catId != 42 ? (
+                        
+                    
+
+                    <div className={classes.contentWrapper} >
                         {!mobileView && (
                             <div className={classes.sidebar}>
                                 {maybeSortButton}
@@ -352,6 +356,12 @@ const CategoryContent = props => {
                             <Suspense fallback={null}>{filtersModal}</Suspense>
                         </div>
                     </div>
+
+                    ) : (
+
+                        <></>
+                                            
+                    )}
                    
                 </article>
             </div>
