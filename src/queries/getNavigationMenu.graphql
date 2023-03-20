@@ -1,7 +1,7 @@
 query navigationMenu($id: Int!) {
     category(id: $id) {
-        id
         name
+        id
         children {
             children_count
             id

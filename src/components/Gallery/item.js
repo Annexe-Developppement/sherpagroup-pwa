@@ -9,7 +9,6 @@ import resourceUrl from '@magento/peregrine/lib/util/makeUrl';
 import { FormattedMessage, useIntl } from 'react-intl';
 import mapProduct from '@magento/venia-ui/lib/util/mapProduct';
 import proClasses from '../ProductFullDetail/productFullDetail.css';
-
 import { useStyle } from '../../classify';
 import Image from '../Image';
 import GalleryItemShimmer from './item.shimmer';
@@ -210,7 +209,7 @@ const GalleryItem = props => {
                 >
                     {email ? (
                         <div> 
-                            
+                            <p>Part # {item.sku}</p>
                             <p className={classes.total_available}>Total available: {item.totalavailable}</p>
                             
                             
@@ -248,7 +247,7 @@ const GalleryItem = props => {
                                     </span>
                                 </>
                             )}
-                            {final_minimum_price == final_regular_price && (
+                            {final_minimum_price == final_regular_price && item.sku.substring(0, 3) != 'SA-' && (
                                 <>
                                     
                                     <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
@@ -262,8 +261,19 @@ const GalleryItem = props => {
                                     
                                 </>
                             )}
+                            {item.sku.substring(0, 3) == 'SA-' && (
+                                <>
+                                    
+                                    <b className={classes.total_available_b}>SHERPA : See Price List</b>
+                                    
+                                        
+                                    
+                                </>
+                            )}
+                            {item.sku.substring(0, 3) != 'SA-' && (
                             <p>
                                 <b className={classes.total_available_b}>MSRP&nbsp;&nbsp;</b>
+                                
                                 <Price
                                     value={item.msrp_sherpa2}
                                     currencyCode={
@@ -271,6 +281,7 @@ const GalleryItem = props => {
                                     }
                                 />
                             </p>
+                            )}
                         </div>
                     ) : (
                         <div>
@@ -478,7 +489,10 @@ const GalleryItem = props => {
                             </select>
                         </div>
                     ) : (
-                        <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></p>
+                        <>
+                        <div className={classes.boxlink}><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></div>
+                        
+                        </>
                     )}
 
                

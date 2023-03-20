@@ -182,7 +182,7 @@ const Home = props => {
                 )}
 
                 {/* Trending product section end */}
-
+                            
                 {/* features block */}
                 {showOfferBanners != 0 && scrollFlag && (
                     <section

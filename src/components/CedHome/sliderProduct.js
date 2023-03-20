@@ -33,7 +33,7 @@ export default function SliderProduct(props) {
     const { sliderProduct } = useSliderProducts({
         showProducts: showLinkedProduct,
         query:
-            (type == 'Latest Product' ? GET_LATESTPRODUCTS_DATA : '') ||
+            (type == 'Latest Product' ? GET_BESTSELLER_DATA : '') ||
             (type == 'BestSeller Product' ? GET_BESTSELLER_DATA : '')
     });
 
@@ -97,7 +97,7 @@ export default function SliderProduct(props) {
                                                 nav={true}
                                                 dots={true}
                                                 autoplay={true}
-                                                autoplayTimeout={2000}
+                                                autoplayTimeout={4000}
                                                 items={5}
                                                 responsive={responsive1}
                                             >

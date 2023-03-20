@@ -72,7 +72,7 @@ const NewsLetter = props => {
                                 <img className={classes.newsletter_img} src="https://sherpagroupav.com/media/wysiwyg/Tech-Horz-White.png"/><br/>
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_head"
-                                    defaultMessage="Great Brands, Great People,One Awesome Partnership"
+                                    defaultMessage="Your guide to the exceptional"
                                 />
                                 {/*<br />
                                 <FormattedMessage

@@ -593,6 +593,8 @@ const ProductFullDetail = (props) => {
                                         <span>{stockStatus}</span>
                                     </div>
                                 </div>  */}
+                                <p>MSRP&nbsp;&nbsp;<b>${(Math.round(product.msrp_sherpa2 * 100) / 100).toFixed(2)}</b></p>
+                                
                                 <div
                                     className={
                                         classes.sku_details + ' ' + 'mb-4'
