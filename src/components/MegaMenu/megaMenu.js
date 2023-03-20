@@ -8,6 +8,9 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import $ from 'jquery';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
     
+function hideNav() {
+   //document.getElementById("id-main").style.opacity = "0";
+}
 
 const MegaMenu = () => {
     const talonsProps = useNavigation();
@@ -18,14 +21,10 @@ const MegaMenu = () => {
     if (typeof navdetails != 'undefined' && navdetails && !mobileView) {
         const elements = JSON.parse(navdetails).categories;
 
-        /*elements.sort((a,b) => {
-            return a.main_category_name > b.main_category_name;
-        });
-        this.setState({
-            contacts: itemsArray
-        })*/
-
         if (elements) {
+
+            console.log('Elements');
+            console.log(elements);
 
             navItems.push(
                <>
@@ -52,7 +51,12 @@ const MegaMenu = () => {
                 </>
             );
 
+            
+
             $.each(elements, function(i, v) {
+
+                
+
                 if (v['main_category_id']) {
                     let haschild = '';
                     if (
@@ -81,6 +85,7 @@ const MegaMenu = () => {
                                 )}
                             </Link>
                             <ul
+                                id='id-main'
                                 key={i + 'mainul'}
                                 className={
                                     defaultClasses.sub_menu +
@@ -89,7 +94,11 @@ const MegaMenu = () => {
                                 }
                             >
                                 {typeof v['sub_cats'] != 'undefined' &&
-                                    v['sub_cats'].map((v1, i1) => {
+                                    v['sub_cats'].sort(function(a, b) {
+                                        if(a.sub_category_name.toLowerCase() < b.sub_category_name.toLowerCase()) return -1;
+                                        if(a.sub_category_name.toLowerCase() > b.sub_category_name.toLowerCase()) return 1;
+                                        return 0;
+                                       }).map((v1, i1) => {
                                         let showsubchild = true;
                                         let hasSubchild =
                                             defaultClasses.has_child;
@@ -104,6 +113,7 @@ const MegaMenu = () => {
                                         }
                                         return (
                                             <li
+                                                onClick={hideNav()}
                                                 key={i1 + 'sub'}
                                                 className={hasSubchild}
                                             >

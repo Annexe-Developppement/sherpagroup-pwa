@@ -173,8 +173,6 @@ const CategoryContent = props => {
 
     const catId = data && data.category && data.category.id ? data.category.id : 0;
 
-    console.log('minou'+catId);
-
     const [{ isSignedIn }] = useUserContext();
 
     // categoryList(filters: {ids: {in: ["56"]}}) {
@@ -216,8 +214,10 @@ const CategoryContent = props => {
             }});
 
         if (loading) {
-            return <p>Loading tree</p>
+            return <p>Loading ...</p>
         }
+
+        let childrenCount = data.categoryList.length;
 
         return (
             <div className="App">
@@ -242,7 +242,7 @@ const CategoryContent = props => {
                                     <></>
                                 )}
                                 {categoryId==42 && s.description && isSignedIn ? (
-                                   <div className={classes.boxlink}><a target="_blank" href={"https://assets.sherpagroupav.com/pdf/"+s.description}>Download specs sheet</a></div>
+                                   <div className={classes.boxlink}><a target="_blank" href={"https://assets.sherpagroupav.com/pdf/"+s.description}>Price List</a></div>
                                 ) : (
                                     <></>
                                 )}
@@ -294,13 +294,13 @@ const CategoryContent = props => {
                                 </div>
                             </h1>
                             {isSignedIn && categoryDescription != null ?
-                                <p>
+                                <div className={classes.downloadboxlink}>
                                     <a
-                                        className={classes.specsheet}
+                                        
                                         href={`https://assets.sherpagroupav.com/pdf/${categoryDescription}`}
                                         target="_blank"
-                                    >Download specs sheet</a>
-                                </p>
+                                    >Download price list</a>
+                                </div>
                             : ''}
                             
                             
@@ -311,9 +311,8 @@ const CategoryContent = props => {
                     </div>
                     <LinkList />
                     
-                    {catId != 42 ? (
                         
-                    
+                    {catId != 42 ? (
 
                     <div className={classes.contentWrapper} >
                         {!mobileView && (

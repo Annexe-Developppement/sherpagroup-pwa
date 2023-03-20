@@ -20,6 +20,7 @@ export const GET_PRODUCT_DETAIL_QUERY = gql`
                     html
                 }
                 id
+                msrp_sherpa2
                 product_brand
                 productbrand
                 media_gallery_entries {
