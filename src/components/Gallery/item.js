@@ -190,6 +190,7 @@ const GalleryItem = props => {
                 </Link>
             </div>
             <div className={classes.noo_details_wrapper}>
+                <p>Part # {item.sku}</p>
                 <p className={classes.product_name}>
                     <Link
                         onClick={handleLinkClick}
@@ -209,7 +210,7 @@ const GalleryItem = props => {
                 >
                     {email ? (
                         <div> 
-                            <p>Part # {item.sku}</p>
+                            
                             <p className={classes.total_available}>Total available: {item.totalavailable}</p>
                             
                             

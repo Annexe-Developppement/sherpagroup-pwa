@@ -419,6 +419,7 @@ const ProductFullDetail = (props) => {
         <Fragment>
             <div className={'container' + ' ' + classes.product_page_container}>
                 {breadcrumbs}
+                <button onclick="history.back()">Return to previous page</button>
                 <Form className={classes.root}>
                     {/* product image carousel section */}
                     <section
@@ -494,29 +495,58 @@ const ProductFullDetail = (props) => {
                                 <h1 className={classes.productName}>
                                     {productDetails.name}
                                 </h1>
+                                
                                 {/* <p className={classes.productPrice}>
                   <Price currencyCode={productDetails.price.currency} value={productDetails.price.value} />
                 </p> */}
 
+                                <div
+                                    className={
+                                        classes.sku_details + ' ' + 'mb-4'
+                                    }
+                                >
+                                    <span className={classes.sku_details_label}>
+                                        PART # 
+                                    </span>
+                                    <span>{product && product.sku}</span>
+                                </div>
+                                
+                                
+
+                                
+
                                 {email ? (
-                                    <PriceRange
-                                    price={productDetails.price}
-                                    optionFlag={productDetails.optionFlag}
-                                    product={product}
-                                    customPrice={
-                                        customPrice +
-                                        customPriceRadio +
-                                        customPriceMultiple +
-                                        customPriceDropdown +
-                                        customField +
-                                        customArea
-                                    }
-                                    customPricePercent={
-                                        customPricePercentRadio +
-                                        customPercDropDown +
-                                        customPercCheckbox
-                                    }
-                                />
+                                    <>
+
+                                    {product.sku.substring(0, 3) == 'SA-' ? (
+                                        <p>See Price List</p>
+                                    ) : (
+                                        <>
+                                        <PriceRange
+                                            price={productDetails.price}
+                                            optionFlag={productDetails.optionFlag}
+                                            product={product}
+                                            customPrice={
+                                                customPrice +
+                                                customPriceRadio +
+                                                customPriceMultiple +
+                                                customPriceDropdown +
+                                                customField +
+                                                customArea
+                                            }
+                                            customPricePercent={
+                                                customPricePercentRadio +
+                                                customPercDropDown +
+                                                customPercCheckbox
+                                            }
+                                            />
+                                        <p>MSRP&nbsp;&nbsp;<b>${(Math.round(product.msrp_sherpa2 * 100) / 100).toFixed(2)}</b></p>
+                                        </>
+                                    )}
+
+                                    
+                                    <p>Total available : {product.totalavailable}<br/>Montreal inventory : {product.mtl_inventory}<br/>Montreal hub inventory : {product.mtlhub}<br/>Toronto inventory : {product.tor_inventory}<br/>Toronto hub inventory : {product.torhub}</p>
+                                    </>
                                 ) : (
                                     <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></p>
                                 )}
@@ -593,18 +623,9 @@ const ProductFullDetail = (props) => {
                                         <span>{stockStatus}</span>
                                     </div>
                                 </div>  */}
-                                <p>MSRP&nbsp;&nbsp;<b>${(Math.round(product.msrp_sherpa2 * 100) / 100).toFixed(2)}</b></p>
                                 
-                                <div
-                                    className={
-                                        classes.sku_details + ' ' + 'mb-4'
-                                    }
-                                >
-                                    <span className={classes.sku_details_label}>
-                                        PART # 
-                                    </span>
-                                    <span>{product && product.sku}</span>
-                                </div>
+                                
+                                
                             </section>
                             <div
                                 className={

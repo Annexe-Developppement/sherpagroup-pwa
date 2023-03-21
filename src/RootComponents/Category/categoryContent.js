@@ -144,6 +144,7 @@ const CategoryContent = props => {
                         />
                     </Suspense>
                 )}
+                <div className={classes.pagination}>{pagination}</div>
                 <section className={classes.gallery}>{gallery}</section>
                 <div className={classes.pagination}>{pagination}</div>
             </Fragment>
@@ -235,8 +236,8 @@ const CategoryContent = props => {
                                 ) : (
                                     <></>
                                 )}
-                                <div className={classes.boxlink}><a href={"/"+s.url_path}>View products list</a></div>
-                                {categoryId==42 && s.manufacturer_link && isSignedIn ? (
+                                <div className={classes.boxlink}><a href={"/"+s.url_path}>View products list</a></div> 
+                                {categoryId==42 && s.manufacturer_link ? (
                                    <div className={classes.boxlink}><a target="_blank" href={s.manufacturer_link}>Brand website</a></div>
                                 ) : (
                                     <></>

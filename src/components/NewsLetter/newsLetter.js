@@ -69,10 +69,10 @@ const NewsLetter = props => {
                     <div className={'col-lg-6 col-md-6 col-12'}>
                         <div className={classes.newsletter_content}>
                             <p className={classes.newsletter_content_head}>
-                                <img className={classes.newsletter_img} src="https://sherpagroupav.com/media/wysiwyg/Tech-Horz-White.png"/><br/>
+                                <img className={classes.newsletter_img} src="https://sherpagroupav.com/media/wysiwyg/Guide_to_the_Exceptional-w-logo-wht.png"/><br/>
                                 <FormattedMessage
                                     id="newsLetter.newsletter_content_head"
-                                    defaultMessage="Your guide to the exceptional"
+                                    defaultMessage=" "
                                 />
                                 {/*<br />
                                 <FormattedMessage

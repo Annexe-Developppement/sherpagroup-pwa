@@ -323,6 +323,14 @@ div[class='mid-banner_image_Wrap'] img {
 .wishlist_icon_wrap:hover img {
     filter: invert(1);
 }
+
+.project_dropdown {
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 3px;
+    height: 35px;
+}
+
 .add_to_cart_Wrap {
     margin-top: 10px;
     /*visibility: hidden;*/

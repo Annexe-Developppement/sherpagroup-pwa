@@ -184,6 +184,7 @@ const Product = props => {
                             )}
                             <div className={defaultClasses.add_to_cart_Wrap}>
                                 {value.type == 'simple' && (
+                                    <>
                                     <button
                                         aria-label="Addtocart"
                                         className={classes.add_to_cart_btn}
@@ -197,7 +198,29 @@ const Product = props => {
                                             id={'home.add_to_cart_btn'}
                                             defaultMessage={'Add to cart'}
                                         />
+                                    </button><br/>
+                                    <button
+                                        aria-label="Addtocart"
+                                        className={classes.add_to_cart_btn}
+                                        onClick={() => {
+                                            handleAddToCart(value);
+                                            setShowAlertMsg(true);
+                                            setLoaderName(value.name);
+                                        }}
+                                    >
+                                        <FormattedMessage
+                                            id={'home.add_to_cart_btn'}
+                                            defaultMessage={'Add to project'}
+                                        />
                                     </button>
+                                    <div> 
+                            
+                                        <select className={classes.project_dropdown}>
+                                            <option value="14851" selected="selected">Hello</option>
+                                            <option value="newproject">Create a new project</option>
+                                        </select>
+                                    </div>
+                                    </>
                                 )}
                                 {value.type != 'simple' && (
                                     <Link

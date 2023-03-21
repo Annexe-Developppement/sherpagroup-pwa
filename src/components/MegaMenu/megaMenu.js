@@ -75,7 +75,7 @@ const MegaMenu = () => {
                                 ' ' +
                                 defaultClasses.haschild
                             }
-                        >
+                        > 
                             <Link
                                 to={resourceUrl('/' + v['main_category_url'])}
                             >
@@ -118,11 +118,9 @@ const MegaMenu = () => {
                                                 className={hasSubchild}
                                             >
                                                 <Link
+                                                    onClick={() => {window.location.href="/"+v1['sub_category_url']}}
                                                     to={resourceUrl(
-                                                        '/' +
-                                                            v1[
-                                                                'sub_category_url'
-                                                            ]
+                                                        '/' + v1['sub_category_url']
                                                     )}
                                                 >
                                                     {v1['sub_category_name']}
@@ -150,6 +148,7 @@ const MegaMenu = () => {
                                                                         }
                                                                     >
                                                                         <Link
+                                                                            
                                                                             to={resourceUrl(
                                                                                 '/' +
                                                                                     v2[

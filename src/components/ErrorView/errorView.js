@@ -13,7 +13,7 @@ const ErrorView = () => {
                     <div className={'col-12 col-lg-6 col-md-6 col-sm-6'}>
                         <div className={defaultClasses.not_found_left}>
                             <img
-                                src="/noProductsFound-e9n.png"
+                                src="/SherpaTech-Horz-644x_web-ed6.png"
                                 className={'img-fluid'}
                                 alt="noProductsFound"
                             />
@@ -21,18 +21,15 @@ const ErrorView = () => {
                     </div>
                     <div className={'col-12 col-lg-6 col-md-6 col-sm-6'}>
                         <div className={defaultClasses.not_found_text}>
-                            <h1>404</h1>
-                            <h3>OOPS! PAGE NOT FOUND</h3>
-                            <p>
-                                Sorry but the page you are looking for does not
-                                exist, have been removed, name changed or is
-                                temporarily unavailable.
-                            </p>
+                            
+                            <h3>Well, that doesn't look right, does it?</h3>
+                            
                             <Link to="/">Back to HomePage</Link>
                         </div>
                     </div>
                 </div>
             </div>
+            
         </div>
     );
 };
