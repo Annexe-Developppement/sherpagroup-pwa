@@ -171,12 +171,6 @@ ProductSort.defaultProps = {
             sortDirection: 'ASC'
         },
         {
-            id: 'sortItem.relevance',
-            text: 'Best Match',
-            attribute: 'relevance',
-            sortDirection: 'DESC'
-        },
-        {
             id: 'sortItem.priceAsc',
             text: 'Price: Low to High',
             attribute: 'price',

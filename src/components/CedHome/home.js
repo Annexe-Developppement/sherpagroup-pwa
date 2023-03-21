@@ -142,7 +142,7 @@ const Home = props => {
                 )}
 
                 {/* Latest product section end */}
-
+                            
                 {/* mid banner section start */}
                 {showCategoryBanners != 0 && scrollFlag && (
                     <section
@@ -167,7 +167,7 @@ const Home = props => {
                 {/* mid banner section END */}
 
                 {/* Trending product section  */}
-                {showTrendingProducts && scrollFlag && (
+                {/* {showTrendingProducts && scrollFlag && (
                     <Suspense fallback={''}>
                         <SliderProduct
                             showLinkedProduct={showTrendingProducts}
@@ -179,7 +179,7 @@ const Home = props => {
                             classes={classes}
                         />
                     </Suspense>
-                )}
+                )} */}
 
                 {/* Trending product section end */}
                             

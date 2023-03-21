@@ -20,9 +20,14 @@ export const GET_PRODUCT_DETAIL_QUERY = gql`
                     html
                 }
                 id
+                totalavailable
                 msrp_sherpa2
                 product_brand
                 productbrand
+                mtl_inventory
+                tor_inventory
+                mtlhub
+                torhub
                 media_gallery_entries {
                     id
                     label

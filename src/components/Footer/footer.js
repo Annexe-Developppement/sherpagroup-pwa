@@ -87,6 +87,7 @@ const Footer = props => {
                 </div>
             </div>
             {cookie}
+            <script src="//code.tidio.co/lkmxnhgge8hf2csbej2fog3du6bcwvdq.js"></script>
         </footer>
     );
 };
