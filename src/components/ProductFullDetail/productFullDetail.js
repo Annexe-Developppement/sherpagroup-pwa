@@ -411,7 +411,6 @@ const ProductFullDetail = (props) => {
     }
 
     function openLoginBox() {
-        //alert('Henlo');
         document.getElementById('user_account').click();
     }
 

@@ -242,7 +242,7 @@ const MegaMenu = () => {
                             defaultClasses.haschild
                         }
                     >
-                        <a href="/promotions-register">Promotions</a>
+                        <a href="/promotions">Promotions</a>
                     </li>
                 );
 
