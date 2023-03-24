@@ -98,6 +98,25 @@ const Home = props => {
                     </section>
                 )}
                 {/* mid banner section END */}
+
+                {/* features block */}
+                {showOfferBanners != 0 && scrollFlag && (
+                    <section
+                        className={
+                            defaultClasses.homepage_sections +
+                            ' ' +
+                            defaultClasses.feature_block
+                        }
+                    >
+                        <Suspense fallback={''}>
+                            <Banner
+                                identifier={offerBannersIdentifier}
+                                showBanner={showOfferBanners}
+                            />
+                        </Suspense>
+                    </section>
+                )}
+                {/* features block end */}
                 
                 {/* top category section */}
                 {showCategoryIcons != 0 && (
@@ -183,24 +202,7 @@ const Home = props => {
 
                 {/* Trending product section end */}
                             
-                {/* features block */}
-                {showOfferBanners != 0 && scrollFlag && (
-                    <section
-                        className={
-                            defaultClasses.homepage_sections +
-                            ' ' +
-                            defaultClasses.feature_block
-                        }
-                    >
-                        <Suspense fallback={''}>
-                            <Banner
-                                identifier={offerBannersIdentifier}
-                                showBanner={showOfferBanners}
-                            />
-                        </Suspense>
-                    </section>
-                )}
-                {/* features block end */}
+                
             </div>
         </React.Fragment>
     );

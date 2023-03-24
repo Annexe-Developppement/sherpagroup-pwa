@@ -491,7 +491,7 @@ const GalleryItem = props => {
                         </div>
                     ) : (
                         <>
-                        <div className={classes.boxlink}><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></div>
+                        <div className={classes.boxlink}><a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account</a></div>
                         
                         </>
                     )}

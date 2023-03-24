@@ -24,6 +24,7 @@
 }
 .categoyrpage_banner {
     margin-bottom: 20px;
+    max-width: 200px;
 }
 .categoryTitle {
     color: var(--primary-dark-color);

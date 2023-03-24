@@ -24,6 +24,7 @@ import axios from "axios";
 import { useUserContext } from '@magento/peregrine/lib/context/user';
 import { gql } from '@apollo/client';
 import { useLazyQuery, useQuery } from '@apollo/client';
+import cart from '@magento/peregrine/lib/context/cart';
 
 const FilterModal = React.lazy(() => import('../../components/FilterModal'));
 const FilterSidebar = React.lazy(() =>
@@ -313,7 +314,7 @@ const CategoryContent = props => {
                     <LinkList />
                     
                         
-                    {catId != 42 ? (
+                    {catId != 42 && catId != 382 ? (
 
                     <div className={classes.contentWrapper} >
                         {!mobileView && (

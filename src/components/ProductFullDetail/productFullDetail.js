@@ -506,9 +506,9 @@ const ProductFullDetail = (props) => {
                                     }
                                 >
                                     <span className={classes.sku_details_label}>
-                                        PART # 
+                                        <strong>PART #</strong>
                                     </span>
-                                    <span>{product && product.sku}</span>
+                                    <span><strong>{product && product.sku}</strong></span>
                                 </div>
                                 
                                 
@@ -548,7 +548,7 @@ const ProductFullDetail = (props) => {
                                     <p>Total available : {product.totalavailable}<br/>Montreal inventory : {product.mtl_inventory}<br/>Montreal hub inventory : {product.mtlhub}<br/>Toronto inventory : {product.tor_inventory}<br/>Toronto hub inventory : {product.torhub}</p>
                                     </>
                                 ) : (
-                                    <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Register or create an account</a></p>
+                                    <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account</a></p>
                                 )}
 
                                 
@@ -1077,7 +1077,7 @@ const ProductFullDetail = (props) => {
             
             {scrollFlag && (
                 <>
-                    
+                    <p>Related</p>
                     <div className={classes.h_products_wrap}>
                         <Suspense fallback={''}>
                             <LinkedProducts
