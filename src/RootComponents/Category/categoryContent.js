@@ -198,7 +198,7 @@ const CategoryContent = props => {
           }
         `;
         
-    
+    let exclude = 1;
         
     const LinkList = () => {
 
@@ -220,10 +220,18 @@ const CategoryContent = props => {
         }
 
         let childrenCount = data.categoryList.length;
+        
+
+        if(catId == 135 && !isSignedIn) {
+            exclude = 1;
+        } else {
+            exclude = 0;
+        }
 
         return (
+            
             <div className="App">
-              {data.categoryList && data.categoryList.map((e) => {
+              {exclude == 0 && data.categoryList && data.categoryList.map((e) => {
                 return (
                     <div className='row'>
                     {e.children.map((s) => {
@@ -259,23 +267,17 @@ const CategoryContent = props => {
               })}
             </div>
           );
-
-        return (
-          <div>
-            El 
-            {/* {dataArray && (
-              <>
-                 <p>DDD</p>
-                {dataArray.children.map((link) => (
-                  <p>{link.id}</p>
-
-                  
-                ))}
-              </>
-                )} */}
-          </div>
-        );
       };
+
+    function openLoginBox() {
+        document.getElementById('user_account').click();
+    }  
+
+    if(catId == 135 && !isSignedIn) {
+        exclude = 1;
+    } else {
+        exclude = 0;
+    }
     
     return (
         
@@ -304,6 +306,13 @@ const CategoryContent = props => {
                                     >Download price list</a>
                                 </div>
                             : ''}
+                            {!isSignedIn && catId == 135 ?
+                                <div>
+                                    <img src="https://sherpagroupav.com/media/wysiwyg/Sherpamotions_Logo_w-tag-icons.png" width="600" height="134"></img>
+                                    <h2>Get access to our promotions</h2>
+                                    <a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account</a>
+                                </div>
+                            : ''}
                             
                             
                         </div>
@@ -314,7 +323,7 @@ const CategoryContent = props => {
                     <LinkList />
                     
                         
-                    {catId != 42 && catId != 382 ? (
+                    {catId != 42 && catId != 382 && exclude && exclude == 0 ? (
 
                     <div className={classes.contentWrapper} >
                         {!mobileView && (
