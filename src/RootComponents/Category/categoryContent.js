@@ -323,7 +323,7 @@ const CategoryContent = props => {
                     <LinkList />
                     
                         
-                    {catId != 42 && catId != 382 && exclude && exclude == 0 ? (
+                    {catId != 42 && catId != 382 && exclude == 0 ? (
 
                     <div className={classes.contentWrapper} >
                         {!mobileView && (
