@@ -46,9 +46,9 @@
     z-index: 9;
     width: 1200px;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.1);
-    columns: 4;
-    -webkit-columns: 4;
-    -moz-columns: 4;
+    columns: 5;
+    -webkit-columns: 5;
+    -moz-columns: 5;
 }
 
 .sub_menu.lavel_2 {
