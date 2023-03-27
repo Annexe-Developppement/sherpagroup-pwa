@@ -245,7 +245,7 @@ const CategoryContent = props => {
                                 ) : (
                                     <></>
                                 )}
-                                <div className={classes.boxlink}><a href={"/"+s.url_path}>View products list</a></div> 
+                                <div className={classes.boxlink}><a href={"/"+s.url_path}>View products lists</a></div> 
                                 {categoryId==42 && s.manufacturer_link ? (
                                    <div className={classes.boxlink}><a target="_blank" href={s.manufacturer_link}>Brand website</a></div>
                                 ) : (
