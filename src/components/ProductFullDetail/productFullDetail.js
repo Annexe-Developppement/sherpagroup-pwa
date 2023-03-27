@@ -414,11 +414,17 @@ const ProductFullDetail = (props) => {
         document.getElementById('user_account').click();
     }
 
+    function goBack() {
+        //window.history.go(-1);
+        window.alert('Back'); 
+        return false;
+    }
+ 
     return (
         <Fragment>
             <div className={'container' + ' ' + classes.product_page_container}>
                 {breadcrumbs}
-                <button onclick="history.back()">Return to previous page</button>
+                <a onclick={goBack}>Return to previous page</a>
                 <Form className={classes.root}>
                     {/* product image carousel section */}
                     <section

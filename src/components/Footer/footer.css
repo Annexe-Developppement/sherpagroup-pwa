@@ -13,6 +13,12 @@
     margin-bottom: 30px;
 }
 
+@media (max-width: 600px) {
+    .newsletter_img {
+        max-width: 300px;
+    }
+}
+
 .newsletter_social img {
     margin-bottom: 30px;
     margin-left: 10px;
@@ -437,8 +443,8 @@ body[class='rtl_view'] .newsletter_input label[class='field-label-1-G'] {
     div[class='single_footer_widget contact-details'] div[class='title'],
     div[class='single_footer_widget contact-details']
         ul[class='footer_contact_info'] {
-        display: none;
-        margin: 0 !important;
+        /*display: none;*/
+        margin: 10px !important;
     }
     ul[class='usefull_links'],
     ul[class='footer_contact_info'],
@@ -452,7 +458,7 @@ body[class='rtl_view'] .newsletter_input label[class='field-label-1-G'] {
     div[class='mobile_footer'] div[class='our_info'],
     div[class='single_footer_widget contact-details']
         ul[class='footer_contact_info'] {
-        height: 0;
+        /* height: 0; */
         overflow: hidden;
         display: block;
     }
