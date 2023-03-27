@@ -274,13 +274,13 @@ const Header = props => {
                                         </span>
                                         <span title="Wishlist">
                                             {heartIcon}
-                                            <span
+                                            {/*<span
                                                 className={
                                                     classes.wishlist_counter
                                                 }
                                             >
                                                 {wishlistCount}
-                                            </span>
+                                            </span> */}
                                         </span>
                                     </Link>
                                 )}

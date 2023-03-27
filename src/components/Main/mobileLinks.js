@@ -148,9 +148,9 @@ const MobileLinks = props => {
                         title="My projects"
                     >
                         {heartIcon}
-                        <span className={headerClasses.wishlist_counter}>
+                        {/*<span className={headerClasses.wishlist_counter}>
                             {wishlistCount}
-                        </span>
+                        </span> */}
                     </span>
                     <p className={defaultClasses.images_label}>
                         <FormattedMessage

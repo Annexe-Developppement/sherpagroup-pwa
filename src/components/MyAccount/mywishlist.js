@@ -75,7 +75,9 @@ const MyWishList = props => {
     };
 
     const queryParameters = new URLSearchParams(window.location.search)
-    const wId = queryParameters.get("id")
+    const wId = queryParameters.get("id");
+
+    var qt2 = 100;
 
     useEffect(() => {
         if (
@@ -281,6 +283,7 @@ const MyWishList = props => {
                                                                         />
                                                                     </Link>
                                                                     {val.description}
+                                                                    {val.qty}
                                                                 </div>
                                                             </div>
                                                             <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
@@ -339,7 +342,7 @@ const MyWishList = props => {
                                                                 >
                                                                     <Quantity
                                                                         initialValue={
-                                                                            quantity
+                                                                            18
                                                                         }
                                                                         onValueChange={value =>
                                                                             handleSetQuantity(
@@ -420,7 +423,7 @@ const MyWishList = props => {
                                                                                             'myWishlist.moveToCartBtn'
                                                                                         }
                                                                                         defaultMessage={
-                                                                                            'Move to carts'
+                                                                                            'Move to cart'
                                                                                         }
                                                                                     />
                                                                                 </span>
