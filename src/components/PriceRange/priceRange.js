@@ -43,8 +43,8 @@ const PriceRange = props => {
                 <section className={classes.price_details_wrap}>
                     
                     <p className={classes.productPrice}>
-                        PART # <span>{product && product.sku}</span><br/>
-                        SHERPA&nbsp;&nbsp;&nbsp;
+                        PART # <span>{product && product.sku}</span></p><br/>
+                    <p className={classes.productPrice}>YOUR COST&nbsp;&nbsp;&nbsp;
                         <Price
                             currencyCode={
                                 price.minimum_price.final_price.currency

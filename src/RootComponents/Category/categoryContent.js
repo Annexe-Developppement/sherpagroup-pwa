@@ -243,18 +243,18 @@ const CategoryContent = props => {
                                 {categoryId==42 ? (
                                     <div className={classes.containerImgBox}><a href={"/"+s.url_path}><img className={classes.imgBox} src={s.image}/></a></div>
                                 ) : (
-                                    <p className={classes.emptyboxlink}>&nbsp;</p>
+                                    <></>
                                 )}
                                 <div className={classes.boxlink}><a href={"/"+s.url_path}>View products lists</a></div> 
                                 {categoryId==42 && s.manufacturer_link ? (
                                    <div className={classes.boxlink}><a target="_blank" href={s.manufacturer_link}>Brand website</a></div>
                                 ) : (
-                                    <p className={classes.emptyboxlink}>&nbsp;</p>
+                                    <></>
                                 )}
                                 {categoryId==42 && s.description && isSignedIn ? (
                                    <div className={classes.boxlink}><a target="_blank" href={"https://assets.sherpagroupav.com/pdf/"+s.description}>Price List</a></div>
                                 ) : (
-                                    <p className={classes.emptyboxlink}>&nbsp;</p>
+                                    <></>
                                 )}
                             </div>
                           </div>

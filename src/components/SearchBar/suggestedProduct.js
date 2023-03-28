@@ -52,7 +52,7 @@ const SuggestedProduct = props => {
             />
             <div className={classes.product_details_Wrap}>
             <span className={classes.name}>{name}</span>
-            <span className={classes.name}>{sku}</span>
+            <span className={classes.name}>Part #{sku}</span>
                 <span className={classes.price}>
                     <Price
                         currencyCode={price.regularPrice.amount.currency}

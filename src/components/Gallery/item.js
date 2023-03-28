@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Suspense } from 'react';
+import { QuantityPicker } from 'react-qty-picker';
 import { string, shape } from 'prop-types';
 import { Link } from 'react-router-dom';
 import { useToasts } from '@magento/peregrine';
@@ -164,12 +165,17 @@ const GalleryItem = props => {
         document.getElementById('user_account').click();
     }
 
+    
+
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
                 {discount_percent != 0 && email && (
-                    <div className={classes.priceTag}><b>{discount_percent}% discount</b></div>
+                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {item.special_to_date.slice(0, -8)}</>)}</b></div>
                 )}
+
+
+
                 <Link
                     onClick={handleLinkClick}
                     to={productLink}
@@ -196,8 +202,8 @@ const GalleryItem = props => {
                         onClick={handleLinkClick}
                         to={productLink}
                         className={classes.name}
-                    >
-                        <span>{name}</span>
+                    > 
+                        <span>{name.length > 55 ? name.substring(0, 52) + " [...]" : name}</span>
                     </Link>
                 </p>
 
@@ -211,19 +217,21 @@ const GalleryItem = props => {
                     {email ? (
                         <div> 
                             
+                            
+
                             <p className={classes.total_available}>Total available: {item.totalavailable}</p>
                             
                             
                             {final_minimum_price != final_regular_price && (
                                 <>
-                                    <p><b>Special price</b></p>
+                                    {/*<p><b>Special price</b></p>
                                     {item.special_from_date && (
                                         <p>From: {item.special_from_date.slice(0, -8)}</p>
                                     )}
                                     {item.special_to_date && (
                                         <p>To: {item.special_to_date.slice(0, -8)}</p>
-                                    )}
-                                    <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
+                                    )} */}
+                                    <b className={classes.total_available_b}>YOUR COST&nbsp;&nbsp;</b>
                                     <span className={classes.productPrice}>
                                         <Price
                                             value={(price_range.maximum_price.final_price.value)*1}
@@ -251,7 +259,7 @@ const GalleryItem = props => {
                             {final_minimum_price == final_regular_price && item.sku.substring(0, 3) != 'SA-' && (
                                 <>
                                     
-                                    <b className={classes.total_available_b}>SHERPA&nbsp;&nbsp;</b>
+                                    <b className={classes.total_available_b}>YOUR COST&nbsp;&nbsp;</b>
                                     
                                         <Price
                                             value={price_range.maximum_price.final_price.value}
@@ -265,7 +273,7 @@ const GalleryItem = props => {
                             {item.sku.substring(0, 3) == 'SA-' && (
                                 <>
                                     
-                                    <b className={classes.total_available_b}>SHERPA : See Price List</b>
+                                    <b className={classes.total_available_b}>YOUR COST : See Price List</b>
                                     
                                         
                                     
@@ -320,20 +328,30 @@ const GalleryItem = props => {
                 >
                     {email ? (
                         <div>
+                    <div className={'c'+item.id+' '+classes.qty_selector}><QuantityPicker min={1} value={1} width='65%'/></div>      
                     <div className={classes.add_to_cart_btn}>
                         {item.__typename == 'SimpleProduct' &&
                             stock_status == 'IN_STOCK' &&
                             item.options == null && (
                                 
                                     <button
+
                                         onClick={() => {
                                             setProductName(item.name),
-                                                handleAddToCart(item);
+                                            handleAddToCart({
+                                                quantity: document.querySelector('.c'+item.id).querySelector('.quantity-display').value,
+                                                item
+                                            });
                                         }}
+
+                                        /*onClick={() => {
+                                            setProductName(item.name),
+                                            handleAddToCart(item);
+                                        }} */
                                     >
                                         <FormattedMessage
                                             id={'item.add_to_cart_btn'}
-                                            defaultMessage={'Add to cart'}
+                                            defaultMessage={'Add to cart z'}
                                         />
                                     </button>
                                 
@@ -346,7 +364,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart'}
+                                        defaultMessage={'Add to cart x'}
                                     />
                                 </Link>
                             )}
@@ -357,7 +375,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart'}
+                                        defaultMessage={'Add to cart s'}
                                     />
                                 </Link>
  

@@ -68,6 +68,29 @@
     background: var(--primary-base-color);
 }
 
+
+span[class='quantity-picker'] {
+    margin-bottom: 5px;
+}
+
+button[class='quantity-modifier modifier-left'] {
+    padding: 12px;
+}
+
+button[class='quantity-modifier modifier-right'] {
+    padding: 12px;
+}
+
+button[class='quantity-modifier modifier-left']:hover {
+    background-color: #8dc74c;
+    color: white;
+}
+
+button[class='quantity-modifier modifier-right']:hover {
+    background-color: #8dc74c;
+    color: white;
+}
+
 .project_dropdown {
     width: 100%;
     margin-top: 0px;
@@ -196,6 +219,7 @@
 .product_name {
     composes: product_name from '../CedHome/home.css';
     margin: 0;
+    min-height: 50px;
 }
 .root:hover .noo_details_wrapper {
     bottom: 0;
