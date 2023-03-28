@@ -510,10 +510,10 @@ const ProductFullDetail = (props) => {
                                         classes.sku_details + ' ' + 'mb-4'
                                     }
                                 >
-                                    <span className={classes.sku_details_label}>
+                                    {/*<span className={classes.sku_details_label}>
                                         <strong>PART #</strong>
                                     </span>
-                                    <span><strong>{product && product.sku}</strong></span>
+                                    <span><strong>{product && product.sku}</strong></span>*/}
                                 </div>
                                 
                                 

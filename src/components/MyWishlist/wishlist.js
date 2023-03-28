@@ -129,7 +129,7 @@ export default function Wishlist(props) {
                             <></>
                         ) : (
                             <>
-                                <p>Included in one of your project</p>
+                                {/* <p>Included in one of your project</p> */}
                                 {/*<span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}

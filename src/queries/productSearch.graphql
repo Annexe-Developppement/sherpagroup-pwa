@@ -19,6 +19,8 @@ query productSearch(
             small_image {
                 url
             }
+            totalavailable
+            msrp_sherpa2
             url_key
             sku
             stock_status
