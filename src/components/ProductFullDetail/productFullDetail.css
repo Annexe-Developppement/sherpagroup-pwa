@@ -15,6 +15,15 @@
 }
 .produtc_right_section {
 }
+
+.stepback {
+    color: var(--primary-dark-color);
+}
+
+.stepback:hover {
+    color: var(--primary-base-color);
+}
+
 .productName {
     font-size: 20px;
     color: var(--primary-dark-color);

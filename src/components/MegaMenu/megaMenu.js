@@ -246,19 +246,6 @@ const MegaMenu = () => {
                     </li>
                 );
 
-                navItems.push(
-                    <li
-                        
-                        className={
-                            defaultClasses.item +
-                            ' ' +
-                            defaultClasses.haschild
-                        }
-                    >
-                        <a href="/education">Education</a>
-                    </li>
-                );
-
             }
 
 

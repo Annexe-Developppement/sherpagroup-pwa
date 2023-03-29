@@ -211,6 +211,7 @@ const GalleryItem = props => {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Wishlist value={item} />
                 </Suspense> 
+                
                 <div
                     className={classes.vendor_price_wrap + ' ' + classes.price}
                 >

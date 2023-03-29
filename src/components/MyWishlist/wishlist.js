@@ -47,6 +47,9 @@ export default function Wishlist(props) {
     } = addItemToWishlistTalonProps;
 
     const addtowishlist = async product_id => {
+
+        console.log('QTY : '+document.querySelector('.c'+product_id).querySelector('.quantity-display').value);
+
         await addItemToWishlist({
             product_id: product_id
         });
@@ -126,11 +129,24 @@ export default function Wishlist(props) {
                             </div>
                         )}
                         {!addedToWishlist || removeWishlistMsg ? (
-                            <></>
+                            <>
+                                <span
+                                    role="button"
+                                    className={classes.wishlist_icon_wrap}
+                                    onClick={() => addtowishlist(value.id)}
+                                    onKeyDown={() => addtowishlist(value.id)}
+                                    tabIndex={0}
+                                >
+                                    <FontAwesomeIcon
+                                        fill={addedToWishlist ? 'red' : ''}
+                                        icon={faHeart}
+                                    />
+                                </span>
+                            </>
                         ) : (
                             <>
                                 {/* <p>Included in one of your project</p> */}
-                                {/*<span
+                                <span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}
                                     onClick={() => removeFromWishlist(value.id)}
@@ -141,7 +157,7 @@ export default function Wishlist(props) {
                                         fill={addedToWishlist ? 'red' : ''}
                                         icon={faHeart}
                                     />
-                                </span> */}
+                                </span>
                             </>
                         )}
                     </section>
