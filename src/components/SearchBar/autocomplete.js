@@ -24,6 +24,7 @@ const GET_AUTOCOMPLETE_RESULTS = gql`
             items {
                 id
                 name
+                sku
                 small_image {
                     url
                 }

@@ -22,7 +22,6 @@ query productSearch(
             totalavailable
             msrp_sherpa2
             url_key
-            sku
             stock_status
             url_suffix
             ... on CustomizableProductInterface {
