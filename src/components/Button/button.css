@@ -81,6 +81,7 @@
     color: var(--primary-base-color);
     position: relative;
     background-color: var(--primary-light-color);
+    margin-bottom: 10px;
 }
 .root_highPriority::before {
     display: block;

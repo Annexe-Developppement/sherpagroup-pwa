@@ -342,6 +342,36 @@ div[class='mid-banner_image_Wrap'] img {
     position: relative;
     align-items: center;
 }
+
+.project_button {
+    text-align: center;
+    width: 18%;
+    background: #8dc74c;
+    height: 35px;
+    border-radius: 5px;
+    color: white;
+    margin-left: 2%;
+}
+
+.project_dropdown {
+    width: 100%;
+    margin-top: 0px;
+    border-radius: 3px;
+    height: 35px;
+    margin-bottom: 5px;
+    border: 2px solid #e1e1e1;
+}
+
+.project_input {
+    width: 80%;
+    margin-top: 0px;
+    border-radius: 3px;
+    height: 35px;
+    margin-bottom: 5px;
+    border: 2px solid #e1e1e1;
+}
+
+
 .add_to_cart_btn,
 .add_to_cart_btn:hover {
     background: var(--primary-base-color);
@@ -355,6 +385,7 @@ div[class='mid-banner_image_Wrap'] img {
     transition: 0.3s all;
     -webkit-transition: 0.3s all;
     -moz-transition: 0.3s all;
+    margin-bottom: 5px;
 }
 .add_to_cart_btn:hover {
     background: var(--primary-dark-color);
