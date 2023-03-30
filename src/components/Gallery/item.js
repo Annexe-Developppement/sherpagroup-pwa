@@ -165,7 +165,24 @@ const GalleryItem = props => {
         document.getElementById('user_account').click();
     }
 
-    
+    function showDiv(divId, element)
+    {
+
+        console.log(divId);
+
+        if(document.getElementById(divId)) {
+            console.log('Yip');
+            document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
+        }
+
+        
+    }
+
+    const [selectValue, setSelectValue] = React.useState("");
+    const onChange = (event) => {
+        const value = event.target.value;
+        setSelectValue(value);
+    };
 
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
@@ -502,11 +519,16 @@ const GalleryItem = props => {
 
                     {email ? (
                         <div> 
-                            
-                            <select className={classes.project_dropdown}>
-                                <option value="14851" selected="selected">Hello</option>
-                                <option value="newproject">Create a new project</option>
+                            <select onChange={onChange} className={classes.project_dropdown}>
+                                <option value="2" selected="selected">Choose a project</option>
+                                <option value="14851">Hello</option>
+                                <option value="1">Create a new project</option>
                             </select>
+                            {selectValue &&  selectValue == 1 && ( 
+                                <div id={"hidden_div"+item.id}>
+                                    <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
+                                </div>
+                             )}
                         </div>
                     ) : (
                         <>

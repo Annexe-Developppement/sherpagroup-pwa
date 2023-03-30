@@ -417,6 +417,12 @@ const ProductFullDetail = (props) => {
     function stepBack() {
         window.history.go(-1);
     }
+
+    const [selectValue, setSelectValue] = React.useState("");
+    const onChange = (event) => {
+        const value = event.target.value;
+        setSelectValue(value);
+    };
  
     return (
         <Fragment>
@@ -710,6 +716,7 @@ const ProductFullDetail = (props) => {
                                     </section>
                                 )}
                             </div>
+                            
                             {product.__typename != 'BundleProduct' && email && (
                                 <div
                                     className={
@@ -728,6 +735,7 @@ const ProductFullDetail = (props) => {
                                             message={errors.get('quantity')}
                                         />
                                     </section>
+                                    
                                     <section
                                         className={
                                             classes.cartActions +
@@ -738,6 +746,7 @@ const ProductFullDetail = (props) => {
                                         {product &&
                                             product.stock_status ==
                                                 'IN_STOCK' && (
+                                                    <>
                                                 <Button
                                                     priority="high"
                                                     type="submit"
@@ -764,6 +773,46 @@ const ProductFullDetail = (props) => {
                                                         }
                                                     />
                                                 </Button>
+
+                                                <Button
+                                                priority="high"
+                                                type="submit"
+                                                onClick={() => {
+                                                    handleAddToCart({
+                                                        quantity: document.getElementById(
+                                                            'qty'
+                                                        ).value,
+                                                        customOptionId,
+                                                        customOptionString,
+                                                        customArrayVar
+                                                    });
+                                                }}
+                                                disabled={
+                                                    isAddToCartDisabled
+                                                }
+                                                >
+                                                <FormattedMessage
+                                                    id={
+                                                        'ProductFullDetail.addToCart'
+                                                    }
+                                                    defaultMessage={
+                                                        'Add to project'
+                                                    }
+                                                />
+                                                </Button>
+                                                <div> 
+                                                    <select onChange={onChange} className={classes.project_dropdown}>
+                                                            <option value="2" selected="selected">Choose a project</option>
+                                                            <option value="14851">Hello</option>
+                                                            <option value="1">Create a new project</option>
+                                                    </select>
+                                                    {selectValue &&  selectValue == 1 && ( 
+                                                        <div id={"hidden_div"+product.id}>
+                                                            <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                </>
                                             )}
 
                                         {product &&
@@ -818,6 +867,7 @@ const ProductFullDetail = (props) => {
                                                 </div>
                                             </div>
                                         )}
+                                        
                                     </section>
 
                                     {/* <Suspense fallback={''}>
@@ -864,9 +914,13 @@ const ProductFullDetail = (props) => {
                                                     }
                                                 />
                                             </Button>
+                                            
                                         )}
                                 </section>
                             )}
+
+
+
                             {product && product.short_description && (
                                     <div>
                                         <RichText

@@ -14,7 +14,8 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { FormattedMessage, useIntl } from 'react-intl';
 import PriceRange from '../PriceRange';
 import proClasses from '../ProductFullDetail/productFullDetail.css';
-
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
+import { QuantityPicker } from 'react-qty-picker';
 const Wishlist = React.lazy(() => import('../MyWishlist/wishlist'));
 import CompareButton from '../Compare/compareButton';
 
@@ -23,7 +24,7 @@ const Product = props => {
     const { value, config, index } = props;
     const [showAlertMsg, setShowAlertMsg] = useState(false);
     const [loaderName, setLoaderName] = useState('');
-
+    const { email } = useDashboard();
     const [, { addToast }] = useToasts();
     let productUrlSuffix = '';
     var image = resourceUrl(value['image'], {
@@ -82,6 +83,18 @@ const Product = props => {
     if (config.product_url_suffix && config.product_url_suffix != 'null') {
         productUrlSuffix = config.product_url_suffix;
     }
+
+    const [selectValue, setSelectValue] = React.useState("");
+    const onChange = (event) => {
+        const value = event.target.value;
+        setSelectValue(value);
+    };
+
+    function openLoginBox() {
+        //alert('Henlo');
+        document.getElementById('user_account').click();
+    }
+
     return (
         <div key={index} className="item">
             <div className={defaultClasses.products_grid_item}>
@@ -115,12 +128,15 @@ const Product = props => {
                                         value['urlkey'] + productUrlSuffix
                                     )}
                                 >
-                                    {value.name}
+                                    <span>{value.name.length > 55 ? value.name.substring(0, 52) + " [...]" : value.name}</span>
+                                    
                                 </Link>
                             </h3>
                             {/* <p className={defaultClasses.vendor_price_wrap}>
                 <span className={defaultClasses.price}>{value.price}</span>
               </p> */}
+
+                            {email && (
                             <div className={defaultClasses.vendor_price_wrap}>
                                 <div className={defaultClasses.price}>
                                     <PriceRange
@@ -131,6 +147,7 @@ const Product = props => {
                                     />
                                 </div>
                             </div>
+                            )}
                             {false && (
                                 <div
                                     className={defaultClasses.colors_stars_wrap}
@@ -185,6 +202,12 @@ const Product = props => {
                             <div className={defaultClasses.add_to_cart_Wrap}>
                                 {value.type == 'simple' && (
                                     <>
+                                    
+                                    
+                                    {email ? (
+
+                                        <div> 
+                                        <div className={'c'+value.id+' '+classes.qty_selector}><QuantityPicker min={1} value={1} width='65%'/></div> 
                                     <button
                                         aria-label="Addtocart"
                                         className={classes.add_to_cart_btn}
@@ -198,7 +221,8 @@ const Product = props => {
                                             id={'home.add_to_cart_btn'}
                                             defaultMessage={'Add to cart'}
                                         />
-                                    </button><br/>
+                                    </button>
+
                                     <button
                                         aria-label="Addtocart"
                                         className={classes.add_to_cart_btn}
@@ -213,13 +237,25 @@ const Product = props => {
                                             defaultMessage={'Add to project'}
                                         />
                                     </button>
-                                    <div> 
-                            
-                                        <select className={classes.project_dropdown}>
-                                            <option value="14851" selected="selected">Hello</option>
-                                            <option value="newproject">Create a new project</option>
-                                        </select>
-                                    </div>
+
+                                            <select onChange={onChange} className={classes.project_dropdown}>
+                                                <option value="2" selected="selected">Choose a project</option>
+                                                <option value="14851">Hello</option>
+                                                <option value="1">Create a new project</option>
+                                            </select>
+                                            {selectValue &&  selectValue == 1 && ( 
+                                                <div id={"hidden_div"+value.id}>
+                                                    <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
+                                                </div>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <>
+                                        <div className={classes.boxlink}><a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account</a></div>
+                                        
+                                        </>
+                                    )}
+
                                     </>
                                 )}
                                 {value.type != 'simple' && (
