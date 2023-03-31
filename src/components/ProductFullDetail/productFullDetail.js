@@ -438,59 +438,7 @@ const ProductFullDetail = (props) => {
                     >
                         <div className={classes.imageCarousel_inner}>
                             <Carousel images={mediaGalleryEntries} />
-                            {/* wishlist section */}
-                            {isSignedIn && (
-                                <div className={classes.wishlist_carousel_Wrap}>
-                                    <section
-                                        className={
-                                            addedToWishlist || removeWishlistMsg
-                                                ? classes.wishlist_addition +
-                                                  ' ' +
-                                                  classes.wishlist_added
-                                                : classes.wishlist_addition
-                                        }
-                                    >
-                                        {!addedToWishlist ||
-                                        removeWishlistMsg ? (
-                                            <button
-                                                className={
-                                                    classes.wishlist_icon_wrap
-                                                }
-                                                onClick={() =>
-                                                    addtowishlist(product)
-                                                }
-                                            >
-                                                <FontAwesomeIcon
-                                                    fill={
-                                                        addedToWishlist
-                                                            ? 'red'
-                                                            : ''
-                                                    }
-                                                    icon={faHeart}
-                                                />
-                                            </button>
-                                        ) : (
-                                            <button
-                                                className={
-                                                    classes.wishlist_icon_wrap
-                                                }
-                                                onClick={() =>
-                                                    removeFromWishlist(product)
-                                                }
-                                            >
-                                                <FontAwesomeIcon
-                                                    fill={
-                                                        addedToWishlist
-                                                            ? 'red'
-                                                            : ''
-                                                    }
-                                                    icon={faHeart}
-                                                />
-                                            </button>
-                                        )}
-                                    </section>
-                                </div>
-                            )}
+                            
                         </div>
                     </section>
                     {/* product right section */}
@@ -554,7 +502,7 @@ const ProductFullDetail = (props) => {
                                     )}
 
                                     
-                                    <p>Total available : {product.totalavailable}<br/>Montreal inventory : {product.mtl_inventory}<br/>Montreal hub inventory : {product.mtlhub}<br/>Toronto inventory : {product.tor_inventory}<br/>Toronto hub inventory : {product.torhub}</p>
+                                    <p className={classes.total_available}>Total available : {product.totalavailable}</p><p>Montreal inventory : {product.mtl_inventory}<br/>Montreal hub inventory : {product.mtlhub}<br/>Toronto inventory : {product.tor_inventory}<br/>Toronto hub inventory : {product.torhub}</p>
                                     </>
                                 ) : (
                                     <p><a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account</a></p>
@@ -725,7 +673,15 @@ const ProductFullDetail = (props) => {
                                         classes.shadow_section
                                     }
                                 >
-                                    <section className={classes.quantity}>
+                                    
+                                    
+                                    <section
+                                        className={
+                                            classes.cartActions +
+                                            ' ' +
+                                            classes.loader_case_wrapp
+                                        }
+                                    > 
                                         <QuantityFields
                                             itemId={'qty'}
                                             classes={{
@@ -734,15 +690,6 @@ const ProductFullDetail = (props) => {
                                             min={1}
                                             message={errors.get('quantity')}
                                         />
-                                    </section>
-                                    
-                                    <section
-                                        className={
-                                            classes.cartActions +
-                                            ' ' +
-                                            classes.loader_case_wrapp
-                                        }
-                                    >
                                         {product &&
                                             product.stock_status ==
                                                 'IN_STOCK' && (
@@ -774,32 +721,20 @@ const ProductFullDetail = (props) => {
                                                     />
                                                 </Button>
 
-                                                <Button
-                                                priority="high"
-                                                type="submit"
-                                                onClick={() => {
-                                                    handleAddToCart({
-                                                        quantity: document.getElementById(
-                                                            'qty'
-                                                        ).value,
-                                                        customOptionId,
-                                                        customOptionString,
-                                                        customArrayVar
-                                                    });
-                                                }}
-                                                disabled={
-                                                    isAddToCartDisabled
-                                                }
-                                                >
-                                                <FormattedMessage
-                                                    id={
-                                                        'ProductFullDetail.addToCart'
-                                                    }
-                                                    defaultMessage={
-                                                        'Add to project'
-                                                    }
-                                                />
-                                                </Button>
+                                                {/* wishlist section */}
+                                                {isSignedIn && (
+                                                    <button
+                                                        className={
+                                                            classes.add_to_project
+                                                        }
+                                                        onClick={() =>
+                                                            addtowishlist(product)
+                                                        }
+                                                    >
+                                                    Add to project 
+                                                    </button>
+                                                )}
+
                                                 <div> 
                                                     <select onChange={onChange} className={classes.project_dropdown}>
                                                             <option value="2" selected="selected">Choose a project</option>

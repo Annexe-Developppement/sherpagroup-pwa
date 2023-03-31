@@ -116,10 +116,7 @@ const Product = props => {
                                 />
                             </Link>
 
-                            {/* wishlist section */}
-                            <Suspense fallback={''}>
-                                <Wishlist value={value} />
-                            </Suspense>
+                            
                         </div>
                         <div className={defaultClasses.noo_details_wrapper}>
                             <h3 className={defaultClasses.product_name}>
@@ -223,7 +220,7 @@ const Product = props => {
                                         />
                                     </button>
 
-                                    <button
+                                    {/*<button
                                         aria-label="Addtocart"
                                         className={classes.add_to_cart_btn}
                                         onClick={() => {
@@ -236,7 +233,12 @@ const Product = props => {
                                             id={'home.add_to_cart_btn'}
                                             defaultMessage={'Add to project'}
                                         />
-                                    </button>
+                                    </button> */}
+
+                                            {/* wishlist section */}
+                                            <Suspense fallback={''}>
+                                                <Wishlist value={value} />
+                                            </Suspense>
 
                                             <select onChange={onChange} className={classes.project_dropdown}>
                                                 <option value="2" selected="selected">Choose a project</option>

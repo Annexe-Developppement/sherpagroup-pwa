@@ -251,10 +251,10 @@ const MyWishList = props => {
                                                     if(val.description==wId) {
                                                     return (
 
-                                                        <div>
+                                                        
                                                             <div className='row'>
 
-                                                            <div className='col-lg-2 col-md-6 col-sm-6 col-xs-12 about-us'>
+                                                            <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12 about-us'>
                                                                 <div
                                                                         className={
                                                                             classes.product_img
@@ -461,7 +461,7 @@ const MyWishList = props => {
 
                                                             </div>
                                                         
-                                                        </div>
+                                                        
                                                     );
                                                     }
                                                 })}

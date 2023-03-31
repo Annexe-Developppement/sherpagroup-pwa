@@ -44,6 +44,19 @@
     width: 30px;
     height: 30px;
 }
+.add_to_project {
+    background: #007637;
+    border-radius: 5px;
+    padding: 10px 10px;
+    display: block;
+    min-height: 40px;
+    line-height: 20px;
+    width: 100%;
+    color: white;
+}
+.add_to_project:hover {
+    background: black;
+}
 .loader_Wrap {
     width: 30px;
     height: 30px;

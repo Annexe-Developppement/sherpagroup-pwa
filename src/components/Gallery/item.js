@@ -187,7 +187,7 @@ const GalleryItem = props => {
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
-                {discount_percent != 0 && email && (
+                {discount_percent > 0 && email && (
                     <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {item.special_to_date.slice(0, -8)}</>)}</b></div>
                 )}
 
@@ -213,7 +213,15 @@ const GalleryItem = props => {
                 </Link>
             </div>
             <div className={classes.noo_details_wrapper}>
-                <p>Part # {item.sku}</p>
+                <p className={classes.product_name}>
+                    <Link
+                        onClick={handleLinkClick}
+                        to={productLink}
+                        className={classes.name}
+                    > 
+                        Part # {item.sku}
+                    </Link>
+                </p>
                 <p className={classes.product_name}>
                     <Link
                         onClick={handleLinkClick}
@@ -224,10 +232,7 @@ const GalleryItem = props => {
                     </Link>
                 </p>
 
-                {/* wishlist section */}
-                <Suspense fallback={<div>Loading...</div>}>
-                    <Wishlist value={item} />
-                </Suspense> 
+                
                 
                 <div
                     className={classes.vendor_price_wrap + ' ' + classes.price}
@@ -369,7 +374,7 @@ const GalleryItem = props => {
                                     >
                                         <FormattedMessage
                                             id={'item.add_to_cart_btn'}
-                                            defaultMessage={'Add to cart z'}
+                                            defaultMessage={'Add to cart'}
                                         />
                                     </button>
                                 
@@ -437,17 +442,10 @@ const GalleryItem = props => {
                             item.options == null && (
                                 <div>
                                     
-                                    <button
-                                        onClick={() => {
-                                            setProductName(item.name),
-                                                handleAddToCart(item);
-                                        }}
-                                    >
-                                        <FormattedMessage
-                                            id={'item.add_to_cart_btn'}
-                                            defaultMessage={'Add to project'}
-                                        />
-                                    </button>
+                                    {/* wishlist section */}
+                                    <Suspense fallback={<div>Loading...</div>}>
+                                        <Wishlist value={item} />
+                                    </Suspense> 
                                     
                                 </div>
                                 
