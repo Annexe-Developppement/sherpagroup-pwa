@@ -130,7 +130,14 @@ export default function Wishlist(props) {
                         )}
                         {!addedToWishlist || removeWishlistMsg ? (
                             <>
-                                <span
+                                <button
+                                role="button"
+                                className={classes.add_to_project}
+                                onClick={() => addtowishlist(value.id)}
+                                onKeyDown={() => addtowishlist(value.id)}
+                                tabIndex={0}
+                                >Add to project</button>
+                                {/* <span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}
                                     onClick={() => addtowishlist(value.id)}
@@ -141,11 +148,24 @@ export default function Wishlist(props) {
                                         fill={addedToWishlist ? 'red' : ''}
                                         icon={faHeart}
                                     />
-                                </span>
+                                </span> */}
                             </>
                         ) : (
                             <>
-                                {/* <p>Included in one of your project</p> */}
+                                <button
+                                role="button"
+                                className={classes.add_to_project}
+                                onClick={() => addtowishlist(value.id)}
+                                onKeyDown={() => addtowishlist(value.id)}
+                                tabIndex={0}
+                                >Add to project</button>
+                                {/*<button
+                                role="button"
+                                className={classes.add_to_project}
+                                onClick={() => removeFromWishlist(value.id)}
+                                onKeyDown={() => removeFromWishlist(value.id)}
+                                tabIndex={0}
+                                >Add to project</button>
                                 <span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}
@@ -157,7 +177,7 @@ export default function Wishlist(props) {
                                         fill={addedToWishlist ? 'red' : ''}
                                         icon={faHeart}
                                     />
-                                </span>
+                                </span> */}
                             </>
                         )}
                     </section>
