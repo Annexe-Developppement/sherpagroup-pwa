@@ -716,7 +716,7 @@ const ProductFullDetail = (props) => {
                                                             'ProductFullDetail.addToCart'
                                                         }
                                                         defaultMessage={
-                                                            'Add to Cart'
+                                                            'ADD TO CART'
                                                         }
                                                     />
                                                 </Button>
@@ -731,7 +731,7 @@ const ProductFullDetail = (props) => {
                                                             addtowishlist(product)
                                                         }
                                                     >
-                                                    Add to project 
+                                                    ADD TO PROJECT
                                                     </button>
                                                 )}
 

@@ -226,7 +226,7 @@ function Product(props) {
                             >
                                 <FormattedMessage
                                     id={'item.add_to_cart_btn'}
-                                    defaultMessage={'Add to cart'}
+                                    defaultMessage={'ADD TO CART'}
                                 />
                             </button>
                         )}
@@ -248,7 +248,7 @@ function Product(props) {
                             >
                                 <FormattedMessage
                                     id={'item.add_to_cart_btn_SimpleProduct'}
-                                    defaultMessage={'Add to cart'}
+                                    defaultMessage={'ADD TO CART'}
                                 />
                             </Link>
                         )}
@@ -269,7 +269,7 @@ function Product(props) {
                             >
                                 <FormattedMessage
                                     id={'item.add_to_cart_btn_SimpleProduct'}
-                                    defaultMessage={'Add to cart'}
+                                    defaultMessage={'ADD TO CART'}
                                 />
                             </Link>
                         )}
@@ -289,7 +289,7 @@ function Product(props) {
                         >
                             <FormattedMessage
                                 id={'item.add_to_cart_btn_ConfigurableProduct'}
-                                defaultMessage={'Add to cart'}
+                                defaultMessage={'ADD TO CART'}
                             />
                         </Link>
                     )}

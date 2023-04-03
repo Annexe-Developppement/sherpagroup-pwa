@@ -188,7 +188,7 @@ const GalleryItem = props => {
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
                 {discount_percent > 0 && email && (
-                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {item.special_to_date.slice(0, -8)}</>)}</b></div>
+                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {(item.special_to_date.slice(0, -8))}</>)}</b></div>
                 )}
 
 
@@ -374,7 +374,7 @@ const GalleryItem = props => {
                                     >
                                         <FormattedMessage
                                             id={'item.add_to_cart_btn'}
-                                            defaultMessage={'Add to cart'}
+                                            defaultMessage={'ADD TO CART'}
                                         />
                                     </button>
                                 
@@ -387,7 +387,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart x'}
+                                        defaultMessage={'ADD TO CART'}
                                     />
                                 </Link>
                             )}
@@ -398,7 +398,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart s'}
+                                        defaultMessage={'ADD TO CART'}
                                     />
                                 </Link>
  
@@ -409,7 +409,7 @@ const GalleryItem = props => {
                                     id={
                                         'item.add_to_cart_btn_ConfigurableProduct'
                                     }
-                                    defaultMessage={'Add to cart'}
+                                    defaultMessage={'ADD TO CART'}
                                 />
                             </Link>
                         )}
@@ -458,7 +458,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart'}
+                                        defaultMessage={'ADD TO CART'}
                                     />
                                 </Link>
                             )}
@@ -469,7 +469,7 @@ const GalleryItem = props => {
                                         id={
                                             'item.add_to_cart_btn_SimpleProduct'
                                         }
-                                        defaultMessage={'Add to cart'}
+                                        defaultMessage={'ADD TO CART'}
                                     />
                                 </Link>
  
@@ -480,7 +480,7 @@ const GalleryItem = props => {
                                     id={
                                         'item.add_to_cart_btn_ConfigurableProduct'
                                     }
-                                    defaultMessage={'Add to cart'}
+                                    defaultMessage={'ADD TO CART'}
                                 />
                             </Link>
                         )}

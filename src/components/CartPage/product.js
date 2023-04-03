@@ -156,7 +156,7 @@ const Product = props => {
                             setLoaderName(value.name);
                         }}
                     >
-                        Add to cart
+                        ADD TO CART
                     </button>
                 )}
                 {value.__typename != 'SimpleProduct' && (
@@ -168,7 +168,7 @@ const Product = props => {
                             cartClasses.add_to_cart_btn
                         }
                     >
-                        Add to cart
+                        ADD TO CART
                     </Link>
                 )}
                 {isAddingItem && value.name == loaderName && (

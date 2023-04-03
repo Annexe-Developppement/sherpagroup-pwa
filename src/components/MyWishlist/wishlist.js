@@ -136,7 +136,7 @@ export default function Wishlist(props) {
                                 onClick={() => addtowishlist(value.id)}
                                 onKeyDown={() => addtowishlist(value.id)}
                                 tabIndex={0}
-                                >Add to project</button>
+                                >ADD TO PROJECT</button>
                                 {/* <span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}
@@ -158,14 +158,14 @@ export default function Wishlist(props) {
                                 onClick={() => addtowishlist(value.id)}
                                 onKeyDown={() => addtowishlist(value.id)}
                                 tabIndex={0}
-                                >Add to project</button>
+                                >ADD TO PROJECT</button>
                                 {/*<button
                                 role="button"
                                 className={classes.add_to_project}
                                 onClick={() => removeFromWishlist(value.id)}
                                 onKeyDown={() => removeFromWishlist(value.id)}
                                 tabIndex={0}
-                                >Add to project</button>
+                                >ADD TO PROJECT</button>
                                 <span
                                     role="button"
                                     className={classes.wishlist_icon_wrap}
