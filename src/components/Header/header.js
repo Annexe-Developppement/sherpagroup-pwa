@@ -119,6 +119,9 @@ const Header = props => {
 
     } 
 
+    function openLoginBox() {
+        document.getElementById('user_account').click();
+    }
 
     return (
         <Fragment>
@@ -141,11 +144,10 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname}</p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 ) : (
-                                    <p className={classes.offer_message_text}>Create your account to get your personalized price!</p>
+                                    <p className={classes.offer_message_text}><a className={classes.contactus} onClick={openLoginBox}>Create your account to get your personalized price!</a> | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 )}
-                               
                                 {/* <FormattedMessage
                                     id={'header.offer_message_text'}
                                     defaultMessage={

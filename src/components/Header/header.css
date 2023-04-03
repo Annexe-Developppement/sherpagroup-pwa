@@ -19,7 +19,13 @@
     color: var(--primary-light-color);
     font-size: 14px;
 }
-
+.contactus {
+    color:white;
+    cursor: pointer;
+}
+.contactus:hover {
+    color: var(--primary-base-color);
+}
 /* middle header */
 .root {
     background-color: var(--primary-mid-header-color);

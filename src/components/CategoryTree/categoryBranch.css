@@ -10,4 +10,5 @@
     composes: text from './categoryLeaf.css';
     font-size: 14px;
     color: var(--primary-dark-color);
+    font-weight: 900;
 }

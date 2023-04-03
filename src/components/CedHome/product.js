@@ -216,7 +216,7 @@ const Product = props => {
                                     >
                                         <FormattedMessage
                                             id={'home.add_to_cart_btn'}
-                                            defaultMessage={'Add to cart'}
+                                            defaultMessage={'ADD TO CART'}
                                         />
                                     </button>
 
@@ -231,7 +231,7 @@ const Product = props => {
                                     >
                                         <FormattedMessage
                                             id={'home.add_to_cart_btn'}
-                                            defaultMessage={'Add to project'}
+                                            defaultMessage={'ADD TO PROJECT'}
                                         />
                                     </button> */}
 
@@ -269,7 +269,7 @@ const Product = props => {
                                     >
                                         <FormattedMessage
                                             id={'home.add_to_cart_btn'}
-                                            defaultMessage={'Add to cart'}
+                                            defaultMessage={'ADD TO CART'}
                                         />
                                     </Link>
                                 )}

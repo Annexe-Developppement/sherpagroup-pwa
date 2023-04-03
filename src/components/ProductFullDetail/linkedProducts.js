@@ -305,7 +305,7 @@ const LinkedProducts = props => {
                                                                                                 'linkedProduct.add_to_cart_btn'
                                                                                             }
                                                                                             defaultMessage={
-                                                                                                'Add to cart'
+                                                                                                'ADD TO CART'
                                                                                             }
                                                                                         />
                                                                                     </button>
@@ -325,7 +325,7 @@ const LinkedProducts = props => {
                                                                                     >
                                                                                         <FormattedMessage
                                                                                             id="linkedProduct.add_to_cart_btn"
-                                                                                            defaultMessage="Add to cart"
+                                                                                            defaultMessage="ADD TO CART"
                                                                                         />
                                                                                     </Link>
                                                                                 )}

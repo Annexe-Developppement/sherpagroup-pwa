@@ -371,6 +371,31 @@ div[class='mid-banner_image_Wrap'] img {
     border: 2px solid #e1e1e1;
 }
 
+.boxlink {
+    text-align: center;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+}
+
+.boxlink a {
+    width: 100%;
+    border: 2px solid var(--primary-base-color);
+    color: white !important;
+    padding: 10px 10px;
+    border-radius: 4px;
+    margin-top: 5px;
+    display: inline-block;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+    background: var(--primary-base-color);
+}
 
 .add_to_cart_btn,
 .add_to_cart_btn:hover {
