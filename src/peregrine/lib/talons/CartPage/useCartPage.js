@@ -32,6 +32,8 @@ export const useCartPage = props => {
     const [{ isSignedIn }] = useUserContext();
     const [{ cartId }] = useCartContext();
 
+    console.log('CART ID : '+cartId);
+
     const [isCartUpdating, setIsCartUpdating] = useState(false);
 
     const { called, data, loading } = useQuery(getCartDetails, {

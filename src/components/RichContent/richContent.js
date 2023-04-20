@@ -33,7 +33,7 @@ const RichContent = props => {
     }
 
     return (
-        <div className={classes.root} dangerouslySetInnerHTML={toHTML(html)} />
+        <div className={classes.root} dangerouslySetInnerHTML={toHTML(html)}/>
     );
 };
 

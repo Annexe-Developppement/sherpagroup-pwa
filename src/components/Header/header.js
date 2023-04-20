@@ -96,7 +96,7 @@ const Header = props => {
 
     
     
-    async function getUser() {
+    /* async function getUser() {
         try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
         
         headers: { accept: 'application/json' }, });
@@ -117,7 +117,7 @@ const Header = props => {
 
     if(is_approved==1) {
 
-    } 
+    } */
 
     function openLoginBox() {
         document.getElementById('user_account').click();

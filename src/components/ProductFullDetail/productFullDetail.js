@@ -272,9 +272,11 @@ const ProductFullDetail = (props) => {
         }
     }
 
+  
     const addtowishlist = async (product) => {
         await addItemToWishlist({
-            product_id: product.id
+            product_id: parseInt(product.id+'00'+document.querySelector('#qty').value)
+            // document.querySelector('#qty').value
         });
         setAddedWishlistMsg(true);
     };
