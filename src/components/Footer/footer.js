@@ -73,6 +73,7 @@ const Footer = props => {
         );
     }
 
+
     return (
         <footer className={classes.root}>
             <NewsLetter />
