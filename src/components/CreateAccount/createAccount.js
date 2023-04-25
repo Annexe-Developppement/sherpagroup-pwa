@@ -83,16 +83,41 @@ const CreateAccount = props => {
 
     return (
         <div className={signClasses.root}>
+             <div className='row'>
+                <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                    <h2 className={signClasses.title}>
+                        <FormattedMessage
+                            id={'createAccount.title'}
+                            defaultMessage={`Create New Customer Account`}
+                        />
+                    </h2>
+                </div>
+                <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
+                    <div className={'text-right'}>
+                        <span
+                            role="button"
+                            onClick={handleTriggerClick}
+                            onKeyDown={handleTriggerClick}
+                            tabIndex={0}
+                            className={signClasses.close}
+                        >
+                            {clearIcon}
+                        </span>
+                    </div>
+                </div>
+             </div>
+            <div className='row'>
+            <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12 about-us'>
+            
+            <iframe id="JotFormIFrame-230886199517066" src="https://form.jotform.com/230886199517066" style={{width:"100%",height:"700px",border:0}}> </iframe>
+            </div>
+            </div>
             <div className='row'>
             <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
               
-                <h2 className={signClasses.title}>
-                    <FormattedMessage
-                        id={'createAccount.title'}
-                        defaultMessage={`Create New Customer Account`}
-                    />
-                </h2>
-                <Form
+               
+                   
+                 {/* <Form
                     className={classes.root}
                     initialValues={initialValues}
                     onSubmit={handleSubmit}
@@ -170,7 +195,7 @@ const CreateAccount = props => {
                         ])}
                         validateOnBlur
                     />
-                    {/* <div className={classes.subscribe}>
+                     <div className={classes.subscribe}>
                         <Checkbox
                             field="subscribe"
                             label={formatMessage({
@@ -191,25 +216,14 @@ const CreateAccount = props => {
                                 defaultMessage: 'Allow remote shopping assistance'
                             })}
                         />
-                    </div>*/}
+                    </div>
                     
-                </Form>
+                </Form> */}
                 
             </div>
             <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 about-us'>
-                <div className={'text-right'}>
-                    <span
-                        role="button"
-                        onClick={handleTriggerClick}
-                        onKeyDown={handleTriggerClick}
-                        tabIndex={0}
-                        className={signClasses.close}
-                    >
-                        {clearIcon}
-                    </span>
-                </div>
                 
-                <Form
+                {/*<Form
                     className={classes.root}
                     initialValues={initialValues}
                     onSubmit={handleSubmit}
@@ -285,7 +299,7 @@ const CreateAccount = props => {
                             validateOnBlur
                         />
                     </Field>
-                    {/* <div className={classes.subscribe}>
+                    <div className={classes.subscribe}>
                         <Checkbox
                             field="subscribe"
                             label={formatMessage({
@@ -306,9 +320,9 @@ const CreateAccount = props => {
                                 defaultMessage: 'Allow remote shopping assistance'
                             })}
                         />
-                    </div>*/}
+                    </div>
                     <div className={classes.actions}>{submitButton}</div>
-                </Form>
+                </Form> */}
                 
                 
             </div>
