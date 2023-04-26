@@ -108,8 +108,9 @@ const CreateAccount = props => {
              </div>
             <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12 about-us'>
-            <a href="javascript:void( window.open( 'https://form.jotform.com/230886199517066', 'blank', 'scrollbars=yes, toolbar=no, width=700, height=500' ) ) "> Sherpa Dealer and Website Registration </a>
-            <iframe id="JotFormIFrame-230886199517066" src="//form.jotform.com/230886199517066" style={{width:"100%",height:"700px",border:0}}> </iframe>
+            
+                 <iframe id="JotFormIFrame-230886199517066" title="Sherpa Dealer and Website Registration"  src="https://form.jotform.com/230886199517066" frameborder="0" > </iframe> 
+            
             </div>
             </div>
             <div className='row'>
