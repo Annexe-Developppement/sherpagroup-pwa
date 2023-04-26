@@ -119,7 +119,7 @@ const Product = props => {
                             
                         </div>
                         <div className={defaultClasses.noo_details_wrapper}>
-                            <h3 className={defaultClasses.product_name}>
+                            <h3 className={defaultClasses.product_name} style={{"min-height":"50px"}}>
                                 <Link
                                     to={resourceUrl(
                                         value['urlkey'] + productUrlSuffix

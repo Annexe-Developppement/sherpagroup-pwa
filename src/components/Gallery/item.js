@@ -184,11 +184,13 @@ const GalleryItem = props => {
         setSelectValue(value);
     };
 
+    let discount_date = new Date(item.special_to_date);
+
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
                 {discount_percent > 0 && email && (
-                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {(item.special_to_date.slice(0, -8))}</>)}</b></div>
+                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {(discount_date.toDateString())}</>)}</b></div>
                 )}
 
 
