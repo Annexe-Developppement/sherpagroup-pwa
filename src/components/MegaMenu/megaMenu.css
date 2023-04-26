@@ -51,6 +51,13 @@
     -moz-columns: 5;
 }
 
+.col1 {
+    columns: 1 !important;
+    -webkit-columns: 1 !important;
+    -moz-columns: 1 !important;
+    width: 200px !important;
+}
+
 .sub_menu.lavel_2 {
     columns: unset !important;
     -webkit-columns: unset !important;
