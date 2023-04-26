@@ -68,5 +68,3 @@ veniaStaticIncludes:
     inline: "./cenia-static"
 
 status: veniaResponse.status
-headers: veniaResponse.headers
-body: veniaResponse.body
