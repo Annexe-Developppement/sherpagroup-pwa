@@ -22,6 +22,10 @@ import AssignToCustomerMutation from '../../queries/assignCompareListToCustomer.
 import Icon from '../Icon';
 import { X as ClearIcon } from 'react-feather';
 
+function openJotForm() {
+    window.open( 'https://form.jotform.com/230886199517066', 'blank', 'scrollbars=yes, toolbar=no, width=700, height=500' );
+}
+
 const clearIcon = <Icon src={ClearIcon} size={30} />;
 
 const SignIn = props => {
@@ -66,6 +70,8 @@ const SignIn = props => {
     const forgotPasswordClasses = {
         root: classes.forgotPasswordButton
     };
+
+    
 
     return (
         <div>
@@ -162,8 +168,8 @@ const SignIn = props => {
                                     />
                                 </p>
                                 <div className={classes.buttonsContainer}>
-                                <a href="javascript:void( window.open( 'https://form.jotform.com/230886199517066', 'blank', 'scrollbars=yes, toolbar=no, width=700, height=500' ) ) "> Sherpa Dealer and Website Registration </a>
-                                    <Button
+                                    <a className={classes.signup_button + ' ' + classes.link_button} href="/new-user-account">Create an Account</a>
+                                    {/*<Button
                                         className={classes.signup_button}
                                         priority="normal"
                                         type="button"
@@ -173,7 +179,7 @@ const SignIn = props => {
                                             id="signIn.signup_button"
                                             defaultMessage={'Create an Account'}
                                         />
-                                    </Button>
+                                    </Button> */}
                                 </div>
                             </div>
                         </div>

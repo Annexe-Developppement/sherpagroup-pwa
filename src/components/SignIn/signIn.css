@@ -70,6 +70,13 @@
     margin: 10px 0 15px 0;
     color: var(--primary-text-color);
 }
+
+.link_button {
+    text-align: center;
+    color: black;
+    line-height: 35px;
+}
+
 .signup_button {
     min-width: 100% !important;
     border: 1px solid var(--primary-dark-color);
