@@ -41,7 +41,7 @@ staticFromRoot:
         cache-control:
           when:
               - matches: env.NODE_ENV
-                pattern: 'production'
+                pattern: 'development'
                 use:
                   inline: public, max-age=604800
           default:
@@ -68,3 +68,5 @@ veniaStaticIncludes:
     inline: "./cenia-static"
 
 status: veniaResponse.status
+headers: veniaResponse.headers
+body: veniaResponse.body
