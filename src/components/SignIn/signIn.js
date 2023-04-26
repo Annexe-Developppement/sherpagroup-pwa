@@ -162,6 +162,7 @@ const SignIn = props => {
                                     />
                                 </p>
                                 <div className={classes.buttonsContainer}>
+                                <a href="javascript:void( window.open( 'https://form.jotform.com/230886199517066', 'blank', 'scrollbars=yes, toolbar=no, width=700, height=500' ) ) "> Sherpa Dealer and Website Registration </a>
                                     <Button
                                         className={classes.signup_button}
                                         priority="normal"
