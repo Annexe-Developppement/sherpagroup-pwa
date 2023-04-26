@@ -82,6 +82,13 @@ const CreateAccount = props => {
         </Button>
     );
 
+    var source = document.getElementById("formJot");
+    document.getElementById("newJot").appendChild(source);
+
+    
+
+    
+
     return (
         <div className={signClasses.root}>
              <div className='row'>
@@ -110,7 +117,8 @@ const CreateAccount = props => {
             <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12 about-us'>
             
-                
+                <div id='newJot'></div>
+
             </div>
             </div>
             <div className='row'>
