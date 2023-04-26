@@ -171,7 +171,7 @@ const SignIn = props => {
                                 
   
                                     <a className={classes.signup_button + ' ' + classes.link_button} href="/new-user-account">Create an Account</a>
-                                    {/*<Button
+                                    <Button
                                         className={classes.signup_button}
                                         priority="normal"
                                         type="button"
@@ -181,7 +181,7 @@ const SignIn = props => {
                                             id="signIn.signup_button"
                                             defaultMessage={'Create an Account'}
                                         />
-                                    </Button> */}
+                                    </Button>
                                 </div>
                             </div>
                         </div>
