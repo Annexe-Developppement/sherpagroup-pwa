@@ -43,7 +43,7 @@ staticFromRoot:
               - matches: env.NODE_ENV
                 pattern: 'production'
                 use:
-                  inline: no-cache, no-store, must-revalidate
+                  inline: public, max-age=604800
           default:
               inline: no-cache, no-store, must-revalidate
     body:
