@@ -32,6 +32,7 @@ import { X as ClearIcon } from 'react-feather';
 const clearIcon = <Icon src={ClearIcon} size={30} />;
 
 const CreateAccount = props => {
+
     const { handleTriggerClick, onCancel } = props;
     const [isChecked, setIsChecked] = useState(false);
     const { formatMessage } = useIntl();
@@ -109,8 +110,7 @@ const CreateAccount = props => {
             <div className='row'>
             <div className='col-lg-12 col-md-12 col-sm-12 col-xs-12 about-us'>
             
-                 <iframe id="JotFormIFrame-230886199517066" title="Sherpa Dealer and Website Registration"  src="https://form.jotform.com/230886199517066" frameborder="0" > </iframe> 
-            
+                
             </div>
             </div>
             <div className='row'>
