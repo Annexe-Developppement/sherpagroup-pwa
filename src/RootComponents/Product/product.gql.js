@@ -20,6 +20,8 @@ export const GET_PRODUCT_DETAIL_QUERY = gql`
                     html
                 }
                 id
+                special_to_date
+                special_from_date
                 totalavailable
                 msrp_sherpa2
                 product_brand
