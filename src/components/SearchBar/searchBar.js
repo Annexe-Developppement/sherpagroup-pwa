@@ -9,6 +9,10 @@ import SearchField from './searchField';
 import defaultClasses from './searchBar.css';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { X as ClearIcon } from 'react-feather';
+import algoliasearch from 'algoliasearch/lite';
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+
+const searchClient = algoliasearch('EQYYQ1VIVL', 'f5171cf0ca4526d103a14ad056e5cef1');
 
 const clearIcon = <Icon src={ClearIcon} size={24} />;
 
@@ -29,6 +33,8 @@ const SearchBar = props => {
 
     const classes = mergeClasses(defaultClasses, props.classes);
     const rootClassName = isOpen ? classes.root_open : classes.root;
+
+    
 
     return (
         <div className={rootClassName}>
@@ -51,6 +57,10 @@ const SearchBar = props => {
                         {clearIcon}
                     </button>
                 </div>
+                <InstantSearch searchClient={searchClient} indexName="magento2_prod_default_products">
+                    <SearchBox />
+                    <Hits />
+                </InstantSearch>
                 <Form
                     autoComplete="off"
                     className={classes.form}
