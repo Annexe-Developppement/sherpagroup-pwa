@@ -5,6 +5,9 @@ import priceClasses from './priceRange.css';
 import { FormattedMessage } from 'react-intl';
 
 const PriceRange = props => {
+
+    var today = new Date();
+
     const {
         price,
         optionFlag,
@@ -34,6 +37,8 @@ const PriceRange = props => {
         customPrice +
         customPricePercent * price.maximum_price.regular_price.value;
 
+    let specialDate = new Date(product.special_to_date)
+
     if (
         (price && product.__typename == 'SimpleProduct') ||
         ((type != null && type == 'simple') || type == 'simple_custom')
@@ -52,7 +57,7 @@ const PriceRange = props => {
                             value={final_minimum_price}
                         />
                     </p>
-                    {final_minimum_price != final_regular_price && (
+                    {final_minimum_price != final_regular_price && today.toISOString().split('T')[0] < specialDate.toISOString().split('T')[0] && (
                         <p
                             className={
                                 classes.productPrice +
@@ -68,6 +73,7 @@ const PriceRange = props => {
                             />
                         </p>
                     )}
+                            
                 </section>
             </>
         );

@@ -152,10 +152,7 @@ const MyWishList = props => {
                                             wishlistClasses.block_dahsboard_wishlist
                                         }>
                                             <p>Please choose a project below or create a new one</p> 
-                                            {/* <select className={classes.project_dropdown}>
-                                                <option value="14851" selected="selected">Hello</option>
-                                                <option value="newproject">Create a new project</option>
-                                            </select> */}
+                                            
                                             <div className='row'>
                                                 <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
                                                     <a href="/wishlist?id=x1">

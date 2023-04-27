@@ -46,7 +46,7 @@ const MegaMenu = () => {
                         defaultClasses.haschild
                     }
                 >
-                    <a href="/team">Our team</a>
+                    <a href="/sherpa-our-team">Our team</a>
                 </li>
                 </>
             );
