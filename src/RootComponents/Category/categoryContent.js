@@ -177,7 +177,64 @@ const CategoryContent = props => {
 
     const [{ isSignedIn }] = useUserContext();
 
-    // categoryList(filters: {ids: {in: ["56"]}}) {
+    const GET_WL_DETAILS = gql`
+    query {
+        MpBetterWishlistGetCategories(is_items: true) {
+            category_id
+            category_name
+            is_default
+            items {
+                added_at
+                description
+                product_id
+                qty
+                store_id
+                wishlist_item_id
+            }
+        }
+    }
+    `;
+
+    const BWL = () => {
+
+        const { data, loading } = useQuery(GET_WL_DETAILS, {
+            fetchPolicy: 'network-only',
+            variables: {
+            }});
+
+        if (loading) {
+            return <p>Loading ...</p>
+        }
+
+
+        return (
+            
+            <div className="App">
+              {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                return (
+                    <div className='row'>
+                    {e.items.map((s) => {
+                      return (
+                        
+                          <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                            <div className={classes.boxcategory}>
+                            <p>{e.category_name}</p>
+                            <p>{s.product_id}</p>
+                            <p>{s.qty}</p>
+                            </div>
+                          </div>
+                         
+                        
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          );
+      };
+
+    //console.log(datax.MpBetterWishlistGetCategories);
 
     const GET_PAGE_SIZE = gql`
     query ($filter: CategoryFilterInput) {
@@ -199,6 +256,8 @@ const CategoryContent = props => {
         `;
         
     let exclude = 1;
+
+
         
     const LinkList = () => {
 
@@ -325,7 +384,7 @@ const CategoryContent = props => {
                         </div>
                     </div>
                     <LinkList />
-                    
+                    <BWL />
                         
                     {catId != 42 && catId != 382 && exclude == 0 ? (
 

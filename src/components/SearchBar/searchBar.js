@@ -9,10 +9,32 @@ import SearchField from './searchField';
 import defaultClasses from './searchBar.css';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 import { X as ClearIcon } from 'react-feather';
+import '@algolia/autocomplete-theme-classic';
+import 'instantsearch.css/themes/satellite.css';
+//import algoliasearch from 'algoliasearch/lite';
+//import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+
+/*const searchClient = algoliasearch(
+  'EQYYQ1VIVL',
+  'f5171cf0ca4526d103a14ad056e5cef1'
+); */
+
 import algoliasearch from 'algoliasearch/lite';
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import { InstantSearch, SearchBox, Hits, Breadcrumb, RefinementList } from 'react-instantsearch-hooks-web';
 
 const searchClient = algoliasearch('EQYYQ1VIVL', 'f5171cf0ca4526d103a14ad056e5cef1');
+
+function Hit({ hit }) {
+    console.log(hit);
+    return (
+      <article>
+        <img src={hit.image_url} alt={hit.name} />
+        <p>{hit.categories[0]}</p>
+        <h1>{hit.name}</h1>
+      </article>
+    );
+  }
+
 
 const clearIcon = <Icon src={ClearIcon} size={24} />;
 
@@ -34,7 +56,7 @@ const SearchBar = props => {
     const classes = mergeClasses(defaultClasses, props.classes);
     const rootClassName = isOpen ? classes.root_open : classes.root;
 
-    
+
 
     return (
         <div className={rootClassName}>
@@ -57,10 +79,24 @@ const SearchBar = props => {
                         {clearIcon}
                     </button>
                 </div>
+
                 <InstantSearch searchClient={searchClient} indexName="magento2_prod_default_products">
                     <SearchBox />
-                    <Hits />
+                    <RefinementList attribute="categories" />
+                    <Breadcrumb
+                        attributes={[
+                        'categories.lvl0',
+                        'categories.lvl1',
+                        'categories.lvl2'
+                        ]}
+                    />
+                    <Hits hitComponent={Hit} />
                 </InstantSearch>
+                
+                {/*<InstantSearch searchClient={searchClient} indexName="magento2_prod_default_products">
+                    <SearchBox />
+                    <Hits hitComponent={Hit} />
+                </InstantSearch> */}
                 <Form
                     autoComplete="off"
                     className={classes.form}
