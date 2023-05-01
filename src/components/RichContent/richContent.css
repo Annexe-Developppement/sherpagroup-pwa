@@ -64,7 +64,7 @@
 .root ol li,
 .root ul li {
     line-height: 1.65em;
-    padding: 1px 0.5rem;
+    padding: 0px;
 }
 .root a {
     text-decoration: underline;

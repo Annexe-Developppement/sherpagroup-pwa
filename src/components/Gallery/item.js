@@ -22,7 +22,8 @@ import {
     ADD_SIMPLE_MUTATION,
     ADD_BUNDLE_MUTATION
 } from '../ProductFullDetail/productFullDetail.gql';
-
+import { gql, useMutation } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
 
@@ -161,7 +162,6 @@ const GalleryItem = props => {
     const discount_percent = ((1 - (final_minimum_price/final_regular_price)).toFixed(2)) * 100;
 
     function openLoginBox() {
-        //alert('Henlo');
         document.getElementById('user_account').click();
     }
 
@@ -185,6 +185,82 @@ const GalleryItem = props => {
     };
 
     let discount_date = new Date(item.special_to_date);
+
+    function createNewCategory(category_name) {
+
+        const SET_CATNAME_DETAILS = gql`
+        mutation {
+            MpBetterWishlistCreateCategory(input: { category_name: "Ho la la" }) {
+                category_id
+                category_name
+                is_default
+                items {
+                    added_at
+                    description
+                    product_id
+                    qty
+                    store_id
+                    wishlist_item_id
+                }
+            }
+        }
+        `;
+
+        const { data, loading } = useMutation(SET_CATNAME_DETAILS, {
+            fetchPolicy: 'network-only',
+            variables: {
+        }});
+
+        console.log(data);
+
+        console.log('Called');
+
+    }
+
+    const GET_WL_DETAILS = gql`
+    query {
+        MpBetterWishlistGetCategories(is_items: true) {
+            category_id
+            category_name
+            is_default
+            items {
+                added_at
+                description
+                product_id
+                qty
+                store_id
+                wishlist_item_id
+            }
+        }
+    }
+    `;
+
+    const BWL = () => {
+
+        createNewCategory('Well !');
+
+        const { data, loading } = useQuery(GET_WL_DETAILS, {
+            fetchPolicy: 'network-only',
+            variables: {
+            }});
+
+        if (loading) {
+            return <p>Loading ...</p>
+        }
+
+        return (
+        
+                <select onChange={onChange} className={classes.project_dropdown}>
+                <option value="2" selected="selected">Choose a project</option>
+                {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                    return (
+                        <option value={e.category_id}>{e.category_name}</option>
+                    );
+                })}    
+                <option value="1">Create a new project</option>
+                </select>  
+          );
+      };
 
     return (
         <div className={classes.root} aria-live="polite" aria-busy="false">
@@ -519,11 +595,7 @@ const GalleryItem = props => {
 
                     {email ? (
                         <div> 
-                            <select onChange={onChange} className={classes.project_dropdown}>
-                                <option value="2" selected="selected">Choose a project</option>
-                                <option value="14851">Hello</option>
-                                <option value="1">Create a new project</option>
-                            </select>
+                            <BWL />
                             {selectValue &&  selectValue == 1 && ( 
                                 <div id={"hidden_div"+item.id}>
                                     <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>

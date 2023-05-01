@@ -28,6 +28,8 @@
     "storybook:build": "build-storybook -c src/.storybook -o storybook-dist"
   },
   "dependencies": {
+    "@algolia/autocomplete-js": "^1.9.2",
+    "@algolia/autocomplete-theme-classic": "^1.9.2",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
@@ -38,9 +40,11 @@
     "eslint-config-prettier": "^8.3.0",
     "firebase": "^7.5.0",
     "i18next": "^19.4.3",
+    "instantsearch.css": "^8.0.0",
     "jquery": "^3.4.1",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.16.1",
+    "react-algoliasearch": "^2.1.3",
     "react-content-loader": "^4.3.4",
     "react-cookie-consent": "^6.2.3",
     "react-i18next": "^11.3.5",

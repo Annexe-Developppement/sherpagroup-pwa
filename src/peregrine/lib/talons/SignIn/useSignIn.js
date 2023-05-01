@@ -77,6 +77,9 @@ export const useSignIn = props => {
                     variables: { email, password }
                 });
                 const token = signInResponse.data.generateCustomerToken.token;
+
+                console.log('TOKEN:'+token);
+
                 await setToken(token);
 
                 // Clear all cart/customer data from cache and redux.
