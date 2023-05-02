@@ -30,6 +30,8 @@ import ADD_SIMPLE_MUTATION from '../../queries/addSimpleProductsToCart.graphql';
 import CREATE_CART_MUTATION from '../../queries/createCart.graphql';
 import GET_CART_DETAILS_QUERY from '../../queries/getCartDetails.graphql';
 import { Title } from '@magento/venia-ui/lib/components/Head';
+import { gql, useMutation } from '@apollo/client';
+import { useLazyQuery, useQuery } from '@apollo/client';
 
 const MyWishList = props => {
     const [, { addToast }] = useToasts();
@@ -98,6 +100,64 @@ const MyWishList = props => {
     if (!isSignedIn) {
         return <Redirect to="/" />;
     }
+
+    const GET_WL_DETAILS = gql`
+    query {
+        MpBetterWishlistGetCategories(is_items: true) {
+            category_id
+            category_name
+            is_default
+            items {
+                added_at
+                description
+                product_id
+                qty
+                store_id
+                wishlist_item_id
+            }
+        }
+    }
+    `;
+
+    const BWL = () => {
+
+        const { data, loading } = useQuery(GET_WL_DETAILS, {
+            fetchPolicy: 'network-only',
+            variables: {
+            }});
+
+        if (loading) {
+            return <p>Loading ...</p>
+        }
+
+
+        return (
+            
+            <div className="App">
+              {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                return (
+                    <div className='row'>
+                    {e.items.map((s) => {
+                      return (
+                        
+                          <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                            <div className={classes.boxcategory}>
+                            <p>{e.category_name}</p>
+                            <p>{s.product_id}</p>
+                            <p>{s.qty}</p>
+                            </div>
+                          </div>
+                         
+                        
+                      );
+                    })}
+                  </div>
+                );
+              })}
+            </div>
+          );
+      };
+
     if (!loading) {
         return (
             <div className={defaultClasses.columns}>
@@ -152,7 +212,7 @@ const MyWishList = props => {
                                             wishlistClasses.block_dahsboard_wishlist
                                         }>
                                             <p>Please choose a project below or create a new one</p> 
-                                            
+                                            <BWL />
                                             <div className='row'>
                                                 <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
                                                     <a href="/wishlist?id=x1">

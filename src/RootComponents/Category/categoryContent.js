@@ -177,7 +177,7 @@ const CategoryContent = props => {
 
     const [{ isSignedIn }] = useUserContext();
 
-    const GET_WL_DETAILS = gql`
+    /*const GET_WL_DETAILS = gql`
     query {
         MpBetterWishlistGetCategories(is_items: true) {
             category_id
@@ -233,8 +233,7 @@ const CategoryContent = props => {
             </div>
           );
       };
-
-    //console.log(datax.MpBetterWishlistGetCategories);
+*/
 
     const GET_PAGE_SIZE = gql`
     query ($filter: CategoryFilterInput) {
@@ -384,7 +383,7 @@ const CategoryContent = props => {
                         </div>
                     </div>
                     <LinkList />
-                    <BWL />
+                    
                         
                     {catId != 42 && catId != 382 && exclude == 0 ? (
 

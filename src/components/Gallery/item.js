@@ -165,57 +165,108 @@ const GalleryItem = props => {
         document.getElementById('user_account').click();
     }
 
-    function showDiv(divId, element)
-    {
+    let data_value = 'ABC';
 
-        console.log(divId);
-
-        if(document.getElementById(divId)) {
-            console.log('Yip');
-            document.getElementById(divId).style.display = element.value == 1 ? 'block' : 'none';
-        }
-
-        
-    }
-
-    const [selectValue, setSelectValue] = React.useState("");
+    const [selectValue2, setSelectValue2] = React.useState("");
     const onChange = (event) => {
         const value = event.target.value;
-        setSelectValue(value);
+        if(value==1) {
+            setSelectValue(value);
+        } else {
+            setSelectValue(value);
+        }
+        
     };
+
+    function updateDataValue(valeur) {
+        data_value = valeur;
+        console.log('UPDATE: '+data_value);
+    }
+
+    function getDataValue() {
+        console.log('REQ: '+data_value);
+        return data_value;
+    }
 
     let discount_date = new Date(item.special_to_date);
 
-    function createNewCategory(category_name) {
+    const ADD_TO_CUSTOM_PROJECT = gql`
+    mutation($category_id: String!, $product_id: Int!) {
+        MpBetterWishlistAddItem(
+            input: { category_id: $category_id, product_id: $product_id }
+        )
+    }
+    `;
 
-        const SET_CATNAME_DETAILS = gql`
-        mutation {
-            MpBetterWishlistCreateCategory(input: { category_name: "Ho la la" }) {
-                category_id
-                category_name
-                is_default
-                items {
-                    added_at
-                    description
-                    product_id
-                    qty
-                    store_id
-                    wishlist_item_id
-                }
+    const TOGGLE_LIKED_PHOTO = gql`
+    mutation($category_name: String!) {
+        MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
+            category_id
+            category_name
+            is_default
+            items {
+                added_at
+                description
+                product_id
+                qty
+                store_id
+                wishlist_item_id
             }
         }
-        `;
+    }
+    `;
 
-        const { data, loading } = useMutation(SET_CATNAME_DETAILS, {
-            fetchPolicy: 'network-only',
-            variables: {
-        }});
+    function AddToProject({item_id}) {
+
+        let input;
+
+        const [addTodo, { data, loading, error }] = useMutation(ADD_TO_CUSTOM_PROJECT);
+      
+        if (loading) return (<button type="" className={classes.add_to_project}>ADDING TO PROJECT</button>);
+        if (error) return `Submission error! ${error.message}`;
 
         console.log(data);
 
-        console.log('Called');
+        return (
+          <div>
+            SVALUE ::: {getDataValue()}
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                addTodo({ variables: { category_id: getDataValue() , product_id: item_id} });
+              }}
+            > 
+              <button type="submit" className={classes.add_to_project}>ADD TO PROJECT</button>
+            </form>
+          </div>
+          
+        );
+      }
 
-    }
+    function AddTodo() {
+
+        let input;
+
+        const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
+      
+        if (loading) return 'Submitting...';
+        if (error) return `Submission error! ${error.message}`;
+
+        return (
+          <div>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                addTodo({ variables: { category_name: input.value } });
+                input.value = '';
+              }}
+            >
+                <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
+                <button className={classes.project_button} type="submit">OK</button> 
+            </form>
+          </div>
+        );
+      }
 
     const GET_WL_DETAILS = gql`
     query {
@@ -235,9 +286,47 @@ const GalleryItem = props => {
     }
     `;
 
+    const Select = () => {
+        const [selectValue, setSelectValue] = React.useState("");
+        const onChange = (event) => {
+          const value = event.target.value;
+          setSelectValue(value);
+          updateDataValue(value);
+          console.log('DVAL '+data_value);
+        }; 
+
+        const { data, loading } = useQuery(GET_WL_DETAILS, {
+            fetchPolicy: 'network-only',
+            variables: {}});
+
+        if (loading) {
+            return <p>Loading ...</p>
+        }    
+
+        return (
+          <div>
+            <select onChange={onChange} className={classes.project_dropdown}>
+              <option defaultValue disabled>
+              Choose a project
+              </option>
+              {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                    return (
+                        <option value={e.category_id}>{e.category_name}</option>
+                    );
+                })}  
+              <option value="1">Create a new project</option>
+            </select>
+            {selectValue &&  selectValue == 1 && ( 
+            <div id={"hidden_div"+item.id}>
+                <AddTodo />
+            </div>
+            )}
+          </div>
+        );
+      };
+
     const BWL = () => {
 
-        createNewCategory('Well !');
 
         const { data, loading } = useQuery(GET_WL_DETAILS, {
             fetchPolicy: 'network-only',
@@ -247,11 +336,11 @@ const GalleryItem = props => {
         if (loading) {
             return <p>Loading ...</p>
         }
-
-        return (
         
+        return (
+                <> 
                 <select onChange={onChange} className={classes.project_dropdown}>
-                <option value="2" selected="selected">Choose a project</option>
+                <option value="2">Choose a project</option>
                 {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
                     return (
                         <option value={e.category_id}>{e.category_name}</option>
@@ -259,6 +348,8 @@ const GalleryItem = props => {
                 })}    
                 <option value="1">Create a new project</option>
                 </select>  
+                
+                </>
           );
       };
 
@@ -520,10 +611,12 @@ const GalleryItem = props => {
                             item.options == null && (
                                 <div>
                                     
+                                    <AddToProject item_id={item.id} />
+                                    
                                     {/* wishlist section */}
-                                    <Suspense fallback={<div>Loading...</div>}>
+                                    {/*<Suspense fallback={<div>Loading...</div>}>
                                         <Wishlist value={item} />
-                                    </Suspense> 
+                                    </Suspense> */}
                                     
                                 </div>
                                 
@@ -595,12 +688,9 @@ const GalleryItem = props => {
 
                     {email ? (
                         <div> 
-                            <BWL />
-                            {selectValue &&  selectValue == 1 && ( 
-                                <div id={"hidden_div"+item.id}>
-                                    <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
-                                </div>
-                             )}
+                            <Select />
+                            {/* <BWL /> */}
+                            
                         </div>
                     ) : (
                         <>
