@@ -188,6 +188,7 @@ const Header = props => {
                         </div>
 
                         <div className={'col-lg-8 col-md-8 col-sm-9 col-7'}>
+                            
                             <div className={classes.secondaryActions}>
                                 <Suspense fallback={null}>
                                     <CompareLink
