@@ -108,8 +108,19 @@ button[class='quantity-modifier modifier-right']:hover {
     margin-bottom: 5px;
     border: 2px solid #e1e1e1;
 }
-
-
+.add_to_project{
+    background: #007637;
+    border-radius: 5px;
+    padding: 10px 10px;
+    display: block;
+    min-height: 40px;
+    line-height: 20px;
+    width: 100%;
+    color: white;
+}
+.add_to_project:hover {
+    background: black;
+}
 
 .total_available {
     background: #8cc650;

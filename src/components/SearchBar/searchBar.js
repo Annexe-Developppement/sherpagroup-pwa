@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, createElement, Fragment, useEffect, useRef } from 'react';
 import { bool, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { useSearchBar } from 'src/peregrine/lib/talons/SearchBar';
@@ -11,6 +11,9 @@ import Icon from '@magento/venia-ui/lib/components/Icon';
 import { X as ClearIcon } from 'react-feather';
 import '@algolia/autocomplete-theme-classic';
 import 'instantsearch.css/themes/satellite.css';
+import algoliasearch from 'algoliasearch/lite';
+import { autocomplete, getAlgoliaResults } from '@algolia/autocomplete-js';
+
 //import algoliasearch from 'algoliasearch/lite';
 //import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 
@@ -19,10 +22,44 @@ import 'instantsearch.css/themes/satellite.css';
   'f5171cf0ca4526d103a14ad056e5cef1'
 ); */
 
+import { autocomplete } from '@algolia/autocomplete-js';
+import { render } from 'react-dom';
+
 import algoliasearch from 'algoliasearch/lite';
 import { InstantSearch, SearchBox, Hits, Breadcrumb, RefinementList } from 'react-instantsearch-hooks-web';
 
 const searchClient = algoliasearch('EQYYQ1VIVL', 'f5171cf0ca4526d103a14ad056e5cef1');
+
+const autocompleteSearch = autocomplete({
+    container: '#autocomplete',
+    getSources() {
+      return [
+        {
+          sourceId: 'querySuggestions',
+          getItemInputValue: ({ item }) => item.query,
+          getItems({ query }) {
+            return getAlgoliaResults({
+              searchClient,
+              queries: [
+                {
+                  indexName: 'instant_search_demo_query_suggestions',
+                  query,
+                  params: {
+                    hitsPerPage: 4,
+                  },
+                },
+              ],
+            });
+          },
+          templates: {
+            item({ item, components }) {
+              return components.ReverseHighlight({ hit: item, attribute: 'query' });
+            },
+          },
+        },
+      ];
+    },
+  });
 
 function Hit({ hit }) {
     console.log(hit);
@@ -79,8 +116,9 @@ const SearchBar = props => {
                         {clearIcon}
                     </button>
                 </div>
-
+                <div id="autocomplete"></div>
                 <InstantSearch searchClient={searchClient} indexName="magento2_prod_default_products">
+                
                     <SearchBox />
                     <RefinementList attribute="categories" />
                     <Breadcrumb
