@@ -229,7 +229,6 @@ const GalleryItem = props => {
 
         return (
           <div>
-            SVALUE ::: {getDataValue()}
             <form
               onSubmit={e => {
                 e.preventDefault();
@@ -306,7 +305,7 @@ const GalleryItem = props => {
         return (
           <div>
             <select onChange={onChange} className={classes.project_dropdown}>
-              <option defaultValue disabled>
+              <option defaultValue>
               Choose a project
               </option>
               {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
