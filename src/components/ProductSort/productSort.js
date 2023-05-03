@@ -1,4 +1,4 @@
-import React, { useMemo, useCallback } from 'react';
+import React, { useMemo, useCallback, useEffect } from 'react';
 import { ChevronDown as ArrowDown } from 'react-feather';
 import { FormattedMessage } from 'react-intl';
 import { array, arrayOf, shape, string, oneOf } from 'prop-types';
@@ -17,6 +17,18 @@ const ProductSort = props => {
     const [currentSort, setSort] = sortProps;
     const { elementRef, expanded, setExpanded } = useDropdown();
 
+    
+
+    useEffect(() => {
+        // Update the document title using the browser API
+        if(currentSort && currentSort.sortText=='Position') {
+            document.getElementById('sortItem.sku').click();
+            //document.getElementById('skusku').click();
+            //currentSort.sortText=='Positionx';
+            //preventDefault();
+        }
+      });
+
     // click event for menu items
     const handleItemClick = useCallback(
         sortAttribute => {
@@ -34,8 +46,10 @@ const ProductSort = props => {
     const sortElements = useMemo(() => {
         // should be not render item in collapsed mode.
         if (!expanded) {
-            return null;
+            //return null;
         }
+
+        
 
         const itemElements = Array.from(availableSortMethods, sortItem => {
             const { attribute, sortDirection } = sortItem;
@@ -44,6 +58,9 @@ const ProductSort = props => {
                 currentSort.sortDirection === sortDirection;
 
             const key = `${attribute}--${sortDirection}`;
+
+            
+
             return (
                 <li key={key} className={classes.menuItem}>
                     <SortItem
@@ -85,6 +102,7 @@ const ProductSort = props => {
             aria-busy="false"
         >
             <Button
+                id="setSort"
                 priority={'low'}
                 classes={{
                     root_lowPriority: classes.sortButton
@@ -123,17 +141,17 @@ const ProductSort = props => {
                                 defaultMessage={'Sort by'}
                             />
                         </span>
-                        <span className={classes.sorted_result}>
+                        {/*<span className={classes.sorted_result}>
                             {currentSort.sortText}
-                        </span>
+                        </span> */}
 
-                        <Icon
+                        {/*<Icon
                             src={ArrowDown}
                             classes={{
                                 root: classes.desktopIconWrapper,
                                 icon: classes.desktopIcon
                             }}
-                        />
+                        /> */}
                     </span>
                 )}
             </Button>
@@ -166,7 +184,7 @@ ProductSort.defaultProps = {
     availableSortMethods: [
         {
             text: 'Part #: Ascending',
-            id: 'sortItem.position',
+            id: 'sortItem.sku',
             attribute: 'sku',
             sortDirection: 'ASC'
         },
