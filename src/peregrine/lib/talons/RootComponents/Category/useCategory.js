@@ -142,7 +142,7 @@ export const useCategory = props => {
                 currentPage: Number(currentPage),
                 id: Number(id),
                 filters: newFilters,
-                pageSize: Number(16),
+                pageSize: Number(20),
                 sort: { [currentSort.sortAttribute]: currentSort.sortDirection }
             }
         });

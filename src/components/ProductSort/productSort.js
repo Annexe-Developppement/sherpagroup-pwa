@@ -165,10 +165,16 @@ ProductSort.propTypes = {
 ProductSort.defaultProps = {
     availableSortMethods: [
         {
-            text: 'Position',
+            text: 'Part #: Ascending',
             id: 'sortItem.position',
-            attribute: 'position',
+            attribute: 'sku',
             sortDirection: 'ASC'
+        },
+        {
+            text: 'Part #: Descending',
+            id: 'sortItem.sku2',
+            attribute: 'sku',
+            sortDirection: 'DESC'
         },
         {
             id: 'sortItem.priceAsc',

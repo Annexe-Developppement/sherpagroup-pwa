@@ -241,8 +241,6 @@ const SearchBar = props => {
                     </button>
                 </div>
 
-                <Iframe iframe={iframe} />
-
                 <Form
                     autoComplete="off"
                     className={classes.form}
