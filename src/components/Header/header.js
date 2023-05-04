@@ -24,7 +24,6 @@ import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard'
 import { Heart as HeartIcon } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 
-
 const heartIcon = <Icon src={HeartIcon} size={18} />;
 const SearchBar = React.lazy(() => import('../SearchBar'));
 const MegaMenu = React.lazy(() => import('../MegaMenu'));
@@ -36,6 +35,7 @@ const StoreSwitcher = React.lazy(() => import('./storeSwitcher'));
 const CurrencySwitcher = React.lazy(() => import('./currencySwitcher'));
 
 const Header = props => {
+
     const [{ currentUser, isSignedIn }] = useUserContext();
 
     const wishlistCount =
@@ -212,6 +212,7 @@ const Header = props => {
                                         height="20"
                                     />
                                 </span>
+                                
                                 <span
                                     className={
                                         classes.search_image +
@@ -224,7 +225,7 @@ const Header = props => {
                                         active={searchOpen}
                                         onClick={handleSearchTriggerClick}
                                     />
-                                </span>
+                                </span> 
                                 <span
                                     className={
                                         classes.user_icon_image +
