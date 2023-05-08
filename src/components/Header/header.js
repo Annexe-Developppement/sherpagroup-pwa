@@ -24,7 +24,6 @@ import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard'
 import { Heart as HeartIcon } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 
-
 const heartIcon = <Icon src={HeartIcon} size={18} />;
 const SearchBar = React.lazy(() => import('../SearchBar'));
 const MegaMenu = React.lazy(() => import('../MegaMenu'));
@@ -36,6 +35,7 @@ const StoreSwitcher = React.lazy(() => import('./storeSwitcher'));
 const CurrencySwitcher = React.lazy(() => import('./currencySwitcher'));
 
 const Header = props => {
+
     const [{ currentUser, isSignedIn }] = useUserContext();
 
     const wishlistCount =
@@ -94,31 +94,6 @@ const Header = props => {
 
     console.log('Tha '+JSON.stringify(currentUser));
 
-    
-    
-    async function getUser() {
-        try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
-        
-        headers: { accept: 'application/json' }, });
-        
-        if (!response.ok) {
-        
-        throw new Error(`Error! status: ${response.status}`);}
-        
-        const result = await response.json();
-        
-        return result;} catch (err) {
-        
-        console.log(err);}}
-        
-    getUser();
-
-    let is_approved = 1;
-
-    if(is_approved==1) {
-
-    } 
-
     function openLoginBox() {
         document.getElementById('user_account').click();
     }
@@ -144,7 +119,7 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.id} {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 ) : (
                                     <p className={classes.offer_message_text}><a className={classes.contactus} onClick={openLoginBox}>Create your account to become a dealer.</a> | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 )}
@@ -212,6 +187,7 @@ const Header = props => {
                                         height="20"
                                     />
                                 </span>
+                                
                                 <span
                                     className={
                                         classes.search_image +
@@ -224,7 +200,7 @@ const Header = props => {
                                         active={searchOpen}
                                         onClick={handleSearchTriggerClick}
                                     />
-                                </span>
+                                </span> 
                                 <span
                                     className={
                                         classes.user_icon_image +

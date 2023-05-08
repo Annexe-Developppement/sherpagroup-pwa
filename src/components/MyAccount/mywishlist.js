@@ -135,24 +135,60 @@ const MyWishList = props => {
             
             <div className="App">
               {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                if(e.items.length > 0) {
                 return (
+                    <>
+                    <span className={classes.add_btn}>{e.category_name}</span> 
                     <div className='row'>
+                       
                     {e.items.map((s) => {
-                      return (
                         
-                          <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
-                            <div className={classes.boxcategory}>
-                            <p>{e.category_name}</p>
-                            <p>{s.product_id}</p>
-                            <p>{s.qty}</p>
+                        return (
+                            
+                            <div className='col-lg-3 col-md-6 col-sm-6 col-xs-12'>
+                                <div className={classes.boxcategory}>
+                                <p>{s.product_id}</p>
+                                <p>{s.qty}</p>
+                                <button
+                                    onClick={() => {
+                                        handleAddToCart(
+                                            s.product_id
+                                        );
+                                        alert('Product moved to cart');
+                                        /*remove(
+                                            val
+                                                .product
+                                                .id
+                                        );*/
+                                    }}
+                                >
+                                    <span
+                                        className={
+                                            classes.add_btn
+                                        }
+                                    >
+                                        <FormattedMessage
+                                            id={
+                                                'myWishlist.moveToCartBtn'
+                                            }
+                                            defaultMessage={
+                                                'Move to cart'
+                                            }
+                                        />
+                                    </span>
+                                </button>
+                                </div>
                             </div>
-                          </div>
-                         
+                            
+                            
+                        );
                         
-                      );
                     })}
+                    
                   </div>
+                  </>
                 );
+                }
               })}
             </div>
           );
