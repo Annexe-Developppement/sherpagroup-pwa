@@ -295,23 +295,57 @@ const GalleryItem = props => {
         }; 
 
         const { data, loading } = useQuery(GET_WL_DETAILS, {
-            fetchPolicy: 'network-only',
+            //context: { headers: { authorization: `Bearer ${token}` } },
+            headers: {
+                authorization:
+                    'bearer xxx',
+              },
+            fetchPolicy: 'no-cache',
             variables: {}});
 
         if (loading) {
             return <p>Loading ...</p>
         }    
 
+        async function getUser() {
+            try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
+            
+             });
+            
+            if (!response.ok) {
+            
+                throw new Error(`Error! status: ${response.status}`);
+            
+            } 
+            
+            const result = await response.json();
+    
+            console.log('Results ::: ');
+    
+            console.log(result.name);
+    
+            return result;
+        
+        } catch (err) {
+            
+            console.log(err);}
+        }
+            
+        const machin = getUser();
+        
+
         return (
           <div>
             <select onChange={onChange} className={classes.project_dropdown}>
               <option defaultValue>
-              Choose a project
+              Choose a project.
               </option>
               {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
+                if(e.items.length > 0) {
                     return (
                         <option value={e.category_id}>{e.category_name}</option>
                     );
+                }
                 })}  
               <option value="1">Create a new project</option>
             </select>
@@ -341,9 +375,14 @@ const GalleryItem = props => {
                 <select onChange={onChange} className={classes.project_dropdown}>
                 <option value="2">Choose a project</option>
                 {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
-                    return (
-                        <option value={e.category_id}>{e.category_name}</option>
-                    );
+                    console.log('Calvert');
+                    console.log("LNG "+e.items.length > 0)
+                    if(e.items.length > 0) {
+                        return (
+                            <option value={e.category_id}>{e.category_name}</option>
+                        );
+                    }
+                    
                 })}    
                 <option value="1">Create a new project</option>
                 </select>  

@@ -94,31 +94,6 @@ const Header = props => {
 
     console.log('Tha '+JSON.stringify(currentUser));
 
-    
-    
-    async function getUser() {
-        try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
-        
-        headers: { accept: 'application/json' }, });
-        
-        if (!response.ok) {
-        
-        throw new Error(`Error! status: ${response.status}`);}
-        
-        const result = await response.json();
-        
-        return result;} catch (err) {
-        
-        console.log(err);}}
-        
-    getUser();
-
-    let is_approved = 1;
-
-    if(is_approved==1) {
-
-    } 
-
     function openLoginBox() {
         document.getElementById('user_account').click();
     }
@@ -144,7 +119,7 @@ const Header = props => {
                             </div>
                             
                                 {currentUser.firstname ? (
-                                    <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
+                                    <p className={classes.offer_message_text}>Welcome {currentUser.id} {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 ) : (
                                     <p className={classes.offer_message_text}><a className={classes.contactus} onClick={openLoginBox}>Create your account to become a dealer.</a> | <a className={classes.contactus} href="/contact">Contact us</a></p>
                                 )}
