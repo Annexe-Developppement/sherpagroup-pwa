@@ -119,7 +119,7 @@ function ProductItem({ hit, components }) {
       <a href={hit.url} className="aa-ItemLink">
         <div className="aa-ItemContent">
           <div className="aa-ItemIcon aa-ItemIcon--picture aa-ItemIcon--alignTop">
-            <img src={hit.image} alt={hit.name} width="40" height="40" />
+            <img src={hit.image_url} alt={hit.name} width="40" height="40" />
           </div>
           <div className="aa-ItemContentBody">
             <div className="aa-ItemContentTitle">
