@@ -79,18 +79,21 @@ class ProjectList extends Component{
 
     render(){
 
-        const classes = useStyle(defaultClasses);
+        const classes = mergeClasses(
+            defaultClasses,
+            wishlistClasses
+        );
 
         const Select = () => {
             
             return (
-              <div>
+              <div class="row">
                 
                
                     {this.state.pageData && this.state.pageData.map((e) => {
                     
                     return (
-                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                        <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
                             <div className={classes.boxcategory}>
                                 
                                 <div className={classes.boxlink}>

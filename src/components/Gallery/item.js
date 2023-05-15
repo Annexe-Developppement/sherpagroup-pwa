@@ -97,11 +97,16 @@ class ServiceDetailsEmployeurs extends Component{
         `;
 
 
-        function AddTodo() {
+        function AddTodo(uid) {
 
             let input;
+
+            let selectId = uid;
+
+            console.log('SID:: '+uid);
     
             const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
+            const [selectValue, setSelectValue] = React.useState("");
             if (loading) return 'Submitting...';
             if (error) return `Submission error! ${error.message}`;
     
@@ -114,11 +119,12 @@ class ServiceDetailsEmployeurs extends Component{
                     input.value = '';
                     
                     window.alert('New category created.');
-                    
+                    setSelectValue(999);
                     
                   }}
                 >
                     <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
+                    <input type='hidden' value={selectId} />
                     <button className={classes.project_button} type="submit">OK</button> 
                 </form>
               </div>
@@ -132,11 +138,25 @@ class ServiceDetailsEmployeurs extends Component{
               setSelectValue(value);
               updateDataValue(value);
             }; 
+
+            function makeid(length) {
+                let result = '';
+                const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                const charactersLength = characters.length;
+                let counter = 0;
+                while (counter < length) {
+                  result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                  counter += 1;
+                }
+                return result;
+            }
               
+            var uniqueId = makeid(15);
+
             return (
               <div>
                 
-                <select onChange={onChange} className={classes.project_dropdown}>
+                <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
                     <option defaultValue>
                     Choose a project.
                     </option>
@@ -151,7 +171,7 @@ class ServiceDetailsEmployeurs extends Component{
                     </select>
                     {selectValue &&  selectValue == 1 && ( 
                     <div id={"hidden_div"}>
-                        <AddTodo />
+                        <AddTodo uid={uniqueId}/>
                     </div>
                     )}
               </div>
@@ -164,7 +184,7 @@ class ServiceDetailsEmployeurs extends Component{
             <React.Fragment>
 
                 <div>
-                    {this.state.name}
+                    
                     <Select/>                    
                 </div>
 

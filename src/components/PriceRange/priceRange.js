@@ -59,7 +59,10 @@ const PriceRange = props => {
                             value={final_minimum_price}
                         />
                     </p>
-                    {final_minimum_price != final_regular_price && today.toISOString().split('T')[0] < specialDate.toISOString().split('T')[0] && (
+
+                    {/* today.toISOString().split('T')[0] < specialDate.toISOString().split('T')[0] && */}
+
+                    {final_minimum_price != final_regular_price &&  (
                         <p
                             className={
                                 classes.productPrice +
