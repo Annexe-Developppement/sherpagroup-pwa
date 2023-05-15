@@ -40,11 +40,12 @@ const Main = props => {
             <Header />
             
             <div className={pageClass}>
+            {children}
             {window.location.href.indexOf("/events") != -1 ?
                  <div class="eca-app-container" data-widgetuuid="cbe1fe53-0fc4-4ece-9b1b-2f04e8372406"></div>
             : ''}
             
-                {children}
+                
                 {/* bottom_toolbar */}
                 {mobileView && (
                     <React.Suspense fallback={null}>

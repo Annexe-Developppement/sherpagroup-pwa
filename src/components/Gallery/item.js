@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense, Component } from 'react';
 import { QuantityPicker } from 'react-qty-picker';
 import { string, shape } from 'prop-types';
 import { Link } from 'react-router-dom';
@@ -25,8 +25,153 @@ import {
 import { gql, useMutation } from '@apollo/client';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
+import { useUserContext } from '@magento/peregrine/lib/context/user';
+
+let data_value = 'A';
+
+function updateDataValue(valeur) {
+    data_value = valeur;
+    console.log('UPDATE: '+data_value);
+}
+
+class ServiceDetailsEmployeurs extends Component{
+
+    constructor () {
+        super()
+        this.state = {
+            pageData: [],
+            name: "React Component reload sample",
+            reload: false
+        }
+    }
+
+    refreshPage = () => {
+        this.setState(
+          {reload: true},
+          () => this.setState({reload: false})
+        )
+      }
+
+    submit() {
+        this.setState({ name: "React Component Updated - " + new Date() });
+     }
+
+    onToggleLoop = (event) => {
+        this.setState({loopActive: !this.state.loopActive})
+        this.props.onToggleLoop()
+    } 
+
+    componentDidMount() {
+        let pid = this.props.pid;
+        //var pid = "mcharbonneau@annexe-d.com";
+        let dataURL = "https://sherpagroupav.com/get_projects.php?email="+pid;
+        fetch(dataURL)
+          .then(res => res.json())
+          .then(res => {
+            this.setState({
+                pageData: res
+            })
+          });        
+    }
 
 
+
+    render(){
+
+        const TOGGLE_LIKED_PHOTO = gql`
+        mutation($category_name: String!) {
+            MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
+                category_id
+                category_name
+                is_default
+                items {
+                    added_at
+                    description
+                    product_id
+                    qty
+                    store_id
+                    wishlist_item_id
+                }
+            }
+        }
+        `;
+
+
+        function AddTodo() {
+
+            let input;
+    
+            const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
+            if (loading) return 'Submitting...';
+            if (error) return `Submission error! ${error.message}`;
+    
+            return (
+              <div>
+                <form
+                  onSubmit={e => {
+                    e.preventDefault();
+                    addTodo({ variables: { category_name: input.value } });
+                    input.value = '';
+                    
+                    window.alert('New category created.');
+                    
+                    
+                  }}
+                >
+                    <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
+                    <button className={classes.project_button} type="submit">OK</button> 
+                </form>
+              </div>
+            );
+          }
+
+          const Select = () => {
+            const [selectValue, setSelectValue] = React.useState("");
+            const onChange = (event) => {
+              const value = event.target.value;
+              setSelectValue(value);
+              updateDataValue(value);
+            }; 
+              
+            return (
+              <div>
+                
+                <select onChange={onChange} className={classes.project_dropdown}>
+                    <option defaultValue>
+                    Choose a project.
+                    </option>
+                    {this.state.pageData && this.state.pageData.map((e) => {
+                    
+                    return (
+                        <option value={e.category_id}>{e.category_name}</option>
+                    );
+                
+                })}
+                    <option value="1">Create a new project</option>
+                    </select>
+                    {selectValue &&  selectValue == 1 && ( 
+                    <div id={"hidden_div"}>
+                        <AddTodo />
+                    </div>
+                    )}
+              </div>
+            );
+          };  
+
+        const classes = useStyle(defaultClasses);
+
+        return(
+            <React.Fragment>
+
+                <div>
+                    {this.state.name}
+                    <Select/>                    
+                </div>
+
+            </React.Fragment>
+        )
+    }
+}
 
 const Wishlist = React.lazy(() => import('../MyWishlist/wishlist'));
 
@@ -41,6 +186,8 @@ const IMAGE_WIDTHS = new Map()
     .set(UNCONSTRAINED_SIZE_KEY, 840);
 
 const GalleryItem = props => {
+
+    const [{ currentUser, isSignedIn }] = useUserContext();
 
     function openRegister() {
         document.getElementById('user_account').click();
@@ -165,7 +312,7 @@ const GalleryItem = props => {
         document.getElementById('user_account').click();
     }
 
-    let data_value = 'ABC';
+    let data_value = '1684115000_061';
 
     const [selectValue2, setSelectValue2] = React.useState("");
     const onChange = (event) => {
@@ -198,23 +345,7 @@ const GalleryItem = props => {
     }
     `;
 
-    const TOGGLE_LIKED_PHOTO = gql`
-    mutation($category_name: String!) {
-        MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
-            category_id
-            category_name
-            is_default
-            items {
-                added_at
-                description
-                product_id
-                qty
-                store_id
-                wishlist_item_id
-            }
-        }
-    }
-    `;
+    
 
     function AddToProject({item_id}) {
 
@@ -233,6 +364,8 @@ const GalleryItem = props => {
               onSubmit={e => {
                 e.preventDefault();
                 addTodo({ variables: { category_id: getDataValue() , product_id: item_id} });
+                window.alert('Product added to project.');
+                
               }}
             > 
               <button type="submit" className={classes.add_to_project}>ADD TO PROJECT</button>
@@ -242,30 +375,7 @@ const GalleryItem = props => {
         );
       }
 
-    function AddTodo() {
-
-        let input;
-
-        const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
-      
-        if (loading) return 'Submitting...';
-        if (error) return `Submission error! ${error.message}`;
-
-        return (
-          <div>
-            <form
-              onSubmit={e => {
-                e.preventDefault();
-                addTodo({ variables: { category_name: input.value } });
-                input.value = '';
-              }}
-            >
-                <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
-                <button className={classes.project_button} type="submit">OK</button> 
-            </form>
-          </div>
-        );
-      }
+    
 
     const GET_WL_DETAILS = gql`
     query {
@@ -285,13 +395,14 @@ const GalleryItem = props => {
     }
     `;
 
+    
+
     const Select = () => {
         const [selectValue, setSelectValue] = React.useState("");
         const onChange = (event) => {
           const value = event.target.value;
           setSelectValue(value);
           updateDataValue(value);
-          console.log('DVAL '+data_value);
         }; 
 
         const { data, loading } = useQuery(GET_WL_DETAILS, {
@@ -305,55 +416,13 @@ const GalleryItem = props => {
 
         if (loading) {
             return <p>Loading ...</p>
-        }    
-
-        async function getUser() {
-            try { const response = await fetch('https://sherpagroupav.com/is_approved.php?email=mcharbonneau@annexe-d.com', { method: 'GET',
-            
-             });
-            
-            if (!response.ok) {
-            
-                throw new Error(`Error! status: ${response.status}`);
-            
-            } 
-            
-            const result = await response.json();
-    
-            console.log('Results ::: ');
-    
-            console.log(result.name);
-    
-            return result;
-        
-        } catch (err) {
-            
-            console.log(err);}
-        }
-            
-        const machin = getUser();
-        
-
+        }  
+          
         return (
           <div>
-            <select onChange={onChange} className={classes.project_dropdown}>
-              <option defaultValue>
-              Choose a project.
-              </option>
-              {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
-                if(e.items.length > 0) {
-                    return (
-                        <option value={e.category_id}>{e.category_name}</option>
-                    );
-                }
-                })}  
-              <option value="1">Create a new project</option>
-            </select>
-            {selectValue &&  selectValue == 1 && ( 
-            <div id={"hidden_div"+item.id}>
-                <AddTodo />
-            </div>
-            )}
+            
+            
+            
           </div>
         );
       };
@@ -651,11 +720,6 @@ const GalleryItem = props => {
                                     
                                     <AddToProject item_id={item.id} />
                                     
-                                    {/* wishlist section */}
-                                    {/*<Suspense fallback={<div>Loading...</div>}>
-                                        <Wishlist value={item} />
-                                    </Suspense> */}
-                                    
                                 </div>
                                 
                             )}
@@ -726,7 +790,8 @@ const GalleryItem = props => {
 
                     {email ? (
                         <div> 
-                            <Select />
+                            {/* <Select /> */}
+                            <ServiceDetailsEmployeurs pid={"mcharbonneau@annexe-d.com"}/>
                             {/* <BWL /> */}
                             
                         </div>
