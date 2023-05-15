@@ -76,6 +76,25 @@ const Home = props => {
                 
                 <div className={defaultClasses.homepage_single_image}><img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg"/></div>
                 
+                {/* features block */}
+                {showOfferBanners != 0 && scrollFlag && (
+                    <section
+                        className={
+                            defaultClasses.homepage_sections +
+                            ' ' +
+                            defaultClasses.feature_block
+                        }
+                    >
+                        <Suspense fallback={''}>
+                            <Banner
+                                identifier={offerBannersIdentifier}
+                                showBanner={showOfferBanners}
+                            />
+                        </Suspense>
+                    </section>
+                )}
+                {/* features block end */}
+
                 {/* mid banner section start */}
                 {showCategoryBanners != 0 && scrollFlag && (
                     <section
@@ -99,24 +118,7 @@ const Home = props => {
                 )}
                 {/* mid banner section END */}
 
-                {/* features block */}
-                {showOfferBanners != 0 && scrollFlag && (
-                    <section
-                        className={
-                            defaultClasses.homepage_sections +
-                            ' ' +
-                            defaultClasses.feature_block
-                        }
-                    >
-                        <Suspense fallback={''}>
-                            <Banner
-                                identifier={offerBannersIdentifier}
-                                showBanner={showOfferBanners}
-                            />
-                        </Suspense>
-                    </section>
-                )}
-                {/* features block end */}
+                
                 
                 {/* top category section */}
                 {showCategoryIcons != 0 && (
