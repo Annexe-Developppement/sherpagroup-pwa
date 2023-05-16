@@ -63,7 +63,6 @@ class ServiceDetailsEmployeurs extends Component{
 
     componentDidMount() {
         let pid = this.props.pid;
-        //var pid = "mcharbonneau@annexe-d.com";
         let dataURL = "https://sherpagroupav.com/get_projects.php?email="+pid;
         fetch(dataURL)
           .then(res => res.json())
@@ -194,6 +193,7 @@ class ServiceDetailsEmployeurs extends Component{
 }
 
 const Wishlist = React.lazy(() => import('../MyWishlist/wishlist'));
+
 
 // The placeholder image is 4:5, so we should make sure to size our product
 // images appropriately.
@@ -811,7 +811,7 @@ const GalleryItem = props => {
                     {email ? (
                         <div> 
                             {/* <Select /> */}
-                            <ServiceDetailsEmployeurs pid={"mcharbonneau@annexe-d.com"}/>
+                            <ServiceDetailsEmployeurs pid={email}/>
                             {/* <BWL /> */}
                             
                         </div>
