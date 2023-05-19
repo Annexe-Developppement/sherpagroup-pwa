@@ -1,9 +1,63 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { shape, string } from 'prop-types';
 import { FormattedMessage } from 'react-intl';
 import defaultClasses from './myAccount.css';
 import { Link } from 'src/drivers';
 import AccountGreeting from './accountGreeting';
+import { mergeClasses } from '@magento/venia-ui/lib/classify';
+import wishlistClasses from './mywishlist.css';
+
+class ProjectList extends Component{
+
+    constructor () {
+        super()
+        this.state = {
+            pageData: [],
+            name: "React Component reload sample",
+            reload: false
+        }
+    }
+
+    componentDidMount() {
+        let pid = this.props.pid;
+        let dataURL = "https://sherpagroupav.com/get_projects.php?email="+pid;
+        fetch(dataURL)
+          .then(res => res.json())
+          .then(res => {
+            this.setState({
+                pageData: res
+            })
+          });        
+    }
+
+    render(){
+
+        const classes = mergeClasses(
+            defaultClasses,
+            wishlistClasses
+        );
+
+        const ProjectItems = () => {
+            return (
+              <>
+                    {this.state.pageData && this.state.pageData.map((e) => {
+                    return (
+                        <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
+                    );
+                })}
+              </>
+            );
+          }; 
+
+        return(
+            <React.Fragment>
+                
+                <ProjectItems/>
+
+            </React.Fragment>
+        )
+    }
+}
 
 const Sidebar = props => {
     const { onClose } = props;
@@ -82,10 +136,12 @@ const Sidebar = props => {
                     <Link to="/wishlist" onClick={onClose}>
                         <FormattedMessage
                             id={'sidebar.MyWishlist'}
-                            defaultMessage={'My projects'}
+                            defaultMessage={'My projectss'}
                         />
                     </Link>
+                    
                 </li>
+                <ProjectList pid={"mcharbonneau@annexe-d.com"} />
                 <li
                     className={
                         path == '/addresses'
