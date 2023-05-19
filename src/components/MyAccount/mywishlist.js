@@ -423,7 +423,7 @@ const MyWishList = props => {
                                             wishlistClasses.block_dahsboard_wishlist
                                         }>
                                             <p>Please choose a project below or create a new one</p> 
-                                            <ProjectList pid={"mcharbonneau@annexe-d.com"} />
+                                            
                                             <BWL />
                                             
                                             

@@ -6,6 +6,18 @@
 .root input {
     padding: 10px;
 }
+.projectlist {
+    margin-left: 75px;
+    margin-top: 5px;
+}
+.projectlist a {
+    color: var(--primary-dark-color);
+    font-size: 14px;
+    transition: 0.3s all ease;
+}
+.projectlist a:hover {
+    color: #8dc74c;
+}
 form.root input:focus {
     box-shadow: unset;
 }

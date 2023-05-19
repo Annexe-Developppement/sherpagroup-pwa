@@ -2,6 +2,13 @@ import React from 'react';
 
 export function ProductItem({ hit, components }) {
   let sherpaurl = hit.url.replace("sherpagroupav.com", "staging.sherpagroupav.com");
+
+  let CADDollar = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'CAD',
+      currencyDisplay: 'narrowSymbol'
+  });
+
   return (
     <a href={sherpaurl} className="aa-ItemLink">
         <div className="aa-ItemContent">
@@ -22,7 +29,7 @@ export function ProductItem({ hit, components }) {
             </div>
            
             <div className="aa-ItemContentDescription" style={{ color: '#000' }}>
-              <strong>${hit.msrp}</strong>
+              <strong>MSRP {CADDollar.format(hit.msrp)}</strong>
             </div>
           </div>
         </div>
