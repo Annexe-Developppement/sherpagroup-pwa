@@ -27,7 +27,7 @@ const RichContent = props => {
     if (detectPageBuilder(html)) {
         return (
             <div className={classes.root}>
-                <PageBuilder masterFormat={html} />
+               <PageBuilder masterFormat={html} />
             </div>
         );
     }
