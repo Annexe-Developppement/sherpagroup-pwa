@@ -23,6 +23,27 @@
     min-width: 20%;
     display: none;
 }
+.input_rename {
+    width: 150px;
+    margin-right: 10px;
+    height: 39px;
+}
+.rename_project {
+    background: #007637;
+    border-radius: 5px;
+    padding: 10px 10px;
+    min-height: 40px;
+    line-height: 20px;
+    width: 150px;
+    color: white;
+    margin-top: 30px;
+}
+.rename_project:hover {
+    background: #000;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
+}
 .add_to_project{
     background: #007637;
     border-radius: 5px;
@@ -119,13 +140,19 @@
 .add_btn_wrap button {
     width: 100%;
 }
-.add_btn,
-.add_btn:hover {
+.add_btn {
     color: var(--primary-light-color);
-    background: var(--primary-base-color);
+    background: #007637;
     border-radius: 3px;
     display: block;
     text-align: center;
+}
+
+.add_btn:hover {
+    background: #000;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
 }
 .delete_text {
     width: 30px;

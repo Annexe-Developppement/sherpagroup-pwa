@@ -200,7 +200,7 @@ const Header = props => {
                 
                 <div className={classes.secondaryActions}>
                 <div className={defaultClasses[`auto-complete-container`]}>
-                  <div id="auto-complete" className={defaultClasses[`auto-complete-input`]} style={{"width":"500px"}}>
+                  <div id="auto-complete" className={defaultClasses[`auto-complete-input`]+" "+classes.autocomplete_wrap}>
                       <Suspense fallback={null}>
                         <Autocomplete
                           openOnFocus={true}

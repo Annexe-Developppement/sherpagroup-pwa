@@ -164,6 +164,51 @@ const MyWishList = props => {
         );
       }
 
+      const RENAME_PROJECT = gql`
+      mutation($category_id: String!, $category_name: String!) {
+        MpBetterWishlistEditCategory(
+              input: { category_id: $category_id, category_name: $category_name }
+          )
+          {
+            category_id
+            category_name
+            is_default
+        }
+      }
+      `;
+
+      function RenameProject({cid}) {
+
+          const [addTodo, { data, loading, error }] = useMutation(RENAME_PROJECT);
+      
+          if (loading) return (<button type="" className={classes.add_to_project}>RENAMING PROJECT</button>);
+          if (error) return `Submission error! ${error.message}`;
+
+          function returnVal(sid) {
+              var e = document.getElementById("wid"+sid);
+              var value = e.value;
+              return value;
+          }
+          
+          return (
+          <div>
+              <form
+              onSubmit={e => {
+                  e.preventDefault();
+                  addTodo({ variables: { category_name: returnVal(wId) , category_id: wId} });
+                  window.alert('Project renamed.');
+                  window.location.reload(false);
+                  
+              }}
+              > 
+              <input type='text' id={"wid"+wId} className={classes.input_rename} placeholder={'New name'} />
+              <button type="submit" className={classes.rename_project}>Rename project</button>
+              </form>
+          </div>
+          
+          );
+      }
+
 
     if (!isSignedIn) {
         return <Redirect to="/" />;
@@ -548,7 +593,10 @@ const MyWishList = props => {
                                         )}
                                     </div>
                                     {wId !== undefined && wId !== null && (
+                                        <>
                                         <DeleteProject cid={wId} />
+                                        <RenameProject cid={wId} />
+                                        </>
                                     )}
                                 </div>
                             </div>

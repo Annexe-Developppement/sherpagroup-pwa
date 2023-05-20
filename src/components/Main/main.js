@@ -3,6 +3,7 @@ import { bool, shape, string } from 'prop-types';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Header from '../Header';
 import defaultClasses from './main.css';
+import { useUserContext } from '@magento/peregrine/lib/context/user';
 
 const MobileLinks = React.lazy(() => import('./mobileLinks'));
 const Footer = React.lazy(() => import('../Footer'));
@@ -35,12 +36,50 @@ const Main = props => {
         document.head.appendChild(integrationScript);
     }
 
+    var displayLogin = false;
+
+    if(window.location.href.indexOf("/education-landing") != -1) {
+        displayLogin = true;
+    }
+
+    if(window.location.href.indexOf("/events") != -1) {
+        displayLogin = true;
+    }
+
+    if(window.location.href.indexOf("/sherpa-webinar-archive") != -1) {
+        displayLogin = true;
+    }
+
+    if(window.location.href.indexOf("/brand-youtube-links") != -1) {
+        displayLogin = true;
+    }
+
+    function openLoginBox() {
+        document.getElementById('user_account').click();
+    }  
+
+    const [{ isSignedIn }] = useUserContext();
+
     return (
         <main className={rootClass}>
             <Header />
             
             <div className={pageClass}>
-            {children}
+            {(() => {
+              if (!isSignedIn && displayLogin){
+                  return (
+                    <div>
+                    <br/><br/><br/>
+                    <a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account to view this page</a>
+                    </div>
+                  )
+              } else {
+                return(children)
+              }
+              
+              return null;
+            })()}    
+            
             {window.location.href.indexOf("/events") != -1 ?
                  <div class="eca-app-container" data-widgetuuid="cbe1fe53-0fc4-4ece-9b1b-2f04e8372406"></div>
             : ''}
