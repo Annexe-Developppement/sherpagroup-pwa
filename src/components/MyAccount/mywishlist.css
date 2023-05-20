@@ -21,6 +21,24 @@
     padding: 0px 10px 10px 0px;
     border-radius: 3px;
     min-width: 20%;
+    display: none;
+}
+.add_to_project{
+    background: #007637;
+    border-radius: 5px;
+    padding: 10px 10px;
+    display: block;
+    min-height: 40px;
+    line-height: 20px;
+    width: 150px;
+    color: white;
+    margin-top: 30px;
+}
+.add_to_project:hover{
+    background: #000;
+    transition: 0.3s all;
+    -webkit-transition: 0.3s all;
+    -moz-transition: 0.3s all;
 }
 .inner {
     background: #fff;
@@ -35,6 +53,7 @@
 .product_details {
 }
 .product_name {
+    min-height: 100px;
     composes: product_name from '../CedHome/home.css';
 }
 .inner:hover .product_name a {

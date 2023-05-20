@@ -77,6 +77,50 @@ class ServiceDetailsEmployeurs extends Component{
 
     render(){
 
+        const ADD_TO_CUSTOM_PROJECT = gql`
+        mutation($category_id: String!, $product_id: Int!) {
+            MpBetterWishlistAddItem(
+                input: { category_id: $category_id, product_id: $product_id }
+            )
+        }
+        `;
+
+        
+
+        function AddToProject({item_id,uid}) {
+
+            let input;
+
+            const [addTodo, { data, loading, error }] = useMutation(ADD_TO_CUSTOM_PROJECT);
+        
+            if (loading) return (<button type="" className={classes.add_to_project}>ADDING TO PROJECT</button>);
+            if (error) return `Submission error! ${error.message}`;
+
+            function returnVal(sid) {
+                var e = document.getElementById(sid);
+                var value = e.options[e.selectedIndex].value;
+                var text = e.options[e.selectedIndex].text;
+                return value;
+            }
+            
+
+            return (
+            <div>
+                <form
+                onSubmit={e => {
+                    e.preventDefault();
+                    addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
+                    window.alert('Product added to project.'+returnVal(uid));
+                    
+                }}
+                > 
+                <button type="submit" className={classes.add_to_project}>ADD TO PROJECT</button>
+                </form>
+            </div>
+            
+            );
+        }
+
         const TOGGLE_LIKED_PHOTO = gql`
         mutation($category_name: String!) {
             MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
@@ -154,7 +198,7 @@ class ServiceDetailsEmployeurs extends Component{
 
             return (
               <div>
-                
+                <AddToProject item_id={this.props.item_id} uid={uniqueId} />
                 <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
                     <option defaultValue>
                     Choose a project.
@@ -332,7 +376,7 @@ const GalleryItem = props => {
         document.getElementById('user_account').click();
     }
 
-    let data_value = '1684115000_061';
+    let data_value = '';
 
     const [selectValue2, setSelectValue2] = React.useState("");
     const onChange = (event) => {
@@ -738,7 +782,7 @@ const GalleryItem = props => {
                             item.options == null && (
                                 <div>
                                     
-                                    <AddToProject item_id={item.id} />
+                                    
                                     
                                 </div>
                                 
@@ -811,7 +855,8 @@ const GalleryItem = props => {
                     {email ? (
                         <div> 
                             {/* <Select /> */}
-                            <ServiceDetailsEmployeurs pid={email}/>
+                            
+                            <ServiceDetailsEmployeurs pid={email} item_id={item.id}/>
                             {/* <BWL /> */}
                             
                         </div>
