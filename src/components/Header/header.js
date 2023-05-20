@@ -21,7 +21,7 @@ import GET_SLIDER_DATA from '../../queries/getSliderDetails.graphql';
 import { useMobile } from '../../peregrine/lib/talons/Mobile/useMobile';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
-import { Heart as HeartIcon } from 'react-feather';
+import { Clipboard as HeartIcon } from 'react-feather';
 import Icon from '@magento/venia-ui/lib/components/Icon';
 
 import { getAlgoliaResults , getAlgoliaFacets} from '@algolia/autocomplete-js';
@@ -32,7 +32,7 @@ import '@algolia/autocomplete-theme-classic';
 import { Autocomplete } from '../AutoComplete/autocomplete';
 import { ProductItem } from '../ProductItem';
 
-const heartIcon = <Icon src={HeartIcon} size={18} />;
+const heartIcon = <Icon src={HeartIcon} size={22} />;
 const SearchBar = React.lazy(() => import('../SearchBar'));
 const MegaMenu = React.lazy(() => import('../MegaMenu'));
 const CompareLink = React.lazy(() => import('../Compare/compareLink'));

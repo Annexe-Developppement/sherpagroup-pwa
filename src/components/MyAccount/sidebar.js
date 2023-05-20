@@ -127,7 +127,7 @@ const Sidebar = props => {
                     {' '}
                     <span className={defaultClasses.dashboard_links_images}>
                         <img
-                            src="/cenia-static/images/sent.png"
+                            src="/cenia-static/images/myprojects.png"
                             alt="wishlist"
                             width="20"
                             height="20"
