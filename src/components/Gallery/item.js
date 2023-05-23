@@ -150,6 +150,21 @@ class ServiceDetailsEmployeurs extends Component{
     
             const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
             const [selectValue, setSelectValue] = React.useState("");
+            if (data) { 
+
+                const newOption = document.createElement('option');
+                const optionText = document.createTextNode(data.MpBetterWishlistCreateCategory.category_name);
+                // set option text
+                newOption.appendChild(optionText);
+                // and option value
+                newOption.setAttribute('value',data.MpBetterWishlistCreateCategory.category_id);
+
+                const select = document.querySelector('select'); 
+                select.appendChild(newOption);
+
+                console.log(data.MpBetterWishlistCreateCategory.category_id)
+
+            }
             if (loading) return 'Submitting...';
             if (error) return `Submission error! ${error.message}`;
     
@@ -528,7 +543,7 @@ const GalleryItem = props => {
         <div className={classes.root} aria-live="polite" aria-busy="false">
             <div className={classes.noo_product_image}>
                 {discount_percent > 0 && email && (
-                    <div className={classes.priceTag}><b>{discount_percent}% discount{item.special_to_date && (<> until {(discount_date.toDateString())}</>)}</b></div>
+                    <div className={classes.priceTag}><b>{discount_percent}% Off{item.special_to_date && (<> until {(discount_date.toDateString().split(' ').slice(1).join(' '))}</>)}</b></div>
                 )}
 
 
