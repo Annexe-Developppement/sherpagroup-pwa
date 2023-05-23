@@ -1,4 +1,4 @@
-import React, { Fragment, Suspense, useEffect, useRef, useState } from 'react';
+import React, { Fragment, Suspense, useEffect, useRef, useState, Component } from 'react';
 import { arrayOf, bool, number, shape, string } from 'prop-types';
 import { Form } from 'informed';
 import { isProductConfigurable } from '@magento/peregrine/lib/util/isProductConfigurable';
@@ -39,6 +39,8 @@ import moreInfoProductsGraphql from '../../queries/getMoreInfoProducts.graphql';
 import GET_CUSTOMER_QUERY from '../../queries/getCustomer.graphql';
 import Icon from '../Icon';
 import { ChevronDown as ChevronDownIcon } from 'react-feather';
+import { gql, useMutation } from '@apollo/client';
+import { useStyle } from '../../classify';
 
 const chevrondownIcon = <Icon src={ChevronDownIcon} size={18} />;
 import { useUserContext } from '@magento/peregrine/lib/context/user';
@@ -83,7 +85,232 @@ import PriceRange from '../PriceRange';
 import InStockAlert from '../InStockAlert/inStockAlert';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
+let data_value = 'A';
+
+function updateDataValue(valeur) {
+    data_value = valeur;
+    console.log('UPDATE: '+data_value);
+}
+
+
+
+
 const ProductFullDetail = (props) => {
+
+    class ServiceDetailsEmployeurs extends Component{
+
+        constructor () {
+            super()
+            this.state = {
+                pageData: [],
+                name: "React Component reload sample",
+                reload: false
+            }
+        }
+    
+        refreshPage = () => {
+            this.setState(
+              {reload: true},
+              () => this.setState({reload: false})
+            )
+          }
+    
+        submit() {
+            this.setState({ name: "React Component Updated - " + new Date() });
+         }
+    
+        onToggleLoop = (event) => {
+            this.setState({loopActive: !this.state.loopActive})
+            this.props.onToggleLoop()
+        } 
+    
+        componentDidMount() {
+            let pid = this.props.pid;
+            let dataURL = "https://sherpagroupav.com/get_projects.php?email="+pid;
+            fetch(dataURL)
+              .then(res => res.json())
+              .then(res => {
+                this.setState({
+                    pageData: res
+                })
+              });        
+        }
+    
+    
+    
+        render(){
+    
+            const ADD_TO_CUSTOM_PROJECT = gql`
+            mutation($category_id: String!, $product_id: Int!) {
+                MpBetterWishlistAddItem(
+                    input: { category_id: $category_id, product_id: $product_id }
+                )
+            }
+            `;
+    
+            
+    
+            function AddToProject({item_id,uid}) {
+    
+                let input;
+    
+                const [addTodo, { data, loading, error }] = useMutation(ADD_TO_CUSTOM_PROJECT);
+            
+                if (loading) return (<button type="" className={classes.add_to_project}>ADDING TO PROJECT</button>);
+                if (error) return `Submission error! ${error.message}`;
+    
+                function returnVal(sid) {
+                    var e = document.getElementById(sid);
+                    var value = e.options[e.selectedIndex].value;
+                    var text = e.options[e.selectedIndex].text;
+                    return value;
+                }
+                
+    
+                return (
+                <div>
+                    
+                    <button onClick={e => {
+                        e.preventDefault();
+                        addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
+                        window.alert('Product added to project.');
+                        
+                    }} className={classes.add_to_project}>ADD TO PROJECT</button>
+                    
+                </div>
+                
+                );
+            }
+    
+            const TOGGLE_LIKED_PHOTO = gql`
+            mutation($category_name: String!) {
+                MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
+                    category_id
+                    category_name
+                    is_default
+                    items {
+                        added_at
+                        description
+                        product_id
+                        qty
+                        store_id
+                        wishlist_item_id
+                    }
+                }
+            }
+            `;
+    
+    
+            function AddTodo(uid) {
+    
+                let input;
+    
+                let selectId = uid;
+    
+                console.log('SID:: '+uid);
+        
+                const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
+                const [selectValue, setSelectValue] = React.useState("");
+                if (data) { 
+    
+                    const newOption = document.createElement('option');
+                    const optionText = document.createTextNode(data.MpBetterWishlistCreateCategory.category_name);
+                    // set option text
+                    newOption.appendChild(optionText);
+                    // and option value
+                    newOption.setAttribute('value',data.MpBetterWishlistCreateCategory.category_id);
+    
+                    const select = document.querySelector('select'); 
+                    select.appendChild(newOption);
+    
+                    console.log(data.MpBetterWishlistCreateCategory.category_id)
+    
+                }
+                if (loading) return 'Submitting...';
+                if (error) return `Submission error! ${error.message}`;
+        
+                return (
+                  <div>
+                    <form
+                      onSubmit={e => {
+                        e.preventDefault();
+                        addTodo({ variables: { category_name: input.value } });
+                        input.value = '';
+                        
+                        window.alert('New category created.');
+                        setSelectValue(999);
+                        
+                      }}
+                    >
+                        <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
+                        <input type='hidden' value={selectId} />
+                        <button className={classes.project_button} type="submit">OK</button> 
+                    </form>
+                  </div>
+                );
+              }
+    
+              const Select = () => {
+                const [selectValue, setSelectValue] = React.useState("");
+                const onChange = (event) => {
+                  const value = event.target.value;
+                  setSelectValue(value);
+                  updateDataValue(value);
+                }; 
+    
+                function makeid(length) {
+                    let result = '';
+                    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                    const charactersLength = characters.length;
+                    let counter = 0;
+                    while (counter < length) {
+                      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                      counter += 1;
+                    }
+                    return result;
+                }
+                  
+                var uniqueId = makeid(15);
+    
+                return (
+                  <div>
+                    <AddToProject item_id={this.props.item_id} uid={uniqueId} />
+                    <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
+                        <option defaultValue>
+                        Choose a project.
+                        </option>
+                        {this.state.pageData && this.state.pageData.map((e) => {
+                        
+                        return (
+                            <option value={e.category_id}>{e.category_name}</option>
+                        );
+                    
+                    })}
+                        <option value="1">Create a new project</option>
+                        </select>
+                        {selectValue &&  selectValue == 1 && ( 
+                        <div id={"hidden_div"}>
+                            <AddTodo uid={uniqueId}/>
+                        </div>
+                        )}
+                  </div>
+                );
+              };  
+    
+            //const classes = useStyle(defaultClasses);
+    
+            return(
+                <React.Fragment>
+    
+                    <div>
+                        
+                        <Select/>                    
+                    </div>
+    
+                </React.Fragment>
+            )
+        }
+    }
 
     const { email } = useDashboard();
 
@@ -724,31 +951,12 @@ const ProductFullDetail = (props) => {
                                                 </Button>
 
                                                 {/* wishlist section */}
+                                                
                                                 {isSignedIn && (
-                                                    <button
-                                                        className={
-                                                            classes.add_to_project
-                                                        }
-                                                        onClick={() =>
-                                                            addtowishlist(product)
-                                                        }
-                                                    >
-                                                    ADD TO PROJECT
-                                                    </button>
+                                                    <ServiceDetailsEmployeurs pid={email} item_id={product.id}/>
+                                                    
                                                 )}
-
-                                                <div> 
-                                                    <select onChange={onChange} className={classes.project_dropdown}>
-                                                            <option value="2" selected="selected">Choose a project</option>
-                                                            <option value="14851">Hello</option>
-                                                            <option value="1">Create a new project</option>
-                                                    </select>
-                                                    {selectValue &&  selectValue == 1 && ( 
-                                                        <div id={"hidden_div"+product.id}>
-                                                            <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
-                                                        </div>
-                                                    )}
-                                                </div>
+                                                
                                                 </>
                                             )}
 
@@ -1047,26 +1255,13 @@ const ProductFullDetail = (props) => {
                                                 })}
                                         </div>
                                     </div>
-                                    {/* reviews tab */}
-                                    {/* <div
-                                        id="target-section"
-                                        ref={(ref) => {
-                                            targetRef = ref;
-                                        }}
-                                    >
-                                        {scrollFlag && (
-                                            <Suspense fallback={''}>
-                                                <ProductReviews
-                                                    product={product}
-                                                />
-                                            </Suspense>
-                                        )}
-                                    </div>  */}
+                                   
                                 </div>
                             </div>
                         </div>
                     </section>
                 </Form>
+                
             </div>
             
             {scrollFlag && (
