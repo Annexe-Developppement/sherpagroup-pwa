@@ -7,7 +7,7 @@ import { Util } from '@magento/peregrine';
  */
 export const useHome = props => {
     const { query } = props;
-    const { error, data } = useQuery(query, { fetchPolicy: 'cache-first' });
+    const { error, data } = useQuery(query, { fetchPolicy: 'network-only' });
     useEffect(() => {
         if (error) {
             console.log('Error fetching Home Page Configurations.');
@@ -22,8 +22,8 @@ export const useHome = props => {
 export const useSliderProducts = props => {
     const { query, showProducts } = props;
     const { error, data } = useQuery(query, {
-        fetchPolicy: 'cache-and-network',
-        nextFetchPolicy: 'cache-first',
+        fetchPolicy: 'network-only',
+        nextFetchPolicy: 'network-only',
         skip: !showProducts
     });
     useEffect(() => {
@@ -49,8 +49,8 @@ export const useCmsBlock = props => {
         variables: {
             identifiers: identifier
         },
-        fetchPolicy: 'cache-and-network',
-        nextFetchPolicy: 'cache-first',
+        fetchPolicy: 'network-only',
+        nextFetchPolicy: 'network-only',
         skip: !showBanner
     });
     useEffect(() => {
@@ -131,7 +131,7 @@ export const useFooterData = props => {
 export const useScopeData = props => {
     const { query } = props;
     const { error, data } = useQuery(query, {
-        fetchPolicy: 'cache-first',
+        fetchPolicy: 'network-only',
         errorPolicy: 'all'
     });
     useEffect(() => {
