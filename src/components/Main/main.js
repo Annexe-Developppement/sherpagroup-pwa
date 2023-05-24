@@ -4,6 +4,7 @@ import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Header from '../Header';
 import defaultClasses from './main.css';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
+import Iframe from 'react-iframe'
 
 const MobileLinks = React.lazy(() => import('./mobileLinks'));
 const Footer = React.lazy(() => import('../Footer'));
@@ -37,6 +38,7 @@ const Main = props => {
     }
 
     var displayLogin = false;
+    var displayRegister = false;
 
     if(window.location.href.indexOf("/education-landing") != -1) {
         displayLogin = true;
@@ -52,6 +54,10 @@ const Main = props => {
 
     if(window.location.href.indexOf("/brand-youtube-links") != -1) {
         displayLogin = true;
+    }
+
+    if(window.location.href.indexOf("/new-user-account") != -1) {
+        displayRegister = true;
     }
 
     function openLoginBox() {
@@ -73,6 +79,17 @@ const Main = props => {
                     <a style={{cursor:'pointer'}} onClick={openLoginBox}>Login or Register for an Account to view this page</a>
                     </div>
                   )
+              } else if (!isSignedIn && displayRegister) {
+                return(
+                    <Iframe url="https://form.jotform.com/230886199517066"
+                        width="100%"
+                        height="650px"
+                        id=""
+                        className=""
+                        display="block"
+                        position="relative"/>
+                )
+
               } else {
                 return(children)
               }

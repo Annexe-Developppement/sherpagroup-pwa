@@ -26,6 +26,8 @@ import { gql, useMutation } from '@apollo/client';
 import { useLazyQuery, useQuery } from '@apollo/client';
 import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
+import Iframe from 'react-iframe'
+
 
 let data_value = 'A';
 
@@ -106,6 +108,7 @@ class ServiceDetailsEmployeurs extends Component{
 
             return (
             <div>
+                
                 <form
                 onSubmit={e => {
                     e.preventDefault();
