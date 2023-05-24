@@ -6,6 +6,7 @@ import { Link } from 'src/drivers';
 import AccountGreeting from './accountGreeting';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import wishlistClasses from './mywishlist.css';
+import { useDashboard } from '../../peregrine/lib/talons/MyAccount/useDashboard';
 
 class ProjectList extends Component{
 
@@ -67,6 +68,8 @@ const Sidebar = props => {
     } else if (typeof props.history != 'undefined') {
         path = props.history.location.pathname;
     }
+
+    const { email } = useDashboard();
 
     return (
         <div className={defaultClasses.sideBar_wrapper}>
@@ -136,12 +139,18 @@ const Sidebar = props => {
                     <Link to="/wishlist" onClick={onClose}>
                         <FormattedMessage
                             id={'sidebar.MyWishlist'}
-                            defaultMessage={'My projectss'}
+                            defaultMessage={'My projects'}
                         />
                     </Link>
                     
                 </li>
-                <ProjectList pid={"mcharbonneau@annexe-d.com"} />
+                {email ? (
+                    <ProjectList pid={email} />
+                ) : (
+                        <>
+                        <p>Loading projects</p>
+                        </>
+                    )}
                 <li
                     className={
                         path == '/addresses'
