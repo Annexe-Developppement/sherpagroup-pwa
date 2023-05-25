@@ -145,27 +145,67 @@ class ServiceDetailsEmployeurs extends Component{
 
         function AddTodo(uid) {
 
+            function sortOptions(selectId) {
+                var options = document.getElementById(selectId).options;
+                var optionsArray = [];
+                for (var i = 0; i < options.length; i++) {
+                    optionsArray.push(options[i]);
+                }
+                optionsArray = optionsArray.sort(function (a, b) {           
+                    return a.innerHTML.toLowerCase().charCodeAt(0) - b.innerHTML.toLowerCase().charCodeAt(0);    
+                });
+            
+                for (var i = 0; i <= options.length; i++) {            
+                    options[i] = optionsArray[i];
+                }
+                options[0].selected = true;
+            }
+
             let input;
 
             let selectId = uid;
-
-            console.log('SID:: '+uid);
     
             const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
             const [selectValue, setSelectValue] = React.useState("");
             if (data) { 
 
-                const newOption = document.createElement('option');
+                /*const newOption = document.createElement('option');
                 const optionText = document.createTextNode(data.MpBetterWishlistCreateCategory.category_name);
-                // set option text
                 newOption.appendChild(optionText);
-                // and option value
                 newOption.setAttribute('value',data.MpBetterWishlistCreateCategory.category_id);
-
+                
                 const select = document.querySelector('select'); 
                 select.appendChild(newOption);
+     
+                var options = select.options;
+                for (var i = 0; i < options.length; i++) {
+                if (options[i].value == inputs[index].id) {
+                    options[i].selected = true;
+                    break;
+                }
+                }*/
 
-                console.log(data.MpBetterWishlistCreateCategory.category_id)
+                document.getElementById('hidden_div').style.display='none';
+
+                var inputs, index;
+
+                inputs = document.getElementsByTagName('select');
+                for (index = 0; index < inputs.length; ++index) {
+                    console.log(inputs[index].id);
+                    
+                    var daySelect = document.getElementById(inputs[index].id);
+
+                    if(inputs[index].id == inputs[index].id) {
+                        daySelect.options[daySelect.options.length] = new Option(data.MpBetterWishlistCreateCategory.category_name,data.MpBetterWishlistCreateCategory.category_id,true,true);
+                    } else {
+                        daySelect.options[daySelect.options.length] = new Option(data.MpBetterWishlistCreateCategory.category_name,data.MpBetterWishlistCreateCategory.category_id,false,false);
+                    }
+
+                    //sortOptions(inputs[index].id);
+
+                }
+
+                //console.log(data.MpBetterWishlistCreateCategory.category_id)
 
             }
             if (loading) return 'Submitting...';
@@ -181,7 +221,6 @@ class ServiceDetailsEmployeurs extends Component{
                     
                     window.alert('New category created.');
                     setSelectValue(999);
-                    
                   }}
                 >
                     <input className={classes.project_input} type='text' ref={node => {input = node;}}/>

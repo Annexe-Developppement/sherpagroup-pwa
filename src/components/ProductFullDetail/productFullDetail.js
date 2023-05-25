@@ -207,23 +207,49 @@ const ProductFullDetail = (props) => {
     
                 let selectId = uid;
     
-                console.log('SID:: '+uid);
+                
         
                 const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
                 const [selectValue, setSelectValue] = React.useState("");
                 if (data) { 
-    
-                    const newOption = document.createElement('option');
+
+                    /*const newOption = document.createElement('option');
                     const optionText = document.createTextNode(data.MpBetterWishlistCreateCategory.category_name);
-                    // set option text
                     newOption.appendChild(optionText);
-                    // and option value
                     newOption.setAttribute('value',data.MpBetterWishlistCreateCategory.category_id);
-    
+                    
                     const select = document.querySelector('select'); 
                     select.appendChild(newOption);
+         
+                    var options = select.options;
+                    for (var i = 0; i < options.length; i++) {
+                    if (options[i].value == inputs[index].id) {
+                        options[i].selected = true;
+                        break;
+                    }
+                    }*/
     
-                    console.log(data.MpBetterWishlistCreateCategory.category_id)
+                    document.getElementById('hidden_div').style.display='none';
+    
+                    var inputs, index;
+    
+                    inputs = document.getElementsByTagName('select');
+                    for (index = 0; index < inputs.length; ++index) {
+                        console.log(inputs[index].id);
+                        
+                        var daySelect = document.getElementById(inputs[index].id);
+    
+                        if(inputs[index].id == inputs[index].id) {
+                            daySelect.options[daySelect.options.length] = new Option(data.MpBetterWishlistCreateCategory.category_name,data.MpBetterWishlistCreateCategory.category_id,true,true);
+                        } else {
+                            daySelect.options[daySelect.options.length] = new Option(data.MpBetterWishlistCreateCategory.category_name,data.MpBetterWishlistCreateCategory.category_id,false,false);
+                        }
+    
+                        //sortOptions(inputs[index].id);
+    
+                    }
+    
+                    //console.log(data.MpBetterWishlistCreateCategory.category_id)
     
                 }
                 if (loading) return 'Submitting...';
@@ -231,8 +257,10 @@ const ProductFullDetail = (props) => {
         
                 return (
                   <div>
-                    <form
-                      onSubmit={e => {
+                    
+                        <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
+                        <input type='hidden' value={selectId} />
+                        <button className={classes.project_button} onClick={e => {
                         e.preventDefault();
                         addTodo({ variables: { category_name: input.value } });
                         input.value = '';
@@ -240,12 +268,8 @@ const ProductFullDetail = (props) => {
                         window.alert('New category created.');
                         setSelectValue(999);
                         
-                      }}
-                    >
-                        <input className={classes.project_input} type='text' ref={node => {input = node;}}/>
-                        <input type='hidden' value={selectId} />
-                        <button className={classes.project_button} type="submit">OK</button> 
-                    </form>
+                      }}>OK</button> 
+                    
                   </div>
                 );
               }
