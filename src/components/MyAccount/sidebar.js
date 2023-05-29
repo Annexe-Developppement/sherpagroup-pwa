@@ -33,6 +33,8 @@ class ProjectList extends Component{
 
     render(){
 
+        let archive = this.props.archive;
+
         const classes = mergeClasses(
             defaultClasses,
             wishlistClasses
@@ -42,9 +44,17 @@ class ProjectList extends Component{
             return (
               <>
                     {this.state.pageData && this.state.pageData.map((e) => {
-                    return (
-                        <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
-                    );
+                    if(e.category_name.startsWith('ARCHIVE') && this.props.archive) {
+                        return (
+                            <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
+                        );
+                    } 
+                    if(!e.category_name.startsWith('ARCHIVE') && !this.props.archive) {
+                        return (
+                            <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
+                        );
+                    }
+                    
                 })}
               </>
             );
@@ -145,10 +155,41 @@ const Sidebar = props => {
                     
                 </li>
                 {email ? (
-                    <ProjectList pid={email} />
+                    <ProjectList pid={email} archive={false} />
                 ) : (
                         <>
                         <p>Loading projects</p>
+                        </>
+                    )}
+                <li
+                    className={
+                        path == '/wishlist'
+                            ? defaultClasses.item + ' ' + defaultClasses.active
+                            : defaultClasses.item
+                    }
+                >
+                    {' '}
+                    <span className={defaultClasses.dashboard_links_images}>
+                        <img
+                            src="/cenia-static/images/myprojects.png"
+                            alt="wishlist"
+                            width="20"
+                            height="20"
+                        />
+                    </span>
+                    <Link to="/wishlist" onClick={onClose}>
+                        <FormattedMessage
+                            id={'sidebar.MyWishlist'}
+                            defaultMessage={'Archive projects'}
+                        />
+                    </Link>
+                    
+                </li>
+                {email ? (
+                    <ProjectList pid={email} archive={true} />
+                ) : (
+                        <>
+                        <p>Loading archive projects</p>
                         </>
                     )}
                 <li

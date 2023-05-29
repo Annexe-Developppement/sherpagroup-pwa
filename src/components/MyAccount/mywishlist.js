@@ -59,7 +59,7 @@ class ProjectName extends Component{
         let projectname = this.state.pageData.pname && this.state.pageData.pname;
         return(
             <React.Fragment>
-                - {projectname}
+                - <span id='widn'>{projectname}</span>
             </React.Fragment>
         )
     }
@@ -134,6 +134,64 @@ const MyWishList = props => {
         }
     }, [addToast, removeMsg, removeResponse, refetch]);
 
+    const TOGGLE_LIKED_PHOTO = gql`
+            mutation($category_name: String!) {
+                MpBetterWishlistCreateCategory(input: { category_name: $category_name }) {
+                    category_id
+                    category_name
+                    is_default
+                    items {
+                        added_at
+                        description
+                        product_id
+                        qty
+                        store_id
+                        wishlist_item_id
+                    }
+                }
+            }
+            `;
+    
+    
+            function AddTodo(uid) {
+    
+                let input;
+    
+                let selectId = uid;
+    
+                const [addTodo, { data, loading, error }] = useMutation(TOGGLE_LIKED_PHOTO);
+                const [selectValue, setSelectValue] = React.useState("");
+                if (data) { 
+
+                    
+    
+                    
+    
+                }
+                if (loading) return 'Submitting...';
+                if (error) return `Submission error! ${error.message}`;
+        
+                return (
+                  <div>
+                    
+                        <input className={classes.input_rename} type='text' ref={node => {input = node;}} placeholder={'New project name'}/>
+                        <input type='hidden' value={selectId} />
+                        <button className={classes.rename_project} onClick={e => {
+                        e.preventDefault();
+                        addTodo({ variables: { category_name: input.value } });
+                        input.value = '';
+                        
+                        window.alert('New project created.');
+                        setSelectValue(999);
+                        window.location.reload();
+                        
+                      }}>Create new project</button> 
+             
+                    
+                  </div>
+                );
+              }
+
     const REMOVE_PROJECT = gql`
     mutation($category_id: String!) {
         MpBetterWishlistDeleteCategory(input: { category_id: $category_id })
@@ -158,6 +216,37 @@ const MyWishList = props => {
               }}
             > 
             <button type="submit" className={classes.add_to_project}> Delete project</button>
+            </form>
+          </div>
+          
+        );
+      }
+
+      function ArchiveProject({cid}) {
+
+        const [archiveeProject, { data, loading, error }] = useMutation(RENAME_PROJECT);
+      
+        if (loading) return (<button type="" className={classes.add_to_project}>ARCHIVING PROJECT</button>);
+        if (error) return `Archive error! ${error.message}`;
+
+        function returnVal() {
+            var e = document.getElementById("widn");
+            var value = e.innerHTML;
+            return value;
+        }
+        
+        return (
+          <div>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                console.log('PIN '+returnVal());
+                archiveeProject({ variables: { category_name: "ARCHIVE - "+returnVal() , category_id: wId} });
+                window.alert('Project archived.');
+                window.location.href="/wishlist";
+              }}
+            > 
+            <button type="submit" className={classes.add_to_project}> Archive project</button>
             </form>
           </div>
           
@@ -201,7 +290,7 @@ const MyWishList = props => {
                   
               }}
               > 
-              <input type='text' id={"wid"+wId} className={classes.input_rename} placeholder={'New name'} />
+              <input type='text' id={"wid"+wId} className={classes.input_rename} placeholder={'New name'}/>
               <button type="submit" className={classes.rename_project}>Rename project</button>
               </form>
           </div>
@@ -591,13 +680,26 @@ const MyWishList = props => {
                                                 </span>
                                             </div>
                                         )}
+                                       
+                                       
+                                       {wId == undefined && (
+                                        <>
+                                            <>My project instructions here ...</>
+                                            <AddTodo uid={wId}/>
+                                        </>
+                                        )}
+                                        
                                     </div>
                                     {wId !== undefined && wId !== null && (
                                         <>
-                                        <DeleteProject cid={wId} />
+                                        <AddTodo uid={wId}/>
                                         <RenameProject cid={wId} />
+                                        <ArchiveProject cid={wId} />
+                                        <DeleteProject cid={wId} />
+                                        
                                         </>
                                     )}
+                                   
                                 </div>
                             </div>
                         </div>

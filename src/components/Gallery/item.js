@@ -104,6 +104,13 @@ class ServiceDetailsEmployeurs extends Component{
                 var text = e.options[e.selectedIndex].text;
                 return value;
             }
+
+            function pname(sid) {
+                var e = document.getElementById(sid);
+                var value = e.options[e.selectedIndex].value;
+                var text = e.options[e.selectedIndex].text;
+                return text;
+            }
             
 
             return (
@@ -112,9 +119,14 @@ class ServiceDetailsEmployeurs extends Component{
                 <form
                 onSubmit={e => {
                     e.preventDefault();
-                    addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
-                    window.alert('Product added to project.'+returnVal(uid));
                     
+                    if(returnVal(uid) == 0 || returnVal(uid) == 1) {
+                        window.alert('Please choose or create a project.');
+                    } else {
+                        
+                        addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
+                        window.alert('Product added to project '+pname(uid));
+                    }
                 }}
                 > 
                 <button type="submit" className={classes.add_to_project}>ADD TO PROJECT</button>
@@ -257,7 +269,7 @@ class ServiceDetailsEmployeurs extends Component{
               <div>
                 <AddToProject item_id={this.props.item_id} uid={uniqueId} />
                 <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
-                    <option defaultValue>
+                    <option defaultValue value="0">
                     Choose a project.
                     </option>
                     {this.state.pageData && this.state.pageData.map((e) => {
@@ -484,6 +496,7 @@ const GalleryItem = props => {
             <form
               onSubmit={e => {
                 e.preventDefault();
+                
                 addTodo({ variables: { category_id: getDataValue() , product_id: item_id} });
                 window.alert('Product added to project.');
                 
