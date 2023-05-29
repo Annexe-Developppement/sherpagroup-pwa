@@ -165,21 +165,33 @@ const ProductFullDetail = (props) => {
                     var text = e.options[e.selectedIndex].text;
                     return value;
                 }
+
+                function pname(sid) {
+                    var e = document.getElementById(sid);
+                    var value = e.options[e.selectedIndex].value;
+                    var text = e.options[e.selectedIndex].text;
+                    return text;
+                }
                 
-    
-                return (
-                <div>
-                    
-                    <button onClick={e => {
-                        e.preventDefault();
-                        addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
-                        window.alert('Product added to project.');
+               
+                    return (
+                        <div>
+                            <button onClick={e => {
+                                e.preventDefault();
+                                if(returnVal(uid) == 0 || returnVal(uid) == 1) {
+                                    window.alert('Please choose or create a project.');
+                                    
+                                } else {
+                                    addTodo({ variables: { category_id: returnVal(uid) , product_id: item_id} });
+                                    window.alert('Product added to project '+pname(uid));
+                                }
+                                
+                            }} className={classes.add_to_project}>ADD TO PROJECT</button>  
+                        </div>
                         
-                    }} className={classes.add_to_project}>ADD TO PROJECT</button>
-                    
-                </div>
+                        );
                 
-                );
+                
             }
     
             const TOGGLE_LIKED_PHOTO = gql`
@@ -300,7 +312,7 @@ const ProductFullDetail = (props) => {
                   <div>
                     <AddToProject item_id={this.props.item_id} uid={uniqueId} />
                     <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
-                        <option defaultValue>
+                        <option defaultValue value="0">
                         Choose a project.
                         </option>
                         {this.state.pageData && this.state.pageData.map((e) => {
