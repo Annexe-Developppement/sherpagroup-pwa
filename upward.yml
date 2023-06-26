@@ -87,7 +87,7 @@ veniaSecurityHeaders:
             'unsafe-inline' {{ backend }}; img-src data: http: https:;
             object-src 'none'; base-uri 'none'; child-src 'self'; font-src
             'self' fonts.gstatic.com; frame-src assets.braintreegateway.com
-            *.youtube.com *.youtu.be *.vimeo.com *.jotform.com
+            *.youtube.com *.youtu.be *.vimeo.com *.jotform.com *.google.com
     strict-transport-security:
       inline: max-age=31536000
     x-content-type-options:
