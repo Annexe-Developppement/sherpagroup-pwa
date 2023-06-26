@@ -5,6 +5,7 @@ import Header from '../Header';
 import defaultClasses from './main.css';
 import { useUserContext } from '@magento/peregrine/lib/context/user';
 import Iframe from 'react-iframe'
+import JotformEmbed from 'react-jotform-embed';
 
 const MobileLinks = React.lazy(() => import('./mobileLinks'));
 const Footer = React.lazy(() => import('../Footer'));
@@ -81,13 +82,7 @@ const Main = props => {
                   )
               } else if (!isSignedIn && displayRegister) {
                 return(
-                    <Iframe url="https://form.jotform.com/230886199517066"
-                        width="100%"
-                        height="650px"
-                        id=""
-                        className=""
-                        display="block"
-                        position="relative"/>
+                    <JotformEmbed src="https://form.jotform.com/230886199517066" />
                 )
 
               } else {
