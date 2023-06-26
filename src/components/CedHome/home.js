@@ -77,7 +77,7 @@ const Home = props => {
                 <div className={defaultClasses.homepage_single_image}><img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg"/></div>
                 
                 {/* features block */}
-                {showOfferBanners != 0 && scrollFlag && (
+                {showOfferBanners != 0 && (
                     <section
                         className={
                             defaultClasses.homepage_sections +
@@ -96,7 +96,7 @@ const Home = props => {
                 {/* features block end */}
 
                 {/* mid banner section start */}
-                {showCategoryBanners != 0 && scrollFlag && (
+                {showCategoryBanners != 0 && (
                     <section
                         className={
                             defaultClasses.homepage_sections +

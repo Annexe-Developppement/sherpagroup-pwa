@@ -274,9 +274,11 @@ class ServiceDetailsEmployeurs extends Component{
                     </option>
                     {this.state.pageData && this.state.pageData.map((e) => {
                     
-                    return (
-                        <option value={e.category_id}>{e.category_name}</option>
-                    );
+                    if(!e.category_name.startsWith('ARCHIVE')) {
+                        return (
+                            <option value={e.category_id}>{e.category_name}</option>
+                        );
+                    }
                 
                 })}
                     <option value="1">Create a new project</option>

@@ -154,7 +154,7 @@ const Header = props => {
                 {currentUser.firstname ? (
                   <p className={classes.offer_message_text}>Welcome {currentUser.firstname} {currentUser.lastname} | <a className={classes.contactus} href="/contact">Contact us</a></p>
                 ) : (
-                  <p className={classes.offer_message_text}><a className={classes.contactus} onClick={openLoginBox}>Create your account to become a dealer.</a> | <a className={classes.contactus} href="/contact">Contact us</a></p>
+                  <p className={classes.offer_message_text}><a className={classes.contactus} onClick={openLoginBox}>Login</a> | <a className={classes.contactus} href='/new-user-account'>Create your account to become a dealer</a> | <a className={classes.contactus} href="/contact">Contact us</a></p>
                 )}
                 {/* <FormattedMessage
                   id={'header.offer_message_text'}

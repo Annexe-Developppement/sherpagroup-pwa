@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Component } from 'react';
+import React, { Suspense, useState, useEffect, Component } from 'react';
 import { shape, string } from 'prop-types';
 import GET_CUSTOMER_QUERY from '../../queries/getCustomer.graphql';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
@@ -33,6 +33,10 @@ import { Title } from '@magento/venia-ui/lib/components/Head';
 import { gql, useMutation } from '@apollo/client';
 import { ChevronDown as ArrowDown, X as ArrowUp } from 'react-feather';
 import Icon from '../Icon';
+
+const Banner = React.lazy(() => import('../CedHome/banner'));
+const categoryBannerIdentifierHome = 'projects_instructions';
+let showCategoryBanners = true;
 
 class ProjectName extends Component{
     constructor () {
@@ -473,7 +477,7 @@ const MyWishList = props => {
                                                                                     .price
                                                                                     .regularPrice
                                                                                     .amount
-                                                                                    .value
+                                                                                    .value.toFixed(2)
                                                                             }
                                                                         </span>
                                                                     </div>
@@ -684,7 +688,12 @@ const MyWishList = props => {
                                        
                                        {wId == undefined && (
                                         <>
-                                            <>My project instructions here ...</>
+                                            <Suspense fallback={''}>
+                                                <Banner
+                                                    identifier={categoryBannerIdentifierHome}
+                                                    showBanner={showCategoryBanners}
+                                                />
+                                            </Suspense>
                                             <AddTodo uid={wId}/>
                                         </>
                                         )}
