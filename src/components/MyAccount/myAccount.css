@@ -18,6 +18,14 @@
 .projectlist a:hover {
     color: #8dc74c;
 }
+.projectlistactive {
+    background: #8dc74c;
+    border-radius: 5px;
+    padding: 5px;
+}
+.projectlistactive:hover a {
+    color: white !important;
+}
 form.root input:focus {
     box-shadow: unset;
 }
