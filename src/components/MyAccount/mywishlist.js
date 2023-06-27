@@ -329,6 +329,7 @@ const MyWishList = props => {
         return <Redirect to="/" />;
     }
     if (!loading) {
+        var total = 0;
         return (
             <div className={defaultClasses.columns}>
                 <Title>{`My Projects`}</Title>
@@ -380,6 +381,7 @@ const MyWishList = props => {
                                     </div>
                                     {wId !== undefined && wId !== null && (
                                         <>
+                                        <div>Estimated total : $<span id='totalApprox'></span></div>
                                         <MoveProjectToCart/>
                                         </>
                                     )}
@@ -410,9 +412,22 @@ const MyWishList = props => {
                                                         .then(res => res.json())
                                                         .then(res => {
                                                             if(res.display==1) {
+                                                                //document.getElementById('.q'+val.id+' #quantity').value=val.qty;
+                                                                //var targetDiv = getElementsByClassName('q'+val.id).document.getElementById("quantity")[0];
+                                                                //targetDiv.value = val.qty;
+                                                                //document.getElementById('q'+val.id).getElementById("quantity")[0].value = 8;
                                                                 document.getElementById("t"+pid).style.display="block";
                                                                 var element = document.getElementById("t"+pid);
                                                                 element.classList.add("activeProject");
+                                                                console.log('Is active'+val
+                                                                .product
+                                                                .price
+                                                                .regularPrice
+                                                                .amount
+                                                                .value.toFixed(2));
+                                                                total = total + Number(val.product.price.regularPrice.amount.value.toFixed(2)*val.qty);
+                                                                console.log('Total : '+total);
+                                                                document.getElementById('totalApprox').innerHTML = total.toFixed(2);
                                                             } else {
                                                                 
                                                             }
@@ -518,13 +533,15 @@ const MyWishList = props => {
                                                                         </span>
                                                                     </div>
                                                                     <div
+                                                                        id={'q'+val.id}
                                                                         className={
                                                                             classes.wishlist_quantity
                                                                         }
                                                                     > 
                                                                         <Quantity
+                                                                            
                                                                             initialValue={
-                                                                                quantity
+                                                                                9
                                                                             }
                                                                             onValueChange={value =>
                                                                                 handleSetQuantity(
