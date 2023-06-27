@@ -257,6 +257,28 @@ const MyWishList = props => {
         );
       }
 
+      function MoveProjectToCart({cid}) {
+
+        return (
+          <div>
+            <form
+              onSubmit={e => {
+                e.preventDefault();
+                var items = document.querySelectorAll('.activeProject .active_item'+wId);
+                for (var i = 0; i < items.length; i++) {
+                    items[i].click(); 
+                }
+                
+                window.alert('Project added to cart.');
+              }}
+            > 
+            <button type="submit" className={classes.add_to_project}> Move Project to Cart</button>
+            </form>
+          </div>
+          
+        );
+      }
+
       const RENAME_PROJECT = gql`
       mutation($category_id: String!, $category_name: String!) {
         MpBetterWishlistEditCategory(
@@ -356,6 +378,11 @@ const MyWishList = props => {
                                             
                                         </h1>
                                     </div>
+                                    {wId !== undefined && wId !== null && (
+                                        <>
+                                        <MoveProjectToCart/>
+                                        </>
+                                    )}
                                     <div
                                         className={
                                             defaultClasses.block_dashboard_orders +
@@ -364,12 +391,17 @@ const MyWishList = props => {
                                         }
                                     >
                                         {typeof data != 'undefined' && (
+                                            <>
+                                            
                                             <div
                                                 className={
                                                     classes.products_wrapper
                                                 }
                                             >
+                                               
                                                 {data.map((val, index) => {
+
+                                                    var currentProduct = val.product;
 
                                                     function belongToProject(pid,cid) {
 
@@ -379,6 +411,8 @@ const MyWishList = props => {
                                                         .then(res => {
                                                             if(res.display==1) {
                                                                 document.getElementById("t"+pid).style.display="block";
+                                                                var element = document.getElementById("t"+pid);
+                                                                element.classList.add("activeProject");
                                                             } else {
                                                                 
                                                             }
@@ -391,6 +425,8 @@ const MyWishList = props => {
                                                     if(belongToProject(val.product.id,wId)) {
 
                                                         return (
+                                                            <>
+                                                           
                                                             <div
                                                                 key={index}
                                                                 className={
@@ -546,12 +582,15 @@ const MyWishList = props => {
                                                                                 .product
                                                                                 .__typename ==
                                                                                 'SimpleProduct' && (
+                                                                                    
                                                                                 <button
+                                                                                    className={'active_item'+wId}
                                                                                     onClick={() => {
                                                                                         handleAddToCart(
                                                                                             val.product
                                                                                         );
-                                                                                        window.alert("Product moved to cart.");
+                                                                                       
+                                                                                        //window.alert("Product moved to cart.");
                                                                                         /*remove(
                                                                                             val
                                                                                                 .product
@@ -605,6 +644,7 @@ const MyWishList = props => {
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            </>
                                                         );
 
                                                     } else {
@@ -648,6 +688,7 @@ const MyWishList = props => {
                                                     </div>
                                                 )}
                                             </div>
+                                            </>
                                         )}
                                         {typeof data == 'undefined' && (
                                             <div

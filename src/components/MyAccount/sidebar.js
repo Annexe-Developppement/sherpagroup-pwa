@@ -40,16 +40,30 @@ class ProjectList extends Component{
             wishlistClasses
         );
 
+        const queryParameters = new URLSearchParams(window.location.search)
+
+        const projectId = queryParameters.get("id");
+
+        console.log('Prou'+projectId);
+
         const ProjectItems = () => {
             return (
               <>
                     {this.state.pageData && this.state.pageData.map((e) => {
-                    if(e.category_name.startsWith('ARCHIVE') && this.props.archive) {
+                    if(e.category_name.startsWith('ARCHIVE') && this.props.archive && projectId == e.category_id) {
+                        return (
+                            <li className={classes.projectlist+' '+classes.projectlistactive}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
+                        );
+                    } else if (e.category_name.startsWith('ARCHIVE') && this.props.archive) {
                         return (
                             <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
                         );
-                    } 
-                    if(!e.category_name.startsWith('ARCHIVE') && !this.props.archive) {
+                    }
+                    if(!e.category_name.startsWith('ARCHIVE') && !this.props.archive && projectId == e.category_id) {
+                        return (
+                            <li className={classes.projectlist+' '+classes.projectlistactive}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
+                        );
+                    } else if (!e.category_name.startsWith('ARCHIVE') && !this.props.archive) {
                         return (
                             <li className={classes.projectlist}><a href={"/wishlist?id="+e.category_id}>{e.category_name}</a></li>
                         );
