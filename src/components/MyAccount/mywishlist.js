@@ -383,7 +383,7 @@ const MyWishList = props => {
                                     </div>
                                     {wId !== undefined && wId !== null && (
                                         <>
-                                        <div>Estimated total : $<span id='totalApprox'></span></div>
+                                        <div>Estimated total before taxes and shipping : $<span id='totalApprox'></span></div>
                                         <MoveProjectToCart/>
                                         </>
                                     )}
@@ -604,9 +604,20 @@ const MyWishList = props => {
                                                                                 <button
                                                                                     className={'active_item'+wId}
                                                                                     onClick={() => {
-                                                                                        handleAddToCart(
-                                                                                            val.product
-                                                                                        );
+                                                                                        /*handleAddToCart(
+                                                                                            val.product, val.qty
+                                                                                        );*/
+                                                                                        var currentQty = document.querySelector('#q'+val.id).querySelector('input').value;
+                                                                                        console.log('qqqw');
+                                                                                        console.log(currentQty);
+
+                                                                                        for (let i = 0; i < currentQty; i++) {
+                                                                                            handleAddToCart(
+                                                                                                val.product
+                                                                                            );
+                                                                                        }
+
+                                                                                        
                                                                                        
                                                                                         //window.alert("Product moved to cart.");
                                                                                         /*remove(
