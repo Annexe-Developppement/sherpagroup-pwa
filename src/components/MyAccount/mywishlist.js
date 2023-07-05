@@ -20,7 +20,9 @@ import {
     faExclamationTriangle
 } from '@fortawesome/free-solid-svg-icons';
 import { useCategoryAddToCart } from '../../peregrine/lib/talons/ProductFullDetail/useProductFullDetail';
-import Quantity from './wishlistQuantity.js';
+import Quantity from '../CartPage/ProductListing/quantity';
+
+
 import WishlistSkelton from './WishlistSkeleton.js';
 import LoadingIndicator from '@magento/venia-ui/lib/components/LoadingIndicator';
 import { useToasts } from '@magento/peregrine';
@@ -538,11 +540,10 @@ const MyWishList = props => {
                                                                             classes.wishlist_quantity
                                                                         }
                                                                     > 
+                                                                        
                                                                         <Quantity
                                                                             
-                                                                            initialValue={
-                                                                                9
-                                                                            }
+                                                                            initialValue={val.qty}
                                                                             onValueChange={value =>
                                                                                 handleSetQuantity(
                                                                                     value,

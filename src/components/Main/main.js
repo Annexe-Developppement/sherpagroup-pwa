@@ -41,6 +41,10 @@ const Main = props => {
     var displayLogin = false;
     var displayRegister = false;
 
+    if(window.location.href.indexOf("/myprojects") != -1) {
+        window.location.replace("/wishlist");
+    }
+
     if(window.location.href.indexOf("/education-landing") != -1) {
         displayLogin = true;
     }

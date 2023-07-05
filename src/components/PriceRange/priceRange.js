@@ -51,32 +51,46 @@ const PriceRange = props => {
                         PART # <span>{product && product.sku}</span></p><br/>
                         <p className={classes.productPrice}>
                         BRAND : <span>{product && product.productbrand}</span></p><br/>    
-                    <p className={classes.productPrice}>YOUR COST&nbsp;&nbsp;&nbsp;
-                        <Price
-                            currencyCode={
-                                price.minimum_price.final_price.currency
-                            }
-                            value={final_minimum_price}
-                        />
-                    </p>
+                    
 
                     {/* today.toISOString().split('T')[0] < specialDate.toISOString().split('T')[0] && */}
-
+                    {final_minimum_price == final_regular_price &&  (
+                        <>
+                            <p className={classes.productPrice}>YOUR COST&nbsp;&nbsp;&nbsp;
+                                <Price
+                                    currencyCode={
+                                        price.minimum_price.final_price.currency
+                                    }
+                                    value={final_minimum_price}
+                                />
+                            </p>
+                        </>
+                    )}
                     {final_minimum_price != final_regular_price &&  (
-                        <p
-                            className={
-                                classes.productPrice +
-                                ' ' +
-                                priceClasses.regularprice
-                            }
-                        >
-                            <Price
-                                currencyCode={
-                                    price.minimum_price.regular_price.currency
+                        <>
+                            <p className={classes.productPrice + ' ' + priceClasses.greenprice }>YOUR COST&nbsp;&nbsp;&nbsp;
+                                <Price
+                                    currencyCode={
+                                        price.minimum_price.final_price.currency
+                                    }
+                                    value={final_minimum_price}
+                                />
+                            </p>
+                            <p
+                                className={
+                                    classes.productPrice +
+                                    ' ' +
+                                    priceClasses.regularprice + ' ' + priceClasses.discountedprice
                                 }
-                                value={final_regular_price}
-                            />
-                        </p>
+                            >
+                                <Price
+                                    currencyCode={
+                                        price.minimum_price.regular_price.currency
+                                    }
+                                    value={final_regular_price}
+                                />
+                            </p>
+                        </>
                     )}
                             
                 </section>
