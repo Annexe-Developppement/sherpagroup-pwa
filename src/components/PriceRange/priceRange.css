@@ -19,6 +19,18 @@
     color: #b9b9b9;
 }
 
+.greenprice span {
+    color: #8cc650;
+}
+
+.discountedprice span {
+    color: red;
+}
+
+.discountedprice:after {
+    background-color: red;
+}
+
 /* rtl */
 body[class='rtl_view'] .regularprice:after {
     left: unset;
