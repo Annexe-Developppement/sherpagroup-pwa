@@ -326,6 +326,54 @@ const MyWishList = props => {
           );
       }
 
+      const Select = () => {
+        const [selectValue, setSelectValue] = React.useState("");
+        const onChange = (event) => {
+          const value = event.target.value;
+          setSelectValue(value);
+        }; 
+
+        return (
+          <div>
+            
+            <select onChange={onChange} className={classes.project_dropdown}>
+                <option defaultValue value="0">
+                Project actions
+                </option>
+               
+                <option value="1">Create a new project</option>
+                <option value="2">Rename current project</option>
+                <option value="3">Archive current project</option>
+                <option value="4">Delete current project</option>
+                </select>
+                {selectValue &&  selectValue == 1 && ( 
+                <div id={"hidden_div"}>
+                    <AddTodo uid={wId}/>
+                </div>
+                )}
+                {selectValue &&  selectValue == 2 && ( 
+                <div id={"hidden_div"}>
+                    <RenameProject cid={wId} />
+                </div>
+                )}
+                {selectValue &&  selectValue == 3 && ( 
+                <div id={"hidden_div"}>
+                    <ArchiveProject cid={wId} />
+                </div>
+                )}
+                {selectValue &&  selectValue == 4 && ( 
+                <div id={"hidden_div"}>
+                   <DeleteProject cid={wId} />
+                </div>
+                )}
+
+
+                                        
+                                        
+          </div>
+        );
+      };  
+
 
     if (!isSignedIn) {
         return <Redirect to="/" />;
@@ -609,7 +657,10 @@ const MyWishList = props => {
                                                                                         );*/
                                                                                         var currentQty = document.querySelector('#q'+val.id).querySelector('input').value;
                                                                                         console.log('qqqw');
-                                                                                        console.log(currentQty);
+                                                                                        console.log(val.product);
+                                                                                        let item = val.product;
+
+                                                                                        
 
                                                                                         for (let i = 0; i < currentQty; i++) {
                                                                                             handleAddToCart(
@@ -771,11 +822,8 @@ const MyWishList = props => {
                                     </div>
                                     {wId !== undefined && wId !== null && (
                                         <>
-                                        <AddTodo uid={wId}/>
-                                        <RenameProject cid={wId} />
-                                        <ArchiveProject cid={wId} />
-                                        <DeleteProject cid={wId} />
-                                        
+                                      
+                                        <Select uid={wId} />
                                         </>
                                     )}
                                    

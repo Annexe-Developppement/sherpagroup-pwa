@@ -772,6 +772,7 @@ const GalleryItem = props => {
                                     <button
 
                                         onClick={() => {
+                                            console.log(item);
                                             setProductName(item.name),
                                             handleAddToCart({
                                                 quantity: document.querySelector('.c'+item.id).querySelector('.quantity-display').value,
