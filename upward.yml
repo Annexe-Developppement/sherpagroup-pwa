@@ -66,31 +66,7 @@ veniaStaticIncludes:
   directory:
     resolver: inline
     inline: "./cenia-static"
-veniaSecurityHeaders:
-  resolver: inline
-  inline:
-    content-security-policy:
-      resolver: template
-      engine: mustache
-      provide:
-        backend: env.MAGENTO_BACKEND_URL
-      template:
-        resolver: conditional
-        when:
-          - matches: env.NODE_ENV
-            pattern: production
-            use:
-              inline: ''
-        default:
-          inline: ""
-    strict-transport-security:
-      inline: max-age=31536000
-    x-content-type-options:
-      inline: nosniff
-    x-frame-options:
-      inline: SAMEORIGIN
-    x-xss-protection:
-      inline: 1; mode=block
+    
 status: veniaResponse.status
 headers: veniaResponse.headers
 body: veniaResponse.body
