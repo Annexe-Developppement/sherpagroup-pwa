@@ -78,7 +78,7 @@ veniaSecurityHeaders:
         resolver: conditional
         when:
           - matches: env.NODE_ENV
-            pattern: development
+            pattern: production
             use:
               inline: ''
         default:
