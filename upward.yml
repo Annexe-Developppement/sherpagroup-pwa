@@ -66,5 +66,7 @@ veniaStaticIncludes:
   directory:
     resolver: inline
     inline: "./cenia-static"
+
 status: veniaResponse.status
+headers: veniaResponse.headers
 body: veniaResponse.body
