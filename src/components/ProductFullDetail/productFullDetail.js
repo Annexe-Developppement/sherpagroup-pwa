@@ -310,6 +310,7 @@ const ProductFullDetail = (props) => {
     
                 return (
                   <div>
+                    {/*}
                     <AddToProject item_id={this.props.item_id} uid={uniqueId} />
                     <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
                         <option defaultValue value="0">
@@ -329,7 +330,7 @@ const ProductFullDetail = (props) => {
                         <div id={"hidden_div"}>
                             <AddTodo uid={uniqueId}/>
                         </div>
-                        )}
+                        )} */}
                   </div>
                 );
               };  

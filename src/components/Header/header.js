@@ -336,16 +336,10 @@ const Header = props => {
                         defaultMessage={'Wishlist'}
                       />
                     </span>
-                    <span title="Wishlist">
+                    {/*<span title="Wishlist">
                       {heartIcon}
-                      {/*<span
-                        className={
-                          classes.wishlist_counter
-                        }
-                      >
-                        {wishlistCount}
-                      </span> */}
-                    </span>
+                      
+                  </span>*/}
                   </Link>
                 )}
                  {isSignedIn && (

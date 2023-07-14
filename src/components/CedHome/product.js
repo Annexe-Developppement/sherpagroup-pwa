@@ -236,7 +236,7 @@ const Product = props => {
                                     </button> */}
 
                                             {/* wishlist section */}
-                                            <Suspense fallback={''}>
+                                            {/*<Suspense fallback={''}>
                                                 <Wishlist value={value} />
                                             </Suspense>
 
@@ -249,7 +249,7 @@ const Product = props => {
                                                 <div id={"hidden_div"+value.id}>
                                                     <input className={classes.project_input} type='text'/><button className={classes.project_button}>OK</button>
                                                 </div>
-                                            )}
+                                            )} */}
                                         </div>
                                     ) : (
                                         <>

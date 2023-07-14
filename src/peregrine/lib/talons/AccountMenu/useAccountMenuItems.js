@@ -25,11 +25,11 @@ export const useAccountMenuItems = props => {
             id: 'My Orders',
             url: '/orders'
         },
-        {
+        /*{
             name: 'My Projects',
             id: 'My Projects',
             url: '/wishlist'
-        },
+        }, */
         {
             name: 'Address Book',
             id: 'Address Book',
