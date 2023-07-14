@@ -144,7 +144,7 @@ const Sidebar = props => {
                         />
                     </Link>
                 </li>
-                <li
+                {/*<li
                     className={
                         path == '/wishlist'
                             ? defaultClasses.item + ' ' + defaultClasses.active
@@ -167,7 +167,7 @@ const Sidebar = props => {
                         />
                     </Link>
                     
-                </li>
+                </li> 
                 {email ? (
                     <ProjectList pid={email} archive={false} />
                 ) : (
@@ -228,7 +228,7 @@ const Sidebar = props => {
                             defaultMessage={'Address Book'}
                         />
                     </Link>
-                </li>
+                </li> */}
                 <li
                     className={
                         path == '/accountinformation'

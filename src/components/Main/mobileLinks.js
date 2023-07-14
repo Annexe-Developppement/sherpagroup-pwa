@@ -127,7 +127,7 @@ const MobileLinks = props => {
                         />
                     </p>
                 </button>
-                <button
+                {/*<button
                     onClick={() => {
                         setWishlistRender(true);
 
@@ -148,9 +148,7 @@ const MobileLinks = props => {
                         title="My projects"
                     >
                         {heartIcon}
-                        {/*<span className={headerClasses.wishlist_counter}>
-                            {wishlistCount}
-                        </span> */}
+                       
                     </span>
                     <p className={defaultClasses.images_label}>
                         <FormattedMessage
@@ -158,7 +156,7 @@ const MobileLinks = props => {
                             defaultMessage={'My projects'}
                         />
                     </p>
-                </button>
+                </button> */}
                 <button
                     onClick={() => {
                         handleProfile();

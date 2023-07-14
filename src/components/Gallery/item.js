@@ -267,7 +267,7 @@ class ServiceDetailsEmployeurs extends Component{
 
             return (
               <div>
-                <AddToProject item_id={this.props.item_id} uid={uniqueId} />
+                {/*<AddToProject item_id={this.props.item_id} uid={uniqueId} />
                 <select onChange={onChange} className={classes.project_dropdown} id={uniqueId}>
                     <option defaultValue value="0">
                     Choose a project.
@@ -287,7 +287,7 @@ class ServiceDetailsEmployeurs extends Component{
                     <div id={"hidden_div"}>
                         <AddTodo uid={uniqueId}/>
                     </div>
-                    )}
+                    )} */}
               </div>
             );
           };  
@@ -299,7 +299,7 @@ class ServiceDetailsEmployeurs extends Component{
 
                 <div>
                     
-                    <Select/>                    
+                    {/* <Select/>  */}                  
                 </div>
 
             </React.Fragment>
@@ -577,7 +577,7 @@ const GalleryItem = props => {
         
         return (
                 <> 
-                <select onChange={onChange} className={classes.project_dropdown}>
+                {/*<select onChange={onChange} className={classes.project_dropdown}>
                 <option value="2">Choose a project</option>
                 {data.MpBetterWishlistGetCategories && data.MpBetterWishlistGetCategories.map((e) => {
                     console.log('Calvert');
@@ -590,7 +590,7 @@ const GalleryItem = props => {
                     
                 })}    
                 <option value="1">Create a new project</option>
-                </select>  
+            </select>   */}
                 
                 </>
           );
