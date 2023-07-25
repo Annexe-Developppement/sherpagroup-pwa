@@ -23,7 +23,9 @@
     min-width: 30px;
     border-radius: 7px !important;
 }
-
+.thumbs.animated {
+    display:none !important;
+}
 .section_banner img {
     width: 100%;
     object-fit: contain;

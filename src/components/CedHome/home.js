@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState, Component } from 'react';
 import { shape, string } from 'prop-types';
 import { mergeClasses } from '../../classify';
 import defaultClasses from './home.css';
@@ -9,6 +9,9 @@ import { useMobile } from '../../peregrine/lib/talons/Mobile/useMobile';
 import Image from '../Image';
 import { useIntl } from 'react-intl';
 import BannerSkelton from './bannerSkeleton';
+import ReactDOM from 'react-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
 
 const Banner = React.lazy(() => import('./banner'));
 const SliderProduct = React.lazy(() => import('./sliderProduct'));
@@ -73,8 +76,22 @@ const Home = props => {
     return (
         <React.Fragment>
             <div>
+            <Carousel autoPlay>
+                <div>
+                    <img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg" />
+                    
+                </div>
+                <div>
+                    <img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg" />
+                    
+                </div>
+                <div>
+                    <img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg" />
+                    
+                </div>
+            </Carousel>
+            
                 
-                <div className={defaultClasses.homepage_single_image}><img src="https://sherpagroupav.com/media/wysiwyg/Banners/WebBanner-WhySherpa2.jpg"/></div>
                 
                 {/* features block */}
                 {showOfferBanners != 0 && (
