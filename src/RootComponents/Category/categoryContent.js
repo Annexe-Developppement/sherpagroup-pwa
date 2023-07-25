@@ -337,7 +337,9 @@ const CategoryContent = props => {
         exclude = 0;
     }
 
-    
+    const Banner = React.lazy(() => import('/src/components/CedHome/banner'));
+    const categoryBannerIdentifierHome = 'banner_'+catId;
+    let showCategoryBanners = true;
     
     
     return (
@@ -357,7 +359,14 @@ const CategoryContent = props => {
                                 <div className={classes.categoryInfo}>
                                     ({categoryResultsHeading})
                                 </div>
+                                
                             </h1>
+                            <Suspense fallback={''}>
+                                    <Banner
+                                        identifier={categoryBannerIdentifierHome}
+                                        showBanner={showCategoryBanners}
+                                    />
+                                </Suspense>
                             {isSignedIn && categoryDescription != null ?
                                 <div className={classes.downloadboxlink}>
                                     <a
@@ -381,6 +390,7 @@ const CategoryContent = props => {
                         <div className='col-lg-6 col-md-6 col-sm-6 col-xs-12 text-right'>
                             {banner}
                         </div>
+                        
                     </div>
                     <LinkList />
                     

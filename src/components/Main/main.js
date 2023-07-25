@@ -80,7 +80,7 @@ const Main = props => {
     return (
         <main className={rootClass}>
             <Header />
-            
+            <p>All</p>
             <div className={pageClass}>
             {(() => {
 
@@ -182,7 +182,6 @@ const Main = props => {
                 $("#team-member-1").click(function () {
                     //$("#modal-team-member-1").modal("openModal");
                     $("#modal-team-member-1").show();
-                    alert("Henlo2");
                 });
                 $("#team-member-2").click(function () {
                     $("#modal-team-member-2").modal("openModal");
