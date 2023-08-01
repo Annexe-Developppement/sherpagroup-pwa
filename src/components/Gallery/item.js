@@ -667,7 +667,7 @@ const GalleryItem = props => {
                                         <p>To: {item.special_to_date.slice(0, -8)}</p>
                                     )} */}
                                     <b className={classes.total_available_b}>YOUR COST&nbsp;&nbsp;</b>
-                                    <span className={classes.productPrice}>
+                                    <span className={classes.productPrice+ ' ' + classes.greenprice }>
                                         <Price
                                             value={(price_range.maximum_price.final_price.value)*1}
                                             currencyCode={
@@ -677,7 +677,7 @@ const GalleryItem = props => {
                                     </span>
                                     <span
                                         className={
-                                            classes.regularprice
+                                            classes.regularprice+ ' ' + classes.discountedprice 
                                         }
                                     >
                                         
