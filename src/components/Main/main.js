@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 import { bool, shape, string } from 'prop-types';
 import { mergeClasses } from '@magento/venia-ui/lib/classify';
 import Header from '../Header';
@@ -7,6 +7,8 @@ import { useUserContext } from '@magento/peregrine/lib/context/user';
 import Iframe from 'react-iframe'
 import JotformEmbed from 'react-jotform-embed';
 import $ from 'jquery';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const MobileLinks = React.lazy(() => import('./mobileLinks'));
 const Footer = React.lazy(() => import('../Footer'));
@@ -39,16 +41,22 @@ const Main = props => {
         document.head.appendChild(integrationScript);
     }
 
+    const Banner = React.lazy(() => import('/src/components/CedHome/banner'));
+    const categoryBannerIdentifierHome = 'education_landing';
+    let showCategoryBanners = true;
+
     var displayLogin = false;
     var displayRegister = false;
     var displayTeam = false;
+    var displayEducation = false;
 
     if(window.location.href.indexOf("/myprojects") != -1) {
         window.location.replace("/wishlist");
     }
 
     if(window.location.href.indexOf("/education-landing") != -1) {
-        displayLogin = true;
+        
+        displayEducation = true;
     }
 
     if(window.location.href.indexOf("/events") != -1) {
@@ -80,186 +88,70 @@ const Main = props => {
     return (
         <main className={rootClass}>
             <Header />
-            <p>All</p>
             <div className={pageClass}>
+            
             {(() => {
 
               if(displayTeam){
-                $("button").click(function(){
-                    alert("Henlo");
-                });
-                
-    
-        jQuery(document).ready(
-            setTimeout(function () {
-                var options = {
-                    type: "slide",
-                    buttons: [
-                        {
-                            text: "",
-                            class: "",
-                            click: function () {
-                                this.closeModal();
-                            },
-                        },
-                    ],
-                };
-                /*if ($("#modal-team-member-1").length) {
-                    var slide_1 = modal(options, $("#modal-team-member-1"));
-                }
-                if ($("#modal-team-member-2").length) {
-                    var slide_2 = modal(options, $("#modal-team-member-2"));
-                }
-                if ($("#modal-team-member-3").length) {
-                    var slide_3 = modal(options, $("#modal-team-member-3"));
-                }
-                if ($("#modal-team-member-4").length) {
-                    var slide_4 = modal(options, $("#modal-team-member-4"));
-                }
-                if ($("#modal-team-member-5").length) {
-                    var slide_5 = modal(options, $("#modal-team-member-5"));
-                }
-                if ($("#modal-team-member-6").length) {
-                    var slide_6 = modal(options, $("#modal-team-member-6"));
-                }
-                if ($("#modal-team-member-7").length) {
-                    var slide_7 = modal(options, $("#modal-team-member-7"));
-                }
-                if ($("#modal-team-member-8").length) {
-                    var slide_8 = modal(options, $("#modal-team-member-8"));
-                }
-                if ($("#modal-team-member-9").length) {
-                    var slide_9 = modal(options, $("#modal-team-member-9"));
-                }
-                if ($("#modal-team-member-10").length) {
-                    var slide_10 = modal(options, $("#modal-team-member-10"));
-                }
-                if ($("#modal-team-member-11").length) {
-                    var slide_11 = modal(options, $("#modal-team-member-11"));
-                }
-                if ($("#modal-team-member-12").length) {
-                    var slide_12 = modal(options, $("#modal-team-member-12"));
-                }
-                if ($("#modal-team-member-13").length) {
-                    var slide_13 = modal(options, $("#modal-team-member-13"));
-                }
-                if ($("#modal-team-member-14").length) {
-                    var slide_14 = modal(options, $("#modal-team-member-14"));
-                }
-                if ($("#modal-team-member-15").length) {
-                    var slide_15 = modal(options, $("#modal-team-member-15"));
-                }
-                if ($("#modal-team-member-16").length) {
-                    var slide_16 = modal(options, $("#modal-team-member-16"));
-                }
-                if ($("#modal-team-member-17").length) {
-                    var slide_17 = modal(options, $("#modal-team-member-17"));
-                }
-                if ($("#modal-team-member-18").length) {
-                    var slide_18 = modal(options, $("#modal-team-member-18"));
-                }
-                if ($("#modal-team-member-19").length) {
-                    var slide_19 = modal(options, $("#modal-team-member-19"));
-                }
-                if ($("#modal-team-member-20").length) {
-                    var slide_20 = modal(options, $("#modal-team-member-20"));
-                }
-                if ($("#modal-team-member-21").length) {
-                    var slide_21 = modal(options, $("#modal-team-member-21"));
-                }
-                if ($("#modal-team-member-22").length) {
-                    var slide_22 = modal(options, $("#modal-team-member-22"));
-                }
-                if ($("#modal-team-member-23").length) {
-                    var slide_23 = modal(options, $("#modal-team-member-23"));
-                }
-                if ($("#modal-team-member-24").length) {
-                    var slide_24 = modal(options, $("#modal-team-member-24"));
-                }
-                if ($("#modal-team-member-25").length) {
-                    var slide_25 = modal(options, $("#modal-team-member-25"));
-                } */
-                $("#team-member-1").click(function () {
-                    //$("#modal-team-member-1").modal("openModal");
-                    $("#modal-team-member-1").show();
-                });
-                $("#team-member-2").click(function () {
-                    $("#modal-team-member-2").modal("openModal");
-                });
-                $("#team-member-3").click(function () {
-                    $("#modal-team-member-3").modal("openModal");
-                });
-                $("#team-member-4").click(function () {
-                    $("#modal-team-member-4").modal("openModal");
-                });
-                $("#team-member-5").click(function () {
-                    $("#modal-team-member-5").modal("openModal");
-                });
-                $("#team-member-6").click(function () {
-                    $("#modal-team-member-6").modal("openModal");
-                });
-                $("#team-member-7").click(function () {
-                    $("#modal-team-member-7").modal("openModal");
-                });
-                $("#team-member-8").click(function () {
-                    $("#modal-team-member-8").modal("openModal");
-                });
-                $("#team-member-9").click(function () {
-                    $("#modal-team-member-9").modal("openModal");
-                });
-                $("#team-member-10").click(function () {
-                    $("#modal-team-member-10").modal("openModal");
-                });
-                $("#team-member-11").click(function () {
-                    $("#modal-team-member-11").modal("openModal");
-                });
-                $("#team-member-12").click(function () {
-                    $("#modal-team-member-12").modal("openModal");
-                });
-                $("#team-member-13").click(function () {
-                    $("#modal-team-member-13").modal("openModal");
-                });
-                $("#team-member-14").click(function () {
-                    $("#modal-team-member-14").modal("openModal");
-                });
-                $("#team-member-15").click(function () {
-                    $("#modal-team-member-15").modal("openModal");
-                });
-                $("#team-member-16").click(function () {
-                    $("#modal-team-member-16").modal("openModal");
-                });
-                $("#team-member-17").click(function () {
-                    $("#modal-team-member-17").modal("openModal");
-                });
-                $("#team-member-18").click(function () {
-                    $("#modal-team-member-17").modal("openModal");
-                });
-                $("#team-member-19").click(function () {
-                    $("#modal-team-member-18").modal("openModal");
-                });
-                $("#team-member-20").click(function () {
-                    $("#modal-team-member-20").modal("openModal");
-                });
-                $("#team-member-21").click(function () {
-                    $("#modal-team-member-21").modal("openModal");
-                });
-                $("#team-member-22").click(function () {
-                    $("#modal-team-member-22").modal("openModal");
-                });
-                $("#team-member-23").click(function () {
-                    $("#modal-team-member-23").modal("openModal");
-                });
-                $("#team-member-24").click(function () {
-                    $("#modal-team-member-24").modal("openModal");
-                });
-                $("#team-member-25").click(function () {
-                    $("#modal-team-member-25").modal("openModal");
-                });
-            }, 5)
-        );
-   
-
-
+                return (
+                    <Popup
+                        trigger={<button className="button"> Open Modal </button>}
+                        modal
+                        nested
+                    >
+                        {close => (
+                        <div className="modal1">
+                            
+                            <button className="close" onClick={close}>
+                            &times;
+                            </button>
+                            <div className="content">
+                            {' '}
+                            <div id="modal-content-1" class="modal-content" data-role="content">
+                                <div id="modal-team-member-1" class="modal-team-member">
+                                    <div class="modal-body-content">
+                                        <img class="member-pic" src="/media/teamphotos/phil2021-cropBW.jpg"/>
+                                        <div class="member-info-block">
+                                            <div class="member-name">Philippe Rayes</div>
+                                            <div class="member-designation">President &amp; CEO</div>
+                                            <div class="member-email">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="14.083" height="9.75" viewBox="0 0 14.083 9.75">
+                                                <g id="Icon_ionic-ios-mail" data-name="Icon ionic-ios-mail" transform="translate(0)">
+                                                    <path id="Tracé_52" data-name="Tracé 52" d="M17.343,10.335,13.7,14.045a.065.065,0,0,0,0,.095l2.549,2.715a.439.439,0,0,1,0,.623.441.441,0,0,1-.623,0l-2.539-2.7a.069.069,0,0,0-.1,0l-.62.63a2.726,2.726,0,0,1-1.943.819,2.78,2.78,0,0,1-1.984-.843l-.6-.606a.069.069,0,0,0-.1,0l-2.539,2.7a.441.441,0,0,1-.623,0,.439.439,0,0,1,0-.623L7.136,14.14a.072.072,0,0,0,0-.095L3.49,10.335a.067.067,0,0,0-.115.047v7.424a1.086,1.086,0,0,0,1.083,1.083H16.375a1.086,1.086,0,0,0,1.083-1.083V10.382A.068.068,0,0,0,17.343,10.335Z" transform="translate(-3.375 -9.14)" fill="#7ab13d"></path>
+                                                    <path id="Tracé_53" data-name="Tracé 53" d="M10.858,14.074a1.84,1.84,0,0,0,1.324-.555l5.312-5.406a1.064,1.064,0,0,0-.67-.237H4.9a1.057,1.057,0,0,0-.67.237l5.312,5.406A1.841,1.841,0,0,0,10.858,14.074Z" transform="translate(-3.816 -7.875)" fill="#7ab13d"></path>
+                                                </g>
+                                            </svg>
+                                            <a class="fill" href="mailto:prayes@sherpagroupav.com">prayes@sherpagroupav.com</a>
+                                            </div>
+                                            <div class="member-phone">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10.818" height="10.817" viewBox="0 0 10.818 10.817">
+                                                <path id="Icon_awesome-phone-alt" data-name="Icon awesome-phone-alt" d="M10.509,7.644,8.143,6.63a.507.507,0,0,0-.592.146L6.5,8.056A7.831,7.831,0,0,1,2.759,4.313L4.04,3.265a.506.506,0,0,0,.146-.592L3.171.307A.51.51,0,0,0,2.59.013L.393.52A.507.507,0,0,0,0,1.014a9.8,9.8,0,0,0,9.8,9.8.507.507,0,0,0,.494-.393l.507-2.2a.513.513,0,0,0-.3-.583Z" transform="translate(0 0)" fill="#7ab13d"></path>
+                                            </svg>
+                                            <a class="fill" href="tel:514-366-9822">514-366-9822 Ext: 1102</a>
+                                            </div>
+                                            <div class="member-phone">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="10.818" height="10.817" viewBox="0 0 10.818 10.817">
+                                                <path id="Icon_awesome-phone-alt" data-name="Icon awesome-phone-alt" d="M10.509,7.644,8.143,6.63a.507.507,0,0,0-.592.146L6.5,8.056A7.831,7.831,0,0,1,2.759,4.313L4.04,3.265a.506.506,0,0,0,.146-.592L3.171.307A.51.51,0,0,0,2.59.013L.393.52A.507.507,0,0,0,0,1.014a9.8,9.8,0,0,0,9.8,9.8.507.507,0,0,0,.494-.393l.507-2.2a.513.513,0,0,0-.3-.583Z" transform="translate(0 0)" fill="#7ab13d"></path>
+                                            </svg>
+                                            <a class="fill" href="tel:438-833-9739">438-833-9739</a>
+                                            </div>
+                                            <div class="member-about">With more than 20 years in the industry, building Sherpa Technology Group from the ground-up has been the fulfilment of a childhood dream of running a successful business. His first savings as a men’s clothing salesperson was spent on a sound system that was nothing short of foreshadowing at its finest. When not hard at work on Sherpa’s next win, you can find Phil enjoying the tranquility and productivity of the early morning hours with a hot coffee. Eventually you’ll find him driving through the European countryside, looking back at the great relationships made, accomplishments realized, and milestones achieved.</div>
+                                            <a class="close-button" data-role="closeBtn">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="29.073" height="9.962" viewBox="0 0 29.073 9.962">
+                                                <path id="Icon_ionic-ios-arrow-round-back" data-name="Icon ionic-ios-arrow-round-back" d="M13.293,11.442a.678.678,0,0,1,.005.955l-3.149,3.16H36.286a.674.674,0,0,1,0,1.349H10.149l3.154,3.16a.683.683,0,0,1-.005.955.672.672,0,0,1-.949-.005L8.074,16.708h0a.757.757,0,0,1-.14-.213.644.644,0,0,1-.052-.259.676.676,0,0,1,.192-.472l4.275-4.306A.661.661,0,0,1,13.293,11.442Z" transform="translate(-7.882 -11.252)"></path>
+                                            </svg>
+                                            <span class="back">Back</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        )}
+                    </Popup>
+                )
               }
 
               if (!isSignedIn && displayLogin){
@@ -272,6 +164,16 @@ const Main = props => {
               } else if (!isSignedIn && displayRegister) {
                 return(
                     <JotformEmbed src="https://form.jotform.com/230886199517066" />
+                )
+
+              } else if (!isSignedIn && displayEducation) {
+                return(
+                    <Suspense fallback={''}>
+                        <Banner
+                            identifier={categoryBannerIdentifierHome}
+                            showBanner={showCategoryBanners}
+                        />
+                    </Suspense>
                 )
 
               } else {
