@@ -219,7 +219,7 @@ const Product = props => {
                                             defaultMessage={'ADD TO CART'}
                                         />
                                     </button>
-
+                                        
                                     {/*<button
                                         aria-label="Addtocart"
                                         className={classes.add_to_cart_btn}
